@@ -45,7 +45,7 @@ const timeline = [
   {
     year: "2020",
     title: "Pendirian UPTD",
-    description: "Pembentukan UPTD Pengelolaan Air Limbah Domestik Kabupaten Tanah Bumbu."
+    description: "Pembentukan UPTD Layanan Sedot Tinja Kabupaten Tanah Bumbu."
   },
   {
     year: "2021",
@@ -131,8 +131,8 @@ export default function TentangPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xl text-blue-100 mb-10"
             >
-              UPTD Pengelolaan Air Limbah Domestik Kabupaten Tanah Bumbu berkomitmen untuk
-              mewujudkan lingkungan yang bersih dan sehat melalui pengelolaan air limbah
+              UPTD Layanan Sedot Tinja Kabupaten Tanah Bumbu berkomitmen untuk
+              mewujudkan lingkungan yang bersih dan sehat melalui layanan sedot tinja
               yang optimal dan berkelanjutan.
             </motion.p>
           </div>
@@ -176,7 +176,7 @@ export default function TentangPage() {
                   <li className="flex items-start">
                     <CheckCircle2 className="h-6 w-6 text-cyan-600 dark:text-cyan-400 mr-3 flex-shrink-0 mt-1" />
                     <span className="text-cyan-700 dark:text-cyan-300">
-                      Mengembangkan infrastruktur pengolahan air limbah yang modern
+                      Mengembangkan infrastruktur sedot tinja yang modern
                     </span>
                   </li>
                   <li className="flex items-start">
@@ -188,7 +188,7 @@ export default function TentangPage() {
                   <li className="flex items-start">
                     <CheckCircle2 className="h-6 w-6 text-cyan-600 dark:text-cyan-400 mr-3 flex-shrink-0 mt-1" />
                     <span className="text-cyan-700 dark:text-cyan-300">
-                      Menjamin keberlanjutan sistem pengelolaan air limbah
+                      Menjamin keberlanjutan sistem layanan sedot tinja
                     </span>
                   </li>
                 </ul>
