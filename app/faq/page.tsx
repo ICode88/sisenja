@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import { Search, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
+import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -43,7 +43,7 @@ const faqCategories = [
       },
       {
         q: "Apa saja layanan yang disediakan UPTD?",
-        a: "Layanan kami meliputi:\n- Pengelolaan air limbah domestik\n- Penyedotan limbah terjadwal\n- Pemeliharaan instalasi\n- Penanganan darurat\n- Konsultasi teknis\n- Edukasi masyarakat"
+        a: "Layanan kami meliputi:\n- Pengelolaan layanan sedot tinja\n- Penyedotan limbah terjadwal\n- Pemeliharaan instalasi\n- Penanganan darurat\n- Konsultasi teknis\n- Edukasi masyarakat"
       },
       {
         q: "Berapa lama proses pemasangan instalasi baru?",
@@ -95,7 +95,7 @@ export default function FAQPage() {
     ...category,
     questions: category.questions.filter(
       q => q.q.toLowerCase().includes(searchQuery.toLowerCase()) ||
-           q.a.toLowerCase().includes(searchQuery.toLowerCase())
+        q.a.toLowerCase().includes(searchQuery.toLowerCase())
     )
   })).filter(category => category.questions.length > 0);
 
@@ -148,7 +148,7 @@ export default function FAQPage() {
             </motion.div>
           </div>
         </div>
-        
+
         <WaveDivider color="fill-white dark:fill-background" height={80} />
       </section>
 
@@ -247,7 +247,7 @@ export default function FAQPage() {
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white"
-                 asChild
+                asChild
               >
                 <Link href="/layanan">
                   Lihat Layanan

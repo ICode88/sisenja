@@ -4,12 +4,12 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { 
-  FileText, 
-  PhoneCall, 
-  BarChart4, 
-  Info, 
-  ArrowRight, 
+import {
+  FileText,
+  PhoneCall,
+  BarChart4,
+  Info,
+  ArrowRight,
   Search,
   DropletIcon,
   WrenchIcon,
@@ -52,7 +52,7 @@ export default function LayananPage() {
   const mainServices = [
     {
       title: "Pendaftaran Pelanggan Baru",
-      description: "Layanan pendaftaran bagi pelanggan baru yang ingin menggunakan jasa pengelolaan air limbah domestik",
+      description: "Layanan pendaftaran bagi pelanggan baru yang ingin menggunakan jasa layanan sedot tinja",
       icon: FileText,
       href: "/layanan/pendaftaran",
       color: "bg-gradient-to-br from-blue-50 to-cyan-100 dark:from-blue-950 dark:to-cyan-900",
@@ -61,7 +61,7 @@ export default function LayananPage() {
     },
     {
       title: "Pengaduan Layanan",
-      description: "Layanan pengaduan untuk melaporkan masalah terkait layanan air limbah domestik",
+      description: "Layanan pengaduan untuk melaporkan masalah terkait layanan layanan sedot tinja",
       icon: PhoneCall,
       href: "/layanan/pengaduan",
       color: "bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-950 dark:to-yellow-900",
@@ -91,7 +91,7 @@ export default function LayananPage() {
   const supportServices = [
     {
       title: "Edukasi Masyarakat",
-      description: "Program edukasi masyarakat tentang pentingnya pengelolaan air limbah domestik",
+      description: "Program edukasi masyarakat tentang pentingnya layanan sedot tinja",
       icon: Book,
       href: "/layanan/edukasi",
       category: "Edukasi",
@@ -105,7 +105,7 @@ export default function LayananPage() {
     },
     {
       title: "Informasi Tarif",
-      description: "Informasi rinci tentang tarif layanan pengelolaan air limbah domestik",
+      description: "Informasi rinci tentang tarif layanan layanan sedot tinja",
       icon: BarChart4,
       href: "/tarif",
       category: "Informasi",
@@ -146,46 +146,46 @@ export default function LayananPage() {
         </div>
 
         {/* Animated droplets */}
-        <motion.div 
+        <motion.div
           className="absolute -bottom-4 left-1/4 w-8 h-8 rounded-full bg-cyan-300 opacity-40"
-          animate={{ 
-            y: [-20, -80], 
+          animate={{
+            y: [-20, -80],
             opacity: [0.4, 0],
             scale: [1, 1.5]
           }}
-          transition={{ 
-            repeat: Infinity, 
+          transition={{
+            repeat: Infinity,
             duration: 3,
             repeatType: "loop",
             ease: "easeInOut"
           }}
         />
-        
-        <motion.div 
+
+        <motion.div
           className="absolute -bottom-4 right-1/3 w-12 h-12 rounded-full bg-blue-300 opacity-30"
-          animate={{ 
-            y: [-30, -100], 
+          animate={{
+            y: [-30, -100],
             opacity: [0.3, 0],
             scale: [1, 1.8]
           }}
-          transition={{ 
-            repeat: Infinity, 
+          transition={{
+            repeat: Infinity,
             duration: 3.5,
             delay: 0.5,
             repeatType: "loop",
             ease: "easeInOut"
           }}
         />
-        
-        <motion.div 
+
+        <motion.div
           className="absolute -bottom-4 right-1/4 w-6 h-6 rounded-full bg-teal-300 opacity-50"
-          animate={{ 
-            y: [-10, -60], 
+          animate={{
+            y: [-10, -60],
             opacity: [0.5, 0],
             scale: [1, 1.3]
           }}
-          transition={{ 
-            repeat: Infinity, 
+          transition={{
+            repeat: Infinity,
             duration: 2.5,
             delay: 1,
             repeatType: "loop",
@@ -210,7 +210,7 @@ export default function LayananPage() {
               className="text-xl text-blue-100 mb-10"
             >
               Berbagai layanan yang kami sediakan untuk masyarakat Kabupaten Tanah Bumbu
-              dalam pengelolaan air limbah domestik yang optimal dan berkelanjutan.
+              dalam layanan sedot tinja yang optimal dan berkelanjutan.
             </motion.p>
 
             <motion.div
@@ -230,7 +230,7 @@ export default function LayananPage() {
             </motion.div>
           </div>
         </div>
-        
+
         <WaveDivider color="fill-white dark:fill-background" height={80} />
       </section>
 
@@ -428,7 +428,7 @@ interface ServiceProps {
 
 function ServiceCard({ service }: ServiceProps) {
   const { title, description, icon: Icon, href, color = "bg-card", iconColor = "text-primary", category } = service;
-  
+
   return (
     <Link href={href}>
       <motion.div
@@ -438,11 +438,10 @@ function ServiceCard({ service }: ServiceProps) {
         <div className="flex flex-col h-full">
           <div className="flex justify-between items-start mb-4">
             <div
-              className={`p-3 rounded-lg inline-flex ${
-                iconColor === "text-primary"
-                  ? "bg-primary/10"
-                  : "bg-white/25 dark:bg-black/10"
-              }`}
+              className={`p-3 rounded-lg inline-flex ${iconColor === "text-primary"
+                ? "bg-primary/10"
+                : "bg-white/25 dark:bg-black/10"
+                }`}
             >
               <Icon className={`h-6 w-6 ${iconColor}`} />
             </div>
@@ -462,7 +461,7 @@ function ServiceCard({ service }: ServiceProps) {
 
 function SupportServiceCard({ service }: ServiceProps) {
   const { title, description, icon: Icon, href, category } = service;
-  
+
   return (
     <Link href={href}>
       <Card className="h-full transition-all duration-200 hover:shadow-md overflow-hidden">

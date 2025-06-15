@@ -50,7 +50,7 @@ const timeline = [
   {
     year: "2021",
     title: "Pengembangan Infrastruktur",
-    description: "Pembangunan instalasi pengolahan air limbah domestik pertama."
+    description: "Pembangunan instalasi pengolahan layanan sedot tinja pertama."
   },
   {
     year: "2022",
@@ -160,7 +160,7 @@ export default function TentangPage() {
                 </h3>
                 <p className="text-lg text-cyan-700 dark:text-cyan-300 mb-8">
                   &quot;Mewujudkan Kabupaten Tanah Bumbu yang bersih, sehat, dan berkelanjutan
-                  melalui pengelolaan air limbah domestik yang optimal.&quot;
+                  melalui layanan sedot tinja yang optimal.&quot;
                 </p>
 
                 <h3 className="text-xl font-semibold mb-4 text-cyan-800 dark:text-cyan-200">
@@ -170,7 +170,7 @@ export default function TentangPage() {
                   <li className="flex items-start">
                     <CheckCircle2 className="h-6 w-6 text-cyan-600 dark:text-cyan-400 mr-3 flex-shrink-0 mt-1" />
                     <span className="text-cyan-700 dark:text-cyan-300">
-                      Meningkatkan kualitas layanan pengelolaan air limbah domestik
+                      Meningkatkan kualitas layanan layanan sedot tinja
                     </span>
                   </li>
                   <li className="flex items-start">

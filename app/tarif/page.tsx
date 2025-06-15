@@ -78,7 +78,7 @@ export default function TarifPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto"
             >
-              Informasi lengkap tentang tarif layanan pengelolaan air limbah domestik
+              Informasi lengkap tentang tarif layanan layanan sedot tinja
               berdasarkan jenis bangunan dan volume penggunaan.
             </motion.p>
           </div>

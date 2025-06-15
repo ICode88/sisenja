@@ -13,7 +13,7 @@ import NewsCard from "@/components/home/news-card";
 // Sample news data - in a real app, this would come from an API
 const newsData = [
   {
-    title: "Peluncuran Program Edukasi Masyarakat tentang Pengelolaan Limbah",
+    title: "Peluncuran Program Edukasi Masyarakat tentang Layanan Sedot Tinja",
     excerpt: "UPTD meluncurkan program edukasi tentang pentingnya pengelolaan limbah domestik yang benar untuk meningkatkan kesadaran masyarakat.",
     date: "5 Mei 2025",
     category: "Program",
@@ -21,7 +21,7 @@ const newsData = [
     slug: "program-edukasi-masyarakat",
   },
   {
-    title: "Peningkatan Layanan Pemeliharaan Sistem Pengelolaan Air Limbah",
+    title: "Peningkatan Layanan Pemeliharaan Layanan Sedot Tinja",
     excerpt: "UPTD meningkatkan frekuensi pemeliharaan untuk memastikan sistem berfungsi optimal sepanjang tahun.",
     date: "2 Mei 2025",
     category: "Layanan",
@@ -30,7 +30,7 @@ const newsData = [
   },
   {
     title: "Pengumuman Jadwal Pemeliharaan Rutin Bulan Mei",
-    excerpt: "Jadwal pemeliharaan rutin sistem pengelolaan air limbah untuk bulan Mei 2025 telah dirilis.",
+    excerpt: "Jadwal pemeliharaan rutin sistem pengelolaan sedot tinja untuk bulan Mei 2025 telah dirilis.",
     date: "28 April 2025",
     category: "Pengumuman",
     image: "https://images.pexels.com/photos/8473465/pexels-photo-8473465.jpeg",
@@ -68,7 +68,7 @@ export default function BeritaPage() {
 
   const filteredNews = newsData.filter((news) => {
     const matchesSearch = news.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         news.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+      news.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = categoryFilter === "all" || news.category === categoryFilter;
     return matchesSearch && matchesCategory;
   });
@@ -104,7 +104,7 @@ export default function BeritaPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xl text-blue-100 mb-10"
             >
-              Informasi terbaru seputar layanan dan program pengelolaan air limbah domestik
+              Informasi terbaru seputar layanan dan program layanan sedot tinja
               di Kabupaten Tanah Bumbu
             </motion.p>
 
@@ -140,7 +140,7 @@ export default function BeritaPage() {
             </motion.div>
           </div>
         </div>
-        
+
         <WaveDivider color="fill-white dark:fill-background" height={80} />
       </section>
 

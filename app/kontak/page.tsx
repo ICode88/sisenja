@@ -3,11 +3,11 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Clock, 
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
   Send,
   MessageSquare,
   AlertCircle
@@ -15,7 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { 
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -81,12 +81,11 @@ export default function KontakPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xl text-blue-100 mb-10"
             >
-              Kami siap membantu Anda dengan informasi dan layanan pengelolaan
-              air limbah domestik
+              Kami siap membantu Anda dengan informasi dan layanan sedot tinja
             </motion.p>
           </div>
         </div>
-        
+
         <WaveDivider color="fill-white dark:fill-background" height={80} />
       </section>
 
@@ -142,7 +141,7 @@ export default function KontakPage() {
                     </div>
                     <div className="ml-4">
                       <h3 className="font-semibold mb-1">Email</h3>
-                      <p className="text-muted-foreground">info@sipald-tala.go.id</p>
+                      <p className="text-muted-foreground">info@sisenja-tanbu.go.id</p>
                     </div>
                   </div>
 
