@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { CalendarIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import { cn } from "@/libs/utils";
 
 interface NewsCardProps {
   title: string;
@@ -27,7 +27,7 @@ export default function NewsCard({
 }: NewsCardProps) {
   return (
     <Link href={`/berita/${slug}`}>
-      <motion.div 
+      <motion.div
         whileHover={{ y: -5, scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         className="h-full"
@@ -44,9 +44,9 @@ export default function NewsCard({
               <Badge
                 className={cn(
                   "badge-enhanced",
-                  category === 'Program' ? 'bg-indigo-500 hover:bg-indigo-600' : 
-                  category === 'Layanan' ? 'bg-green-500 hover:bg-green-600' : 
-                  'bg-amber-500 hover:bg-amber-600'
+                  category === 'Program' ? 'bg-indigo-500 hover:bg-indigo-600' :
+                    category === 'Layanan' ? 'bg-green-500 hover:bg-green-600' :
+                      'bg-amber-500 hover:bg-amber-600'
                 )}
               >
                 {category}

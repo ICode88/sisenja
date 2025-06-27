@@ -12,7 +12,7 @@ import { WaveDivider } from "@/components/ui/wave-divider";
 import ServiceCard from "@/components/home/service-card";
 import NewsCard from "@/components/home/news-card";
 import StatCard from "@/components/home/stat-card";
-import { cn } from "@/lib/utils";
+import { cn } from "@/libs/utils";
 import ImageSlider from "@/components/home/image-slider";
 
 export default function Home() {
@@ -130,7 +130,7 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center pt-16 pb-24 overflow-visible bg-gradient-to-b from-cyan-50 to-blue-100 dark:from-cyan-950 dark:to-blue-900">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 opacity-10 dark:opacity-20">
-            <Image 
+            <Image
               src="https://images.pexels.com/photos/1643409/pexels-photo-1643409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               alt="Water background"
               fill
@@ -138,48 +138,48 @@ export default function Home() {
               priority
             />
           </div>
-          
+
           {/* Animated water particle effects */}
-          <motion.div 
+          <motion.div
             className="absolute bottom-0 left-1/4 w-4 h-4 rounded-full bg-cyan-500 opacity-70"
-            animate={{ 
-              y: [-20, -120], 
+            animate={{
+              y: [-20, -120],
               opacity: [0.7, 0],
               scale: [1, 1.5]
             }}
-            transition={{ 
-              repeat: Infinity, 
+            transition={{
+              repeat: Infinity,
               duration: 3,
               repeatType: "loop",
               ease: "easeInOut"
             }}
           />
-          
-          <motion.div 
+
+          <motion.div
             className="absolute bottom-10 right-1/3 w-6 h-6 rounded-full bg-blue-500 opacity-60"
-            animate={{ 
-              y: [-30, -150], 
+            animate={{
+              y: [-30, -150],
               opacity: [0.6, 0],
               scale: [1, 1.8]
             }}
-            transition={{ 
-              repeat: Infinity, 
+            transition={{
+              repeat: Infinity,
               duration: 4,
               delay: 1,
               repeatType: "loop",
               ease: "easeInOut"
             }}
           />
-          
-          <motion.div 
+
+          <motion.div
             className="absolute bottom-20 right-1/4 w-3 h-3 rounded-full bg-teal-500 opacity-80"
-            animate={{ 
-              y: [-10, -100], 
+            animate={{
+              y: [-10, -100],
               opacity: [0.8, 0],
               scale: [1, 1.3]
             }}
-            transition={{ 
-              repeat: Infinity, 
+            transition={{
+              repeat: Infinity,
               duration: 2.5,
               delay: 0.5,
               repeatType: "loop",
@@ -212,7 +212,7 @@ export default function Home() {
               >
                 <span className="relative">
                   Sistem Informasi
-                 
+
                 </span>
                 <br />
                 Layanan Sedot Tinja (SISENJA)
@@ -283,7 +283,7 @@ export default function Home() {
 
           </div>
         </div>
-        
+
         <WaveDivider color="fill-white dark:fill-background" height={80} />
       </section>
 
@@ -334,7 +334,7 @@ export default function Home() {
             <rect width="100%" height="100%" fill="url(#wave)" />
           </svg>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0 }}
@@ -516,7 +516,7 @@ export default function Home() {
             <rect width="100%" height="100%" fill="url(#water-pattern)" />
           </svg>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

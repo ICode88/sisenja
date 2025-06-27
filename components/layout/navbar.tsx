@@ -3,16 +3,17 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Droplets } from "lucide-react";
+import { Menu, X, Droplets, LogIn, UserPlus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/layout/mode-toggle";
-import { cn } from "@/lib/utils";
+import { cn } from "@/libs/utils";
 
 const navItems = [
   { name: "Beranda", href: "/" },
   { name: "Layanan", href: "/layanan" },
   { name: "Tarif", href: "/tarif" },
+  { name: "Persyaratan", href: "/persyaratan" },
   { name: "Tentang Kami", href: "/tentang" },
   { name: "FAQ", href: "/faq" },
   { name: "Berita", href: "/berita" },
@@ -85,7 +86,42 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-3">
+            {/* Auth Buttons - Desktop */}
+            <div className="hidden md:flex items-center space-x-2">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  asChild
+                  className="text-cyan-600 hover:text-cyan-700 hover:bg-cyan-50 dark:text-cyan-400 dark:hover:text-cyan-300 dark:hover:bg-cyan-900/20"
+                >
+                  <Link href="/login" className="flex items-center gap-2">
+                    <LogIn size={16} />
+                    Masuk
+                  </Link>
+                </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button
+                  size="sm"
+                  asChild
+                  className="bg-cyan-600 hover:bg-cyan-700 text-white dark:bg-cyan-500 dark:hover:bg-cyan-600"
+                >
+                  <Link href="/register" className="flex items-center gap-2">
+                    <UserPlus size={16} />
+                    Daftar
+                  </Link>
+                </Button>
+              </motion.div>
+            </div>
+
             <ModeToggle />
             <Button
               variant="ghost"
@@ -125,6 +161,31 @@ export default function Navbar() {
                     {item.name}
                   </Link>
                 ))}
+
+                {/* Auth Buttons - Mobile */}
+                <div className="flex flex-col space-y-2 pt-4 border-t border-border">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    asChild
+                    className="justify-start text-cyan-600 hover:text-cyan-700 hover:bg-cyan-50 dark:text-cyan-400 dark:hover:text-cyan-300 dark:hover:bg-cyan-900/20"
+                  >
+                    <Link href="/login" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
+                      <LogIn size={16} />
+                      Masuk
+                    </Link>
+                  </Button>
+                  <Button
+                    size="sm"
+                    asChild
+                    className="justify-start bg-cyan-600 hover:bg-cyan-700 text-white dark:bg-cyan-500 dark:hover:bg-cyan-600"
+                  >
+                    <Link href="/register" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
+                      <UserPlus size={16} />
+                      Daftar
+                    </Link>
+                  </Button>
+                </div>
               </nav>
             </div>
           </motion.div>
