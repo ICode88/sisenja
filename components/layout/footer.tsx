@@ -24,6 +24,8 @@ export default function Footer() {
               Menyediakan informasi lengkap tentang layanan sedot tinja.
             </p>
             </div>
+            {/* <Image src="/images/berakhlak.png" alt="Tanbu" width={80} height={80} /> */}
+
 
             <div className="flex items-center gap-4 mt-4">
               <a href="#" className="hover:text-cyan-300 transition-colors">
