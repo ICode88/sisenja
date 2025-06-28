@@ -119,8 +119,8 @@ export default function KontakPage() {
                     <div className="ml-4">
                       <h3 className="font-semibold mb-1">Alamat</h3>
                       <p className="text-muted-foreground">
-                        Jl. Example No. 123<br />
-                        Tanah Bumbu, Kalimantan Selatan
+                        Jalan Dharma Praja No. 5 Kelurahan Gunung Tinggi Kecamatan Batulicin <br />
+                        Kabupaten Tanah Bumbu Provinsi Kalimantan Selatan
                       </p>
                     </div>
                   </div>
@@ -166,7 +166,7 @@ export default function KontakPage() {
                   </div>
                   <p className="text-muted-foreground text-sm">
                     Untuk keadaan darurat di luar jam kerja, silakan hubungi nomor
-                    darurat kami di (0518) 87654321
+                    darurat kami di (+62) 821 5505 5167
                   </p>
                 </div>
               </motion.div>
