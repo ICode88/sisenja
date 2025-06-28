@@ -1,56 +1,54 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
-import {
-  Calculator,
-  Home,
-  Building,
-  Building2,
-  CalculatorIcon,
-  GraduationCap,
-  Landmark,
-  CircleDollarSign,
-  HelpCircle
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Home, CircleDollarSign, Building2, Building,HelpCircle, Factory, School, GraduationCap, Landmark, Calculator } from "lucide-react";
+import Image from "next/image";
 import { WaveDivider } from "@/components/ui/wave-divider";
+import { SelectItem, SelectTrigger, SelectContent, SelectValue, Select } from "@/components/ui/select";
 
 export default function TarifPage() {
-  const [bangunan, setBangunan] = useState("rumah");
-  const [volume, setVolume] = useState<number>(10);
-  const [tarif, setTarif] = useState<number>(0);
-  const [tabValue, setTabValue] = useState("kategori");
+  const [zona, setZona] = useState("zona1");
+  const [volume, setVolume] = useState(10);
+  const [tarif, setTarif] = useState(0);
+  const [tabValue, setTabValue] = useState("zona");
 
   const tarifData = {
-    rumah: 15000,
-    ruko: 25000,
-    hotel: 35000,
-    institusi: 20000,
-    komersial: 30000,
+    zona1: {
+      label: "Zona I (0 km - 3 km)",
+      tarif: 350000,
+      icon: Home
+    },
+    zona2: {
+      label: "Zona II (>1 km sd 6 km)",
+      tarif: 400000,
+      icon: Building2
+    },
+    zona3: {
+      label: "Zona III (>1 km - 10 km)",
+      tarif: 450000,
+      icon: Building
+    },
+    zona4: {
+      label: "Zona IV (>10 km - 15 km)",
+      tarif: 500000,
+      icon: Factory
+    },
+    institusi: {
+      label: "Institusi Penyelenggara (Milik Pemerintah)",
+      tarif: 65000,
+      icon: School
+    }
   };
 
   const handleCalculate = () => {
-    const baseTarif = tarifData[bangunan as keyof typeof tarifData];
+    const baseTarif = tarifData[zona as keyof typeof tarifData].tarif;
     const calculatedTarif = baseTarif * volume;
     setTarif(calculatedTarif);
   };
 
   return (
-    <>
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 bg-gradient-to-r from-cyan-600 to-blue-700 dark:from-cyan-800 dark:to-blue-900 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10">
@@ -78,8 +76,8 @@ export default function TarifPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto"
             >
-              Informasi lengkap tentang tarif layanan layanan sedot tinja
-              berdasarkan jenis bangunan dan volume penggunaan.
+              Informasi lengkap tentang tarif layanan pengelolaan air limbah domestik
+              berdasarkan zona pelayanan dan jenis kegiatan.
             </motion.p>
           </div>
         </div>
@@ -88,192 +86,239 @@ export default function TarifPage() {
       </section>
 
       {/* Tarif Information */}
-      <section className="py-20 bg-white dark:bg-background">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <Tabs value={tabValue} onValueChange={setTabValue} className="mb-12">
-
-              <div className="mb-8 flex justify-between items-center flex-col md:flex-row gap-6">
-                <h2 className="text-3xl font-bold text-cyan-900 dark:text-cyan-50">
-                  Struktur Tarif
-                </h2>
-                {/* Mobile: Dropdown Select */}
-                <div className="md:hidden w-full">
-                  <Select defaultValue="kategori" onValueChange={(value) => setTabValue(value)}>
-                    <SelectTrigger className="w-full bg-cyan-50 dark:bg-cyan-900/50">
-                      <SelectValue placeholder="Pilih Kategori" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="kategori">Berdasarkan Kategori</SelectItem>
-                      <SelectItem value="volume">Berdasarkan Volume</SelectItem>
-                      <SelectItem value="layanan">Tarif Layanan</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                {/* Desktop: Traditional Tabs */}
-                <div className="hidden md:block">
-                  <TabsList className="bg-cyan-100 dark:bg-cyan-900/50">
-                    <TabsTrigger value="kategori">Berdasarkan Kategori</TabsTrigger>
-                    <TabsTrigger value="volume">Berdasarkan Volume</TabsTrigger>
-                    <TabsTrigger value="layanan">Tarif Layanan</TabsTrigger>
-                  </TabsList>
-                </div>
-
+            <div className="mb-8 flex justify-between items-center flex-col md:flex-row gap-6">
+              <h2 className="text-3xl font-bold text-cyan-900">
+                Struktur Tarif Pelayanan
+              </h2>
+              {/* Mobile: Dropdown Select */}
+              <div className="md:hidden w-full">
+                <select
+                  value={tabValue}
+                  onChange={(e) => setTabValue(e.target.value)}
+                  className="w-full p-3 border border-gray-300 rounded-lg bg-cyan-50"
+                >
+                  <option value="zona">Berdasarkan Zona</option>
+                  <option value="jenis">Jenis Kegiatan</option>
+                  <option value="layanan">Tarif Layanan</option>
+                </select>
               </div>
+              {/* Desktop: Traditional Tabs */}
+              <div className="hidden md:flex bg-cyan-100 rounded-lg p-1">
+                <button
+                  onClick={() => setTabValue("zona")}
+                  className={`px-4 py-2 rounded-md transition-colors ${tabValue === "zona" ? "bg-white shadow-sm text-cyan-900" : "text-cyan-700 hover:text-cyan-900"}`}
+                >
+                  Berdasarkan Zona
+                </button>
+                <button
+                  onClick={() => setTabValue("jenis")}
+                  className={`px-4 py-2 rounded-md transition-colors ${tabValue === "jenis" ? "bg-white shadow-sm text-cyan-900" : "text-cyan-700 hover:text-cyan-900"}`}
+                >
+                  Jenis Kegiatan
+                </button>
+                <button
+                  onClick={() => setTabValue("layanan")}
+                  className={`px-4 py-2 rounded-md transition-colors ${tabValue === "layanan" ? "bg-white shadow-sm text-cyan-900" : "text-cyan-700 hover:text-cyan-900"}`}
+                >
+                  Tarif Layanan
+                </button>
+              </div>
+            </div>
 
-              <TabsContent value="kategori">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Tarif Berdasarkan Kategori Bangunan</CardTitle>
-                    <CardDescription>
-                      Penyesuaian tarif berdasarkan jenis dan kategori bangunan
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Table>
-                      <TableHeader>
-                        <TableRow>
-                          <TableHead>Kategori</TableHead>
-                          <TableHead>Jenis Bangunan</TableHead>
-                          <TableHead className="text-right">Tarif Dasar (per m³)</TableHead>
-                        </TableRow>
-                      </TableHeader>
-                      <TableBody>
-                        <TableRow>
-                          <TableCell className="font-medium">Rumah Tangga</TableCell>
-                          <TableCell>Rumah pribadi, Kos, Apartemen</TableCell>
-                          <TableCell className="text-right">Rp. 15.000</TableCell>
-                        </TableRow>
-                        <TableRow>
-                          <TableCell className="font-medium">Komersial Kecil</TableCell>
-                          <TableCell>Ruko, Warung, Toko</TableCell>
-                          <TableCell className="text-right">Rp. 25.000</TableCell>
-                        </TableRow>
-                        <TableRow>
-                          <TableCell className="font-medium">Komersial Besar</TableCell>
-                          <TableCell>Hotel, Mall, Restaurant</TableCell>
-                          <TableCell className="text-right">Rp. 35.000</TableCell>
-                        </TableRow>
-                        <TableRow>
-                          <TableCell className="font-medium">Institusi</TableCell>
-                          <TableCell>Sekolah, Kampus, Kantor Pemerintah</TableCell>
-                          <TableCell className="text-right">Rp. 20.000</TableCell>
-                        </TableRow>
-                        <TableRow>
-                          <TableCell className="font-medium">Fasilitas Umum</TableCell>
-                          <TableCell>Tempat Ibadah, Taman</TableCell>
-                          <TableCell className="text-right">Rp. 15.000</TableCell>
-                        </TableRow>
-                      </TableBody>
-                    </Table>
-                  </CardContent>
-                </Card>
-              </TabsContent>
+            {tabValue === "zona" && (
+              <div className="bg-white rounded-xl shadow-lg border">
+                <div className="p-6 border-b">
+                  <h3 className="text-xl font-semibold">Tarif Berdasarkan Zona Pelayanan</h3>
+                  <p className="text-gray-600 mt-1">
+                    Penyesuaian tarif berdasarkan jarak zona pelayanan
+                  </p>
+                </div>
+                <div className="p-6">
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="border-b">
+                          <th className="text-left py-3 px-4">No</th>
+                          <th className="text-left py-3 px-4">Zona</th>
+                          <th className="text-left py-3 px-4">Sarana</th>
+                          <th className="text-right py-3 px-4">Biaya Tarif (Rp)</th>
+                          <th className="text-left py-3 px-4">Subjek/Program</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b hover:bg-gray-50">
+                          <td className="py-4 px-4 font-medium">1</td>
+                          <td className="py-4 px-4 font-medium">Zona I (0 km - 3 km)</td>
+                          <td className="py-4 px-4">per m³</td>
+                          <td className="py-4 px-4 text-right">Rp 350.000</td>
+                          <td className="py-4 px-4 text-sm">
+                            Perusuhaan/DUMN/Perbankan/Industri/Komersil<br />
+                            Perdagangan dan Perkotaan<br />
+                            Fungsi Hibaran, Olahraga dan Seni<br />
+                            Permukiman Milik Pemerintah/Institusi Vertikal<br />
+                            Kesehatan/Puskesmas/RS/Poliklinik
+                          </td>
+                        </tr>
+                        <tr className="border-b hover:bg-gray-50">
+                          <td className="py-4 px-4 font-medium">2</td>
+                          <td className="py-4 px-4 font-medium">Zona II (&gt;1 km sd 6 km)</td>
+                          <td className="py-4 px-4">per m³</td>
+                          <td className="py-4 px-4 text-right">Rp 400.000</td>
+                          <td className="py-4 px-4 text-sm">
+                            Perusuhaan/DUMN/Perbankan/Industri/Komersil<br />
+                            Perdagangan dan Perkotaan<br />
+                            Fungsi Hibaran, Olahraga dan Seni<br />
+                            Permukiman Milik Pemerintah/Institusi Vertikal<br />
+                            Kesehatan/Puskesmas/RS/Poliklinik
+                          </td>
+                        </tr>
+                        <tr className="border-b hover:bg-gray-50">
+                          <td className="py-4 px-4 font-medium">3</td>
+                          <td className="py-4 px-4 font-medium">Zona III (&gt;1 km - 10 km)</td>
+                          <td className="py-4 px-4">per m³</td>
+                          <td className="py-4 px-4 text-right">Rp 450.000</td>
+                          <td className="py-4 px-4 text-sm">
+                            Perusuhaan/DUMN/Perbankan/Industri/Komersil<br />
+                            Perdagangan dan Perkotaan<br />
+                            Fungsi Hibaran, Olahraga dan Seni<br />
+                            Permukiman Milik Pemerintah/Institusi Vertikal<br />
+                            Kesehatan/Puskesmas/RS/Poliklinik
+                          </td>
+                        </tr>
+                        <tr className="border-b hover:bg-gray-50">
+                          <td className="py-4 px-4 font-medium">4</td>
+                          <td className="py-4 px-4 font-medium">Zona IV (&gt;10 km - 15 km)</td>
+                          <td className="py-4 px-4">per m³</td>
+                          <td className="py-4 px-4 text-right">Rp 500.000</td>
+                          <td className="py-4 px-4 text-sm">
+                            Perusuhaan/DUMN/Perbankan/Industri/Komersil<br />
+                            Perdagangan dan Perkotaan<br />
+                            Fungsi Hibaran, Olahraga dan Seni<br />
+                            Permukiman Milik Pemerintah/Institusi Vertikal<br />
+                            Kesehatan/Puskesmas/RS/Poliklinik
+                          </td>
+                        </tr>
+                        <tr className="hover:bg-gray-50">
+                          <td className="py-4 px-4 font-medium">5</td>
+                          <td className="py-4 px-4 font-medium">Institusi Penyelenggara (Milik Pemerintah)</td>
+                          <td className="py-4 px-4">per m³</td>
+                          <td className="py-4 px-4 text-right">Rp 65.000</td>
+                          <td className="py-4 px-4 text-sm">
+                            Milik swasta penyelenggaraan jasa<br />
+                            pelayanan penyedotan air limbah dalam<br />
+                            daerah
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            )}
 
-              <TabsContent value="volume">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Tarif Berdasarkan Volume Penggunaan</CardTitle>
-                    <CardDescription>
-                      Penyesuaian tarif berdasarkan volume air limbah yang dihasilkan
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Table>
-                      <TableHeader>
-                        <TableRow>
-                          <TableHead>Volume (m³/bulan)</TableHead>
-                          <TableHead>Faktor Pengali</TableHead>
-                          <TableHead>Keterangan</TableHead>
-                        </TableRow>
-                      </TableHeader>
-                      <TableBody>
-                        <TableRow>
-                          <TableCell className="font-medium">0-10</TableCell>
-                          <TableCell>1.0</TableCell>
-                          <TableCell>Tarif dasar</TableCell>
-                        </TableRow>
-                        <TableRow>
-                          <TableCell className="font-medium">11-20</TableCell>
-                          <TableCell>1.2</TableCell>
-                          <TableCell>120% dari tarif dasar</TableCell>
-                        </TableRow>
-                        <TableRow>
-                          <TableCell className="font-medium">21-30</TableCell>
-                          <TableCell>1.5</TableCell>
-                          <TableCell>150% dari tarif dasar</TableCell>
-                        </TableRow>
-                        <TableRow>
-                          <TableCell className="font-medium">31-50</TableCell>
-                          <TableCell>1.8</TableCell>
-                          <TableCell>180% dari tarif dasar</TableCell>
-                        </TableRow>
-                        <TableRow>
-                          <TableCell className="font-medium">&gt; 50</TableCell>
-                          <TableCell>2.0</TableCell>
-                          <TableCell>200% dari tarif dasar</TableCell>
-                        </TableRow>
-                      </TableBody>
-                    </Table>
-                  </CardContent>
-                </Card>
-              </TabsContent>
+            {tabValue === "jenis" && (
+              <div className="bg-white rounded-xl shadow-lg border">
+                <div className="p-6 border-b">
+                  <h3 className="text-xl font-semibold">Jenis Kegiatan Pelayanan</h3>
+                  <p className="text-gray-600 mt-1">
+                    Kategori kegiatan berdasarkan subjek dan program pelayanan
+                  </p>
+                </div>
+                <div className="p-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-4">
+                      <h4 className="font-semibold text-lg text-cyan-900">Sektor Komersial & Industri</h4>
+                      <ul className="space-y-2 text-sm">
+                        <li className="flex items-start">
+                          <Building className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
+                          Perusahaan/DUMN/Perbankan/Industri/Komersil
+                        </li>
+                        <li className="flex items-start">
+                          <Building2 className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
+                          Perdagangan dan Perkotaan
+                        </li>
+                        <li className="flex items-start">
+                          <Factory className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
+                          Rumah Tangga/Permukiman
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="space-y-4">
+                      <h4 className="font-semibold text-lg text-cyan-900">Sektor Publik & Sosial</h4>
+                      <ul className="space-y-2 text-sm">
+                        <li className="flex items-start">
+                          <GraduationCap className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
+                          Fungsi Hiburan, Olahraga dan Seni
+                        </li>
+                        <li className="flex items-start">
+                          <Home className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
+                          Permukiman Milik Pemerintah/Institusi Vertikal
+                        </li>
+                        <li className="flex items-start">
+                          <Landmark className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
+                          Kesehatan/Puskesmas/RS/Poliklinik
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
 
-              <TabsContent value="layanan">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Tarif Layanan Tambahan</CardTitle>
-                    <CardDescription>
-                      Layanan tambahan di luar pengelolaan reguler
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Table>
-                      <TableHeader>
-                        <TableRow>
-                          <TableHead>Jenis Layanan</TableHead>
-                          <TableHead>Tarif</TableHead>
-                          <TableHead>Keterangan</TableHead>
-                        </TableRow>
-                      </TableHeader>
-                      <TableBody>
-                        <TableRow>
-                          <TableCell className="font-medium">Penyedotan Terjadwal</TableCell>
-                          <TableCell>Rp. 350.000</TableCell>
-                          <TableCell>Per penyedotan</TableCell>
-                        </TableRow>
-                        <TableRow>
-                          <TableCell className="font-medium">Penyedotan Darurat</TableCell>
-                          <TableCell>Rp. 500.000</TableCell>
-                          <TableCell>Per penyedotan</TableCell>
-                        </TableRow>
-                        <TableRow>
-                          <TableCell className="font-medium">Pemeliharaan Instalasi</TableCell>
-                          <TableCell>Rp. 250.000</TableCell>
-                          <TableCell>Per kegiatan</TableCell>
-                        </TableRow>
-                        <TableRow>
-                          <TableCell className="font-medium">Konsultasi Teknis</TableCell>
-                          <TableCell>Rp. 200.000</TableCell>
-                          <TableCell>Per sesi</TableCell>
-                        </TableRow>
-                        <TableRow>
-                          <TableCell className="font-medium">Instalasi Baru</TableCell>
-                          <TableCell>Mulai Rp. 2.500.000</TableCell>
-                          <TableCell>Tergantung spesifikasi</TableCell>
-                        </TableRow>
-                      </TableBody>
-                    </Table>
-                  </CardContent>
-                </Card>
-              </TabsContent>
-            </Tabs>
+            {tabValue === "layanan" && (
+              <div className="bg-white rounded-xl shadow-lg border">
+                <div className="p-6 border-b">
+                  <h3 className="text-xl font-semibold">Tarif Layanan Tambahan</h3>
+                  <p className="text-gray-600 mt-1">
+                    Layanan khusus dan biaya tambahan
+                  </p>
+                </div>
+                <div className="p-6">
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="border-b">
+                          <th className="text-left py-3 px-4">Jenis Layanan</th>
+                          <th className="text-left py-3 px-4">Tarif</th>
+                          <th className="text-left py-3 px-4">Keterangan</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b hover:bg-gray-50">
+                          <td className="py-4 px-4 font-medium">Penyedotan Terjadwal</td>
+                          <td className="py-4 px-4">Rp. 350.000 - 500.000</td>
+                          <td className="py-4 px-4">Berdasarkan zona</td>
+                        </tr>
+                        <tr className="border-b hover:bg-gray-50">
+                          <td className="py-4 px-4 font-medium">Penyedotan Darurat</td>
+                          <td className="py-4 px-4">Rp. 500.000 - 650.000</td>
+                          <td className="py-4 px-4">Berdasarkan zona + biaya darurat</td>
+                        </tr>
+                        <tr className="border-b hover:bg-gray-50">
+                          <td className="py-4 px-4 font-medium">Institusi Penyelenggara</td>
+                          <td className="py-4 px-4">Rp. 65.000</td>
+                          <td className="py-4 px-4">Per m³ untuk institusi pemerintah</td>
+                        </tr>
+                        <tr className="hover:bg-gray-50">
+                          <td className="py-4 px-4 font-medium">Konsultasi Teknis</td>
+                          <td className="py-4 px-4">Gratis</td>
+                          <td className="py-4 px-4">Untuk pelanggan terdaftar</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
       {/* Tarif Calculator */}
-      <section className="py-20 bg-cyan-50 dark:bg-cyan-950/50">
+      <section className="py-20 bg-cyan-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -283,12 +328,12 @@ export default function TarifPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <h2 className="text-3xl font-bold mb-4 text-cyan-900 dark:text-cyan-50">
+                <h2 className="text-3xl font-bold mb-4 text-cyan-900">
                   Kalkulator Estimasi Tarif
                 </h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                   Gunakan kalkulator ini untuk mengestimasi biaya layanan pengelolaan air limbah
-                  berdasarkan jenis bangunan dan volume penggunaan
+                  berdasarkan zona pelayanan dan volume penggunaan
                 </p>
               </motion.div>
             </div>
@@ -300,127 +345,100 @@ export default function TarifPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="grid grid-cols-1 lg:grid-cols-2 gap-8"
             >
-              <Card className="bg-white dark:bg-card">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Calculator className="h-5 w-5 text-cyan-600 dark:text-cyan-400" />
+              <div className="bg-white rounded-xl shadow-lg border">
+                <div className="p-6 border-b">
+                  <h3 className="text-xl font-semibold flex items-center gap-2">
+                    <Calculator className="h-5 w-5 text-cyan-600" />
                     Kalkulator Tarif
-                  </CardTitle>
-                  <CardDescription>
+                  </h3>
+                  <p className="text-gray-600 mt-1">
                     Isi data berikut untuk menghitung estimasi tarif
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
+                  </p>
+                </div>
+                <div className="p-6 space-y-4">
                   <div className="space-y-2">
-                    <label className="text-sm font-medium">Jenis Bangunan</label>
-                    <Select value={bangunan} onValueChange={setBangunan}>
+                    <label className="text-sm font-medium">Zona Pelayanan</label>
+                    <Select value={zona} onValueChange={setZona}>
                       <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Pilih jenis bangunan" />
+                        <SelectValue placeholder="Pilih zona pelayanan" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="rumah" className="flex items-center">
+                        <SelectItem value="zona1">
                           <div className="flex items-center">
-                            <span>
-
-                              <Home className="mr-2 h-4 w-4" />
-                            </span>
-                            <span>
-                              Rumah Tangga
-                            </span>
+                            <Home className="mr-2 h-4 w-4" />
+                            <span>Zona I (0 km - 3 km)</span>
                           </div>
                         </SelectItem>
-                        <SelectItem value="ruko">
+                        <SelectItem value="zona2">
                           <div className="flex items-center">
-                            <span>
-                              <Building2 className="mr-2 h-4 w-4" />
-                            </span>
-                            <span>
-                              Komersial Kecil
-                            </span>
+                            <Building2 className="mr-2 h-4 w-4" />
+                            <span>Zona II (&gt;1 km sd 6 km)</span>
                           </div>
                         </SelectItem>
-                        <SelectItem value="hotel">
+                        <SelectItem value="zona3">
                           <div className="flex items-center">
-                            <span>
-
-                              <Building className="mr-2 h-4 w-4" />
-                            </span>
-                            <span>
-                              Komersial Besar
-
-                            </span>
+                            <Building className="mr-2 h-4 w-4" />
+                            <span>Zona III (&gt;1 km - 10 km)</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona4">
+                          <div className="flex items-center">
+                            <Factory className="mr-2 h-4 w-4" />
+                            <span>Zona IV (&gt;10 km - 15 km)</span>
                           </div>
                         </SelectItem>
                         <SelectItem value="institusi">
                           <div className="flex items-center">
-                            <span>
-
-                              <GraduationCap className="mr-2 h-4 w-4" />
-                            </span>
-                            <span>
-
-                              Institusi
-                            </span>
-                          </div>
-                        </SelectItem>
-                        <SelectItem value="komersial">
-                          <div className="flex items-center">
-                            <span>
-
-                              <Landmark className="mr-2 h-4 w-4" />
-                            </span>
-                            <span>
-                              Fasilitas Umum
-
-                            </span>
+                            <School className="mr-2 h-4 w-4" />
+                            <span>Institusi Penyelenggara</span>
                           </div>
                         </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium">Volume (m³/bulan)</label>
-                    <Input
+                    <label className="text-sm font-medium">Volume (m³)</label>
+                    <input
                       type="number"
                       min="1"
                       value={volume}
                       onChange={(e) => setVolume(parseInt(e.target.value) || 0)}
-                      className="w-full"
+                      className="w-full p-3 border border-gray-300 rounded-lg"
                     />
                   </div>
-                </CardContent>
-                <CardFooter>
-                  <Button
+                </div>
+                <div className="p-6 border-t">
+                  <button
                     onClick={handleCalculate}
-                    className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white"
+                    className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white py-3 px-6 rounded-lg font-medium transition-all duration-200 transform hover:scale-105"
                   >
                     Hitung Estimasi
-                  </Button>
-                </CardFooter>
-              </Card>
+                  </button>
+                </div>
+              </div>
 
-              <Card className="bg-gradient-to-br from-cyan-600 to-blue-700 text-white dark:from-cyan-900 dark:to-blue-800">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
+              <div className="bg-gradient-to-br from-cyan-600 to-blue-700 text-white rounded-xl shadow-lg">
+                <div className="p-6 border-b border-white/20">
+                  <h3 className="text-xl font-semibold flex items-center gap-2">
                     <CircleDollarSign className="h-5 w-5" />
                     Hasil Perhitungan
-                  </CardTitle>
-                  <CardDescription className="text-blue-100 dark:text-blue-200">
-                    Estimasi biaya layanan bulanan
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
+                  </h3>
+                  <p className="text-blue-100 mt-1">
+                    Estimasi biaya layanan
+                  </p>
+                </div>
+                <div className="p-6 space-y-4">
                   <div className="p-6 bg-white/10 rounded-lg backdrop-blur-sm">
                     <div className="text-center">
-                      <div className="text-sm text-blue-100 dark:text-blue-200 mb-2">Estimasi Biaya</div>
+                      <div className="text-sm text-blue-100 mb-2">Estimasi Biaya</div>
                       <div className="text-4xl font-bold">{tarif ? `Rp. ${tarif.toLocaleString()}` : '-'}</div>
-                      <div className="text-xs text-blue-100 dark:text-blue-200 mt-1">per bulan</div>
+                      <div className="text-xs text-blue-100 mt-1">total</div>
                     </div>
                   </div>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span>Tarif Dasar</span>
-                      <span>{tarifData[bangunan as keyof typeof tarifData].toLocaleString()} / m³</span>
+                      <span>Rp. {tarifData[zona as keyof typeof tarifData].tarif.toLocaleString()} / m³</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Volume</span>
@@ -431,121 +449,18 @@ export default function TarifPage() {
                       <span>{tarif ? `Rp. ${tarif.toLocaleString()}` : '-'}</span>
                     </div>
                   </div>
-                </CardContent>
-                <CardFooter className="text-xs text-blue-100 dark:text-blue-200 italic">
+                </div>
+                <div className="p-6 border-t border-white/20 text-xs text-blue-100 italic">
                   * Estimasi ini hanya perhitungan awal dan dapat berbeda dengan tarif aktual sesuai dengan kondisi sebenarnya.
-                </CardFooter>
-              </Card>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Payment Information */}
-      <section className="py-20 bg-white dark:bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl font-bold mb-4 text-cyan-900 dark:text-cyan-50">
-                Informasi Pembayaran
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Berbagai metode pembayaran yang tersedia untuk layanan pengelolaan air limbah
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <Card>
-                <CardContent className="p-6">
-                  <Accordion type="single" collapsible className="w-full">
-                    <AccordionItem value="item-1">
-                      <AccordionTrigger>Jatuh Tempo Pembayaran</AccordionTrigger>
-                      <AccordionContent>
-                        <p className="text-muted-foreground mb-2">
-                          Pembayaran layanan pengelolaan air limbah dilakukan setiap bulan dengan jatuh tempo pada tanggal 20 setiap bulannya.
-                        </p>
-                        <p className="text-muted-foreground">
-                          Keterlambatan pembayaran akan dikenakan denda sebesar 5% dari total tagihan.
-                        </p>
-                      </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-2">
-                      <AccordionTrigger>Metode Pembayaran</AccordionTrigger>
-                      <AccordionContent>
-                        <div className="space-y-4">
-                          <div>
-                            <h4 className="font-medium mb-1">Transfer Bank</h4>
-                            <p className="text-muted-foreground text-sm">
-                              Bank BRI: 1234-5678-9012-3456<br />
-                              Bank BNI: 9876-5432-1098-7654<br />
-                              Bank Mandiri: 4567-8901-2345-6789<br />
-                              <span className="italic">a.n. UPTD Pengelolaan Air Limbah Kab. Tanah Bumbu</span>
-                            </p>
-                          </div>
-                          <div>
-                            <h4 className="font-medium mb-1">Kantor UPTD</h4>
-                            <p className="text-muted-foreground text-sm">
-                              Pembayaran langsung di kantor UPTD Pengelolaan Air Limbah Domestik<br />
-                              Jam operasional: Senin-Jumat, 08.00-16.00 WITA
-                            </p>
-                          </div>
-                          <div>
-                            <h4 className="font-medium mb-1">Mobile Banking & E-Wallet</h4>
-                            <p className="text-muted-foreground text-sm">
-                              Tersedia pembayaran melalui aplikasi mobile banking dan e-wallet populer.
-                            </p>
-                          </div>
-                        </div>
-                      </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-3">
-                      <AccordionTrigger>Prosedur Penagihan</AccordionTrigger>
-                      <AccordionContent>
-                        <ol className="list-decimal list-inside space-y-2 text-muted-foreground">
-                          <li>Tagihan dikirimkan secara elektronik melalui email terdaftar pada awal bulan.</li>
-                          <li>Notifikasi tagihan juga dikirimkan melalui SMS ke nomor telepon terdaftar.</li>
-                          <li>Pelanggan dapat mengunduh tagihan di website SISENJA dengan memasukkan ID Pelanggan.</li>
-                          <li>Bukti pembayaran harus disimpan sebagai referensi jika terjadi masalah.</li>
-                        </ol>
-                      </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-4">
-                      <AccordionTrigger>Penanganan Keluhan Pembayaran</AccordionTrigger>
-                      <AccordionContent>
-                        <p className="text-muted-foreground mb-2">
-                          Jika terdapat masalah atau keluhan terkait pembayaran, pelanggan dapat menghubungi:
-                        </p>
-                        <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                          <li>Customer Service:  (+62) 821 5505 5167</li>
-                          <li>Email: pembayaran@sipald-tala.go.id</li>
-                          <li>Kunjungan langsung ke kantor UPTD</li>
-                        </ul>
-                        <p className="text-muted-foreground mt-2">
-                          Layanan pengaduan tersedia pada jam kerja (Senin-Jumat, 08.00-16.00 WITA).
-                        </p>
-                      </AccordionContent>
-                    </AccordionItem>
-                  </Accordion>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-cyan-50 dark:bg-cyan-950/50">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -555,14 +470,14 @@ export default function TarifPage() {
               transition={{ duration: 0.5 }}
               className="text-center mb-12"
             >
-              <div className="inline-flex items-center justify-center p-2 bg-cyan-100 dark:bg-cyan-900 rounded-full mb-4">
-                <HelpCircle className="h-6 w-6 text-cyan-600 dark:text-cyan-400" />
+              <div className="inline-flex items-center justify-center p-2 bg-cyan-100 rounded-full mb-4">
+                <HelpCircle className="h-6 w-6 text-cyan-600" />
               </div>
-              <h2 className="text-3xl font-bold mb-4 text-cyan-900 dark:text-cyan-50">
+              <h2 className="text-3xl font-bold mb-4 text-cyan-900">
                 Pertanyaan Umum Seputar Tarif
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Jawaban untuk pertanyaan yang sering diajukan terkait tarif dan pembayaran
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Jawaban untuk pertanyaan yang sering diajukan terkait tarif dan pelayanan
               </p>
             </motion.div>
 
@@ -572,62 +487,39 @@ export default function TarifPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <Accordion type="single" collapsible className="w-full">
-                <AccordionItem value="item-1">
-                  <AccordionTrigger>Bagaimana cara pembayaran tarif layanan?</AccordionTrigger>
-                  <AccordionContent>
-                    <p className="text-muted-foreground">
-                      Pembayaran dapat dilakukan melalui transfer bank, pembayaran langsung di kantor UPTD,
-                      atau melalui aplikasi mobile banking dan e-wallet yang telah bekerja sama dengan kami.
-                      Untuk informasi lebih lanjut, silakan lihat bagian Informasi Pembayaran di atas.
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-2">
-                  <AccordionTrigger>Apakah ada subsidi untuk masyarakat kurang mampu?</AccordionTrigger>
-                  <AccordionContent>
-                    <p className="text-muted-foreground">
-                      Ya, UPTD menyediakan program subsidi untuk masyarakat kurang mampu.
-                      Untuk mengajukan subsidi, silakan membawa Kartu Keluarga, KTP, dan Surat Keterangan
-                      Tidak Mampu dari kelurahan/desa setempat ke kantor UPTD untuk diproses lebih lanjut.
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-3">
-                  <AccordionTrigger>Bagaimana jika terjadi keterlambatan pembayaran?</AccordionTrigger>
-                  <AccordionContent>
-                    <p className="text-muted-foreground">
-                      Keterlambatan pembayaran akan dikenakan denda sebesar 5% dari total tagihan.
-                      Jika keterlambatan melebihi 3 bulan berturut-turut, layanan dapat dihentikan
-                      sementara hingga pelanggan melunasi seluruh tunggakan.
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-4">
-                  <AccordionTrigger>Apakah tarif dapat berubah?</AccordionTrigger>
-                  <AccordionContent>
-                    <p className="text-muted-foreground">
-                      Ya, tarif dapat berubah sesuai dengan kebijakan pemerintah daerah dan biaya
-                      operasional pengelolaan air limbah. Setiap perubahan tarif akan diinformasikan
-                      kepada pelanggan minimal 3 bulan sebelum diberlakukan.
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-5">
-                  <AccordionTrigger>Bagaimana cara mengajukan keberatan atas tagihan yang tidak sesuai?</AccordionTrigger>
-                  <AccordionContent>
-                    <p className="text-muted-foreground">
-                      Pelanggan dapat mengajukan keberatan atas tagihan dengan mengisi formulir pengaduan
-                      yang tersedia di kantor UPTD atau melalui website SISENJA. Tim kami akan melakukan
-                      verifikasi dan memberikan respons dalam waktu maksimal 7 hari kerja.
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
+              <div className="space-y-4">
+                {[
+                  {
+                    question: "Bagaimana penentuan zona pelayanan?",
+                    answer: "Zona pelayanan ditentukan berdasarkan jarak dari lokasi pelayanan ke instalasi pengolahan. Semakin jauh jaraknya, semakin tinggi tarif yang dikenakan karena biaya transportasi dan operasional yang lebih besar."
+                  },
+                  {
+                    question: "Apakah ada perbedaan tarif untuk institusi pemerintah?",
+                    answer: "Ya, institusi penyelenggara milik pemerintah mendapat tarif khusus sebesar Rp. 65.000 per m³, yang lebih rendah dibandingkan tarif zona reguler."
+                  },
+                  {
+                    question: "Bagaimana cara pembayaran tarif layanan?",
+                    answer: "Pembayaran dapat dilakukan melalui transfer bank, pembayaran langsung di kantor UPTD, atau melalui sistem pembayaran digital yang telah bekerja sama dengan kami."
+                  },
+                  {
+                    question: "Apakah tarif dapat berubah?",
+                    answer: "Ya, tarif dapat berubah sesuai dengan kebijakan pemerintah daerah dan kondisi operasional. Setiap perubahan akan diinformasikan kepada pelanggan minimal 30 hari sebelum diberlakukan."
+                  }
+                ].map((faq, index) => (
+                  <details key={index} className="bg-gray-50 rounded-lg">
+                    <summary className="p-4 cursor-pointer font-medium text-cyan-900 hover:bg-gray-100 rounded-lg">
+                      {faq.question}
+                    </summary>
+                    <div className="p-4 pt-0 text-gray-600">
+                      {faq.answer}
+                    </div>
+                  </details>
+                ))}
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
