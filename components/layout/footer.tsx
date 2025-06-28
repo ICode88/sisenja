@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Mail, Phone, MapPin, Facebook, Instagram, Youtube, Droplets } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -9,13 +10,21 @@ export default function Footer() {
           {/* Logo and description */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <Droplets size={24} />
-              <span className="font-bold text-xl">SISENJA</span>
+              {/* <Droplets size={24} /> */}
+              <Image src="/images/Logo.png" alt="Tanbu" width={120} height={120} />
+              
+              {/* <span className="font-bold text-xl">SISENJA</span> */}
             </div>
+            <div className="flex items-center gap-2">
+
+            <Image src="/images/tanbu.png" alt="Tanbu" width={80} height={80} />
+
             <p className="text-cyan-100 text-sm mt-2">
               Sistem Informasi Layanan Sedot Tinja Kabupaten Tanah Bumbu.
               Menyediakan informasi lengkap tentang layanan sedot tinja.
             </p>
+            </div>
+
             <div className="flex items-center gap-4 mt-4">
               <a href="#" className="hover:text-cyan-300 transition-colors">
                 <Facebook size={20} />

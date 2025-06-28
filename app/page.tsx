@@ -262,7 +262,7 @@ export default function Home() {
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-300/30 to-blue-500/30 animate-pulse" />
 
                 <Image
-                  src="/images/ilustration.svg"
+                  src="/images/bupati.png"
                   alt="Water treatment"
                   width={400}
                   height={400}
@@ -275,7 +275,9 @@ export default function Home() {
                   transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
                 >
                   <div className="w-full h-full flex items-center justify-center text-white">
-                    <Droplets size={40} />
+                    {/* <Droplets size={40} /> */}
+                                <Image src="/images/tanbu.png" alt="Tanbu" width={60} height={60} />
+                    
                   </div>
                 </motion.div>
               </div>

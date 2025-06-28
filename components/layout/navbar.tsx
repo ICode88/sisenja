@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/layout/mode-toggle";
 import { cn } from "@/libs/utils";
+import Image from "next/image";
 
 const navItems = [
   { name: "Beranda", href: "/" },
@@ -47,10 +48,11 @@ export default function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <motion.div
-              whileHover={{ rotate: 15 }}
+              whileHover={{ rotate: 5 }}
               className="text-primary"
             >
-              <Droplets size={28} className="text-cyan-600 dark:text-cyan-400" />
+              {/* <Droplets size={28} className="text-cyan-600 dark:text-cyan-400" /> */}
+              <Image src="/images/Logo.png" alt="Tanbu" width={80} height={80} />
             </motion.div>
             <motion.span
               className="font-bold text-xl text-cyan-700 dark:text-cyan-400"
@@ -58,7 +60,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
             >
-              SISENJA
+              {/* SISENJA */}
             </motion.span>
           </Link>
 
