@@ -21,16 +21,16 @@ const faqCategories = [
     title: "Umum",
     questions: [
       {
-        q: "Apa itu UPTD Layanan Sedot Tinja?",
-        a: "UPTD Layanan Sedot Tinja adalah unit pelaksana teknis daerah yang bertanggung jawab atas layanan sedot tinja di Kabupaten Tanah Bumbu, termasuk pengolahan, pemeliharaan infrastruktur, dan pelayanan kepada masyarakat."
+        q: "Apa itu UPTD Pengelolaan Air Limbah Domestik?",
+        a: "UPTD Pengelolaan Air Limbah Domestik adalah unit pelaksana teknis daerah yang bertanggung jawab atas layanan sedot tinja di Kabupaten Tanah Bumbu, termasuk pengolahan, pemeliharaan infrastruktur, dan pelayanan kepada masyarakat."
       },
       {
         q: "Dimana lokasi kantor UPTD?",
-        a: "Kantor UPTD Layanan Sedot Tinja berlokasi di Jl. Example No. 123, Tanah Bumbu, Kalimantan Selatan. Kami melayani masyarakat setiap hari kerja (Senin-Jumat) dari pukul 08.00-16.00 WITA."
+        a: "Kantor UPTD Pengelolaan Air Limbah Domestik berlokasi di Jalan Dharma Praja No. 5 Kelurahan Gunung Tinggi Kecamatan Batulicin Kabupaten Tanah Bumbu Provinsi Kalimantan Selatan. Kami melayani masyarakat setiap hari kerja (Senin-Jumat) dari pukul 08.00-16.00 WITA."
       },
       {
         q: "Bagaimana cara menghubungi UPTD?",
-        a: "Anda dapat menghubungi kami melalui:\n- Telepon: (0518) 12345678\n- Email: info@sipald-tala.go.id\n- Kunjungan langsung ke kantor UPTD\n- Formulir kontak di website ini"
+        a: "Anda dapat menghubungi kami melalui:\n- Telepon:  (+62) 821 5505 5167\n- Email: info@sipald-tala.go.id\n- Kunjungan langsung ke kantor UPTD\n- Formulir kontak di website ini"
       }
     ]
   },

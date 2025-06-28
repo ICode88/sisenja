@@ -158,8 +158,8 @@ export default function RegisterPage() {
 
             console.log("Register data:", formData);
 
-            // Redirect to login page
-            // router.push("/login");
+            // Redirect to login page after successful registration
+            window.location.href = "/login";
 
         } catch (err) {
             setError("Terjadi kesalahan saat mendaftar. Silakan coba lagi.");

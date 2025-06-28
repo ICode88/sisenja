@@ -131,7 +131,7 @@ export default function KontakPage() {
                     </div>
                     <div className="ml-4">
                       <h3 className="font-semibold mb-1">Telepon</h3>
-                      <p className="text-muted-foreground">(0518) 12345678</p>
+                      <p className="text-muted-foreground"> (+62) 821 5505 5167</p>
                     </div>
                   </div>
 

@@ -202,7 +202,7 @@ export default function Home() {
                 transition={{ delay: 0.2, duration: 0.5 }}
                 className="inline-block px-4 py-1 mb-6 rounded-full bg-cyan-100 dark:bg-cyan-900 text-cyan-800 dark:text-cyan-200 text-sm font-medium"
               >
-                UPTD Layanan Sedot Tinja
+                UPTD Pengelolaan Air Limbah Domestik
               </motion.div>
               <motion.h1
                 initial={{ opacity: 0 }}
@@ -298,7 +298,7 @@ export default function Home() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-cyan-900 dark:text-cyan-50">
-              Layanan UPTD Sedot Tinja
+              Layanan UPTD Sistem Pengelolaan Air Limbah Domestik
             </h2>
             <p className="text-lg text-muted-foreground">
               Kami menyediakan berbagai layanan terkait Layanan Sedot Tinja
@@ -375,7 +375,7 @@ export default function Home() {
                 Tentang Kami
               </div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-cyan-900 dark:text-cyan-50">
-                UPTD Layanan Sedot Tinja
+                UPTD Pengelolaan Air Limbah Domestik
               </h2>
 
               <Tabs defaultValue="umum" onValueChange={setActiveTab} className="w-full">
@@ -387,7 +387,7 @@ export default function Home() {
 
                 <TabsContent value="umum" className="space-y-4">
                   <p className="text-lg text-muted-foreground">
-                    UPTD Layanan Sedot Tinja Kabupaten Tanah Bumbu adalah unit pelaksana
+                    UPTD Pengelolaan Air Limbah Domestik Kabupaten Tanah Bumbu adalah unit pelaksana
                     teknis daerah yang bertanggung jawab atas Layanan Sedot Tinja di
                     Kabupaten Tanah Bumbu.
                   </p>

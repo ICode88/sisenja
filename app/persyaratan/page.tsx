@@ -167,28 +167,28 @@ export default function PersyaratanPage() {
                     <div className="max-w-6xl mx-auto">
                         <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-12">
                             <div className="flex justify-center items-center mb-12">
-                            {/* Mobile: Dropdown Select */}
-                            <div className="md:hidden w-full">
-                                <Select defaultValue="persyaratan" onValueChange={(value) => setActiveTab(value)}>
-                                    <SelectTrigger className="w-full bg-cyan-50 dark:bg-cyan-900 border-cyan-200 dark:border-cyan-800">
-                                        <SelectValue placeholder="Pilih Kategori" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value="persyaratan">Persyaratan Utama</SelectItem>
-                                        <SelectItem value="proses">Proses Pendaftaran</SelectItem>
-                                        <SelectItem value="bantuan">Bantuan & Tips</SelectItem>
-                                    </SelectContent>
-                                </Select>
-                            </div>
+                                {/* Mobile: Dropdown Select */}
+                                <div className="md:hidden w-full">
+                                    <Select defaultValue="persyaratan" onValueChange={(value) => setActiveTab(value)}>
+                                        <SelectTrigger className="w-full bg-cyan-50 dark:bg-cyan-900 border-cyan-200 dark:border-cyan-800">
+                                            <SelectValue placeholder="Pilih Kategori" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectItem value="persyaratan">Persyaratan Utama</SelectItem>
+                                            <SelectItem value="proses">Proses Pendaftaran</SelectItem>
+                                            <SelectItem value="bantuan">Bantuan & Tips</SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                </div>
 
-                            {/* Desktop: Traditional Tabs */}
-                            <div className="hidden md:block">
-                                <TabsList className="bg-cyan-100 dark:bg-cyan-900/50">
-                                    <TabsTrigger value="persyaratan">Persyaratan Utama</TabsTrigger>
-                                    <TabsTrigger value="proses">Proses Pendaftaran</TabsTrigger>
-                                    <TabsTrigger value="bantuan">Bantuan & Tips</TabsTrigger>
-                                </TabsList>
-                            </div>
+                                {/* Desktop: Traditional Tabs */}
+                                <div className="hidden md:block">
+                                    <TabsList className="bg-cyan-100 dark:bg-cyan-900/50">
+                                        <TabsTrigger value="persyaratan">Persyaratan Utama</TabsTrigger>
+                                        <TabsTrigger value="proses">Proses Pendaftaran</TabsTrigger>
+                                        <TabsTrigger value="bantuan">Bantuan & Tips</TabsTrigger>
+                                    </TabsList>
+                                </div>
 
                             </div>
 
@@ -496,7 +496,7 @@ export default function PersyaratanPage() {
                                                     <Phone className="h-6 w-6" />
                                                 </div>
                                                 <h4 className="font-semibold mb-1">Telepon</h4>
-                                                <p className="text-muted-foreground">(0518) 12345678</p>
+                                                <p className="text-muted-foreground"> (+62) 821 5505 5167</p>
                                             </div>
                                             <div className="text-center">
                                                 <div className="p-3 rounded-lg bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 inline-flex mb-3">

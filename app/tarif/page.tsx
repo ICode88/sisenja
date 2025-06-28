@@ -527,7 +527,7 @@ export default function TarifPage() {
                           Jika terdapat masalah atau keluhan terkait pembayaran, pelanggan dapat menghubungi:
                         </p>
                         <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                          <li>Customer Service: (0518) 12345678</li>
+                          <li>Customer Service:  (+62) 821 5505 5167</li>
                           <li>Email: pembayaran@sipald-tala.go.id</li>
                           <li>Kunjungan langsung ke kantor UPTD</li>
                         </ul>

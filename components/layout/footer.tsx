@@ -94,11 +94,11 @@ export default function Footer() {
             <ul className="space-y-3 text-cyan-100">
               <li className="flex gap-3">
                 <MapPin size={20} className="flex-shrink-0 text-cyan-300" />
-                <span>Jl. Example No. 123, Tanah Bumbu, Kalimantan Selatan</span>
+                <span>Jalan Dharma Praja No. 5 Kelurahan Gunung Tinggi Kecamatan Batulicin Kabupaten Tanah Bumbu Provinsi Kalimantan Selatan</span>
               </li>
               <li className="flex gap-3">
                 <Phone size={20} className="flex-shrink-0 text-cyan-300" />
-                <span>(0518) 12345678</span>
+                <span> (+62) 821 5505 5167</span>
               </li>
               <li className="flex gap-3">
                 <Mail size={20} className="flex-shrink-0 text-cyan-300" />
@@ -110,7 +110,7 @@ export default function Footer() {
 
         <div className="border-t border-cyan-800 mt-12 pt-6 text-sm text-cyan-200">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p>© 2025 SISENJA - UPTD Layanan Sedot Tinja Kab. Tanah Bumbu</p>
+            <p>© 2025 SISENJA - UPTD Pengelolaan Air Limbah Domestik Kab. Tanah Bumbu</p>
             <div className="flex gap-6">
               <Link href="/kebijakan-privasi" className="hover:text-cyan-300 transition-colors">
                 Kebijakan Privasi

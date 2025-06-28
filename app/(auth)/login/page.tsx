@@ -9,8 +9,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { login } from "@/services/auth";
-import { setCookie } from "@/libs/cookie";
 
 export default function LoginPage() {
     const [formData, setFormData] = useState({
@@ -43,31 +41,15 @@ export default function LoginPage() {
         }
 
         try {
-            // Call backend login API
-            const response = await login({
-                username: formData.username.trim(),
-                password: formData.password
-            });
+            // Simulate loading delay
+            await new Promise(resolve => setTimeout(resolve, 1000));
 
-            // Set cookie with token
-            setCookie("token", response.token, 10);
-
-            // Redirect to dashboard
+            // Direct redirect to dashboard without backend validation
             window.location.href = "/dashboard";
 
         } catch (error: any) {
             console.error("Failed to login", error);
-
-            // Handle different error types
-            if (error.response?.status === 401) {
-                setError("Username atau password salah");
-            } else if (error.response?.status === 400) {
-                setError("Data yang dimasukkan tidak valid");
-            } else if (error.message) {
-                setError(error.message);
-            } else {
-                setError("Terjadi kesalahan saat login. Silakan coba lagi.");
-            }
+            setError("Terjadi kesalahan saat login. Silakan coba lagi.");
         } finally {
             setLoading(false);
         }

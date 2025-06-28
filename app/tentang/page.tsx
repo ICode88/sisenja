@@ -45,7 +45,7 @@ const timeline = [
   {
     year: "2020",
     title: "Pendirian UPTD",
-    description: "Pembentukan UPTD Layanan Sedot Tinja Kabupaten Tanah Bumbu."
+    description: "Pembentukan UPTD Pengelolaan Air Limbah Domestik Kabupaten Tanah Bumbu."
   },
   {
     year: "2021",
@@ -131,7 +131,7 @@ export default function TentangPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xl text-blue-100 mb-10"
             >
-              UPTD Layanan Sedot Tinja Kabupaten Tanah Bumbu berkomitmen untuk
+              UPTD Pengelolaan Air Limbah Domestik Kabupaten Tanah Bumbu berkomitmen untuk
               mewujudkan lingkungan yang bersih dan sehat melalui layanan sedot tinja
               yang optimal dan berkelanjutan.
             </motion.p>

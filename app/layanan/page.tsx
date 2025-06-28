@@ -201,7 +201,7 @@ export default function LayananPage() {
               transition={{ duration: 0.5 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             >
-              Layanan UPTD Sedot Tinja
+              Layanan Sedot Tinja
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 10 }}
@@ -381,7 +381,7 @@ export default function LayananPage() {
               </h2>
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Jika Anda memiliki pertanyaan atau butuh bantuan lebih lanjut tentang layanan
-                kami, silakan hubungi tim kami atau kunjungi kantor UPTD Layanan Sedot Tinja Kabupaten Tanah Bumbu.
+                kami, silakan hubungi tim kami atau kunjungi kantor UPTD Pengelolaan Air Limbah Domestik Kabupaten Tanah Bumbu.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
