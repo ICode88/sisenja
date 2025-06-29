@@ -239,53 +239,53 @@ export default function TarifPage() {
       key: 'zona1',
       title: 'Zona I (0 km - 30 km)',
       description: 'Tarif berdasarkan kategori layanan zona terdekat',
-      bgColor: 'from-green-50 to-green-100',
-      textColor: 'text-green-800',
-      descColor: 'text-green-600',
+      bgColor: 'from-green-50 to-green-100 dark:from-green-950 dark:to-green-900',
+      textColor: 'text-green-800 dark:text-green-200',
+      descColor: 'text-green-600 dark:text-green-400',
       data: zonaGroups.zona1
     },
     {
       key: 'zona2',
       title: 'Zona II (31 km - 60 km)',
       description: 'Tarif berdasarkan kategori layanan zona menengah',
-      bgColor: 'from-yellow-50 to-yellow-100',
-      textColor: 'text-yellow-800',
-      descColor: 'text-yellow-600',
+      bgColor: 'from-yellow-50 to-yellow-100 dark:from-yellow-950 dark:to-yellow-900',
+      textColor: 'text-yellow-800 dark:text-yellow-200',
+      descColor: 'text-yellow-600 dark:text-yellow-400',
       data: zonaGroups.zona2
     },
     {
       key: 'zona3',
       title: 'Zona III (61 km - 100 km)',
       description: 'Tarif berdasarkan kategori layanan zona jauh',
-      bgColor: 'from-blue-50 to-blue-100',
-      textColor: 'text-blue-800',
-      descColor: 'text-blue-600',
+      bgColor: 'from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900',
+      textColor: 'text-blue-800 dark:text-blue-200',
+      descColor: 'text-blue-600 dark:text-blue-400',
       data: zonaGroups.zona3
     },
     {
       key: 'zona4',
       title: 'Zona IV (101 km - 150 km)',
       description: 'Tarif berdasarkan kategori layanan zona terjauh',
-      bgColor: 'from-purple-50 to-purple-100',
-      textColor: 'text-purple-800',
-      descColor: 'text-purple-600',
+      bgColor: 'from-purple-50 to-purple-100 dark:from-purple-950 dark:to-purple-900',
+      textColor: 'text-purple-800 dark:text-purple-200',
+      descColor: 'text-purple-600 dark:text-purple-400',
       data: zonaGroups.zona4
     },
     {
       key: 'institusi',
       title: 'Instalasi Pengolahan Lumpur Tinja',
       description: 'Tarif khusus untuk institusi pemerintah',
-      bgColor: 'from-orange-50 to-orange-100',
-      textColor: 'text-orange-800',
-      descColor: 'text-orange-600',
+      bgColor: 'from-orange-50 to-orange-100 dark:from-orange-950 dark:to-orange-900',
+      textColor: 'text-orange-800 dark:text-orange-200',
+      descColor: 'text-orange-600 dark:text-orange-400',
       data: zonaGroups.institusi
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-background">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-24 bg-gradient-to-r from-cyan-600 to-blue-700 overflow-hidden">
+      <section className="relative pt-32 pb-24 bg-gradient-to-r from-cyan-600 to-blue-700 dark:from-cyan-800 dark:to-blue-900 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10 bg-[url('https://images.pexels.com/photos/164527/pexels-photo-164527.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-cover bg-center"></div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -306,11 +306,11 @@ export default function TarifPage() {
         <Img color="fill-white dark:fill-background" height={30} />
 
       {/* Tarif Information */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white dark:bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="mb-8 flex justify-between items-center flex-col md:flex-row gap-6">
-              <h2 className="text-3xl font-bold text-cyan-900">
+              <h2 className="text-3xl font-bold text-cyan-900 dark:text-cyan-50">
                 Struktur Tarif Pelayanan
               </h2>
               {/* Mobile: Dropdown Select */}
@@ -318,40 +318,33 @@ export default function TarifPage() {
                 <select
                   value={tabValue}
                   onChange={(e) => setTabValue(e.target.value)}
-                  className="w-full p-3 border border-gray-300 rounded-lg bg-cyan-50"
+                  className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-cyan-50 dark:bg-cyan-900/20 text-gray-900 dark:text-gray-100"
                 >
                   <option value="zona">Berdasarkan Zona</option>
                   <option value="jenis">Jenis Kegiatan</option>
-                  {/* <option value="layanan">Tarif Layanan</option> */}
                 </select>
               </div>
               {/* Desktop: Traditional Tabs */}
-              <div className="hidden md:flex bg-cyan-100 rounded-lg p-1">
+              <div className="hidden md:flex bg-cyan-100 dark:bg-cyan-900/20 rounded-lg p-1">
                 <button
                   onClick={() => setTabValue("zona")}
-                  className={`px-4 py-2 rounded-md transition-colors ${tabValue === "zona" ? "bg-white shadow-sm text-cyan-900" : "text-cyan-700 hover:text-cyan-900"}`}
+                  className={`px-4 py-2 rounded-md transition-colors ${tabValue === "zona" ? "bg-white dark:bg-slate-800 shadow-sm text-cyan-900 dark:text-cyan-100" : "text-cyan-700 dark:text-cyan-300 hover:text-cyan-900 dark:hover:text-cyan-100"}`}
                 >
                   Berdasarkan Zona
                 </button>
                 <button
                   onClick={() => setTabValue("jenis")}
-                  className={`px-4 py-2 rounded-md transition-colors ${tabValue === "jenis" ? "bg-white shadow-sm text-cyan-900" : "text-cyan-700 hover:text-cyan-900"}`}
+                  className={`px-4 py-2 rounded-md transition-colors ${tabValue === "jenis" ? "bg-white dark:bg-slate-800 shadow-sm text-cyan-900 dark:text-cyan-100" : "text-cyan-700 dark:text-cyan-300 hover:text-cyan-900 dark:hover:text-cyan-100"}`}
                 >
                   Jenis Kegiatan
                 </button>
-                {/* <button
-                  onClick={() => setTabValue("layanan")}
-                  className={`px-4 py-2 rounded-md transition-colors ${tabValue === "layanan" ? "bg-white shadow-sm text-cyan-900" : "text-cyan-700 hover:text-cyan-900"}`}
-                >
-                  Tarif Layanan
-                </button> */}
               </div>
             </div>
 
             {tabValue === "zona" && (
               <div className="space-y-4">
                 {zoneConfigs.map((zone) => (
-                  <div key={zone.key} className="bg-white rounded-xl shadow-lg border overflow-hidden">
+                  <div key={zone.key} className="bg-white dark:bg-card rounded-xl shadow-lg border border-border overflow-hidden">
                     <div
                       className={`p-6 bg-gradient-to-r ${zone.bgColor} cursor-pointer hover:opacity-90 transition-opacity`}
                       onClick={() => toggleZone(zone.key)}
@@ -372,25 +365,25 @@ export default function TarifPage() {
                         <div className="overflow-x-auto">
                           <table className="w-full">
                             <thead>
-                              <tr className="border-b">
-                                <th className="text-left py-3 px-4">No</th>
-                                <th className="text-left py-3 px-4">Kategori</th>
-                                <th className="text-left py-3 px-4">Satuan</th>
-                                <th className="text-right py-3 px-4">Tarif (Rp)</th>
+                              <tr className="border-b border-border">
+                                <th className="text-left py-3 px-4 text-foreground">No</th>
+                                <th className="text-left py-3 px-4 text-foreground">Kategori</th>
+                                <th className="text-left py-3 px-4 text-foreground">Satuan</th>
+                                <th className="text-right py-3 px-4 text-foreground">Tarif (Rp)</th>
                               </tr>
                             </thead>
                             <tbody>
                               {zone.data.map((item, index) => (
-                                <tr key={item.key} className="border-b hover:bg-gray-50 transition-colors">
-                                  <td className="py-4 px-4 font-medium">{index + 1}</td>
-                                  <td className="py-4 px-4">
+                                <tr key={item.key} className="border-b border-border hover:bg-muted/50 transition-colors">
+                                  <td className="py-4 px-4 font-medium text-foreground">{index + 1}</td>
+                                  <td className="py-4 px-4 text-foreground">
                                     {zone.key === 'institusi'
                                       ? item.label
                                       : item.label.replace(new RegExp(`${zone.title.split(' ')[0]} ${zone.title.split(' ')[1]} - `), '')
                                     }
                                   </td>
-                                  <td className="py-4 px-4">per m³</td>
-                                  <td className="py-4 px-4 text-right font-semibold">Rp {item.tarif.toLocaleString()}</td>
+                                  <td className="py-4 px-4 text-foreground">per m³</td>
+                                  <td className="py-4 px-4 text-right font-semibold text-foreground">Rp {item.tarif.toLocaleString()}</td>
                                 </tr>
                               ))}
                             </tbody>
@@ -404,46 +397,46 @@ export default function TarifPage() {
             )}
 
             {tabValue === "jenis" && (
-              <div className="bg-white rounded-xl shadow-lg border">
-                <div className="p-6 border-b">
-                  <h3 className="text-xl font-semibold">Jenis Kegiatan Pelayanan</h3>
-                  <p className="text-gray-600 mt-1">
+              <div className="bg-white dark:bg-card rounded-xl shadow-lg border border-border">
+                <div className="p-6 border-b border-border">
+                  <h3 className="text-xl font-semibold text-foreground">Jenis Kegiatan Pelayanan</h3>
+                  <p className="text-muted-foreground mt-1">
                     Kategori kegiatan berdasarkan subjek dan program pelayanan
                   </p>
                 </div>
                 <div className="p-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-4">
-                      <h4 className="font-semibold text-lg text-cyan-900">Sektor Komersial & Industri</h4>
+                      <h4 className="font-semibold text-lg text-cyan-900 dark:text-cyan-100">Sektor Komersial & Industri</h4>
                       <ul className="space-y-2 text-sm">
                         <li className="flex items-start">
-                          <Building className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
-                          Perusahaan/BUMN/Perbankan/Industri/Komersil
+                          <Building className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 dark:text-cyan-400 flex-shrink-0" />
+                          <span className="text-foreground">Perusahaan/BUMN/Perbankan/Industri/Komersil</span>
                         </li>
                         <li className="flex items-start">
-                          <Building2 className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
-                          Perdagangan dan Pertokoan
+                          <Building2 className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 dark:text-cyan-400 flex-shrink-0" />
+                          <span className="text-foreground">Perdagangan dan Pertokoan</span>
                         </li>
                         <li className="flex items-start">
-                          <Building className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
-                          Perhotelan
+                          <Building className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 dark:text-cyan-400 flex-shrink-0" />
+                          <span className="text-foreground">Perhotelan</span>
                         </li>
                       </ul>
                     </div>
                     <div className="space-y-4">
-                      <h4 className="font-semibold text-lg text-cyan-900">Sektor Publik & Sosial</h4>
+                      <h4 className="font-semibold text-lg text-cyan-900 dark:text-cyan-100">Sektor Publik & Sosial</h4>
                       <ul className="space-y-2 text-sm">
                         <li className="flex items-start">
-                          <GraduationCap className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
-                          Tempat Hiburan, Olahraga dan Seni
+                          <GraduationCap className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 dark:text-cyan-400 flex-shrink-0" />
+                          <span className="text-foreground">Tempat Hiburan, Olahraga dan Seni</span>
                         </li>
                         <li className="flex items-start">
-                          <Landmark className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
-                          Perkantoran Milik Pemerintah/Instansi Vertikal
+                          <Landmark className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 dark:text-cyan-400 flex-shrink-0" />
+                          <span className="text-foreground">Perkantoran Milik Pemerintah/Instansi Vertikal</span>
                         </li>
                         <li className="flex items-start">
-                          <Home className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
-                          Rumah Tangga/Rusunawa
+                          <Home className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 dark:text-cyan-400 flex-shrink-0" />
+                          <span className="text-foreground">Rumah Tangga/Rusunawa</span>
                         </li>
                       </ul>
                     </div>
@@ -451,77 +444,20 @@ export default function TarifPage() {
                 </div>
               </div>
             )}
-
-            {/* {tabValue === "layanan" && (
-              <div className="bg-white rounded-xl shadow-lg border">
-                <div className="p-6 border-b">
-                  <h3 className="text-xl font-semibold">Tarif Layanan Berdasarkan Zona</h3>
-                  <p className="text-gray-600 mt-1">
-                    Ringkasan tarif untuk setiap zona pelayanan
-                  </p>
-                </div>
-                <div className="p-6">
-                  <div className="overflow-x-auto">
-                    <table className="w-full">
-                      <thead>
-                        <tr className="border-b">
-                          <th className="text-left py-3 px-4">Zona</th>
-                          <th className="text-left py-3 px-4">Jarak</th>
-                          <th className="text-left py-3 px-4">Tarif Terendah</th>
-                          <th className="text-left py-3 px-4">Tarif Tertinggi</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr className="border-b hover:bg-gray-50">
-                          <td className="py-4 px-4 font-medium">Zona I</td>
-                          <td className="py-4 px-4">0 km - 30 km</td>
-                          <td className="py-4 px-4">Rp. 75.000</td>
-                          <td className="py-4 px-4">Rp. 500.000</td>
-                        </tr>
-                        <tr className="border-b hover:bg-gray-50">
-                          <td className="py-4 px-4 font-medium">Zona II</td>
-                          <td className="py-4 px-4">31 km - 60 km</td>
-                          <td className="py-4 px-4">Rp. 100.000</td>
-                          <td className="py-4 px-4">Rp. 550.000</td>
-                        </tr>
-                        <tr className="border-b hover:bg-gray-50">
-                          <td className="py-4 px-4 font-medium">Zona III</td>
-                          <td className="py-4 px-4">61 km - 100 km</td>
-                          <td className="py-4 px-4">Rp. 450.000</td>
-                          <td className="py-4 px-4">Rp. 600.000</td>
-                        </tr>
-                        <tr className="border-b hover:bg-gray-50">
-                          <td className="py-4 px-4 font-medium">Zona IV</td>
-                          <td className="py-4 px-4">101 km - 150 km</td>
-                          <td className="py-4 px-4">Rp. 150.000</td>
-                          <td className="py-4 px-4">Rp. 650.000</td>
-                        </tr>
-                        <tr className="hover:bg-gray-50">
-                          <td className="py-4 px-4 font-medium">Institusi Pemerintah</td>
-                          <td className="py-4 px-4">-</td>
-                          <td className="py-4 px-4">Rp. 50.000</td>
-                          <td className="py-4 px-4">Rp. 50.000</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            )} */}
           </div>
         </div>
       </section>
 
       {/* Tarif Calculator */}
-      <section className="py-20 bg-cyan-50">
+      <section className="py-20 bg-cyan-50 dark:bg-cyan-950/50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <div className=" animate-[fadeInUp_0.5s_ease-out_forwards]">
-                <h2 className="text-3xl font-bold mb-4 text-cyan-900">
+                <h2 className="text-3xl font-bold mb-4 text-cyan-900 dark:text-cyan-50">
                   Kalkulator Estimasi Tarif
                 </h2>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                   Gunakan kalkulator ini untuk mengestimasi biaya layanan pengelolaan air limbah
                   berdasarkan zona pelayanan dan volume penggunaan
                 </p>
@@ -529,19 +465,19 @@ export default function TarifPage() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8  animate-[fadeInUp_0.5s_ease-out_0.2s_forwards]">
-              <div className="bg-white rounded-xl shadow-lg border">
-                <div className="p-6 border-b">
-                  <h3 className="text-xl font-semibold flex items-center gap-2">
-                    <Calculator className="h-5 w-5 text-cyan-600" />
+              <div className="bg-white dark:bg-card rounded-xl shadow-lg border border-border">
+                <div className="p-6 border-b border-border">
+                  <h3 className="text-xl font-semibold flex items-center gap-2 text-foreground">
+                    <Calculator className="h-5 w-5 text-cyan-600 dark:text-cyan-400" />
                     Kalkulator Tarif
                   </h3>
-                  <p className="text-gray-600 mt-1">
+                  <p className="text-muted-foreground mt-1">
                     Isi data berikut untuk menghitung estimasi tarif
                   </p>
                 </div>
                 <div className="p-6 space-y-4">
                   <div className="space-y-2">
-                    <label className="text-sm font-medium">Zona Pelayanan</label>
+                    <label className="text-sm font-medium text-foreground">Zona Pelayanan</label>
                     <Select value={zona} onValueChange={setZona}>
                       <SelectTrigger className="w-full">
                         <SelectValue placeholder="Pilih zona pelayanan" />
@@ -716,17 +652,17 @@ export default function TarifPage() {
                     </Select>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium">Volume (m³)</label>
+                    <label className="text-sm font-medium text-foreground">Volume (m³)</label>
                     <input
                       type="number"
                       min="1"
                       value={volume}
                       onChange={(e) => setVolume(parseInt(e.target.value) || 0)}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-colors"
+                      className="w-full p-3 border border-input rounded-lg bg-background text-foreground focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-colors"
                     />
                   </div>
                 </div>
-                <div className="p-6 border-t">
+                <div className="p-6 border-t border-border">
                   <button
                     onClick={handleCalculate}
                     className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white py-3 px-6 rounded-lg font-medium transition-all duration-200 transform hover:scale-105"
@@ -736,7 +672,7 @@ export default function TarifPage() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-cyan-600 to-blue-700 text-white rounded-xl shadow-lg">
+              <div className="bg-gradient-to-br from-cyan-600 to-blue-700 dark:from-cyan-700 dark:to-blue-800 text-white rounded-xl shadow-lg">
                 <div className="p-6 border-b border-white/20">
                   <h3 className="text-xl font-semibold flex items-center gap-2">
                     <CircleDollarSign className="h-5 w-5" />
@@ -779,17 +715,17 @@ export default function TarifPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white dark:bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12  animate-[fadeInUp_0.5s_ease-out_forwards]">
-              <div className="inline-flex items-center justify-center p-2 bg-cyan-100 rounded-full mb-4">
-                <HelpCircle className="h-6 w-6 text-cyan-600" />
+              <div className="inline-flex items-center justify-center p-2 bg-cyan-100 dark:bg-cyan-900/50 rounded-full mb-4">
+                <HelpCircle className="h-6 w-6 text-cyan-600 dark:text-cyan-400" />
               </div>
-              <h2 className="text-3xl font-bold mb-4 text-cyan-900">
+              <h2 className="text-3xl font-bold mb-4 text-cyan-900 dark:text-cyan-50">
                 Pertanyaan Umum Seputar Tarif
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Jawaban untuk pertanyaan yang sering diajukan terkait tarif dan pelayanan
               </p>
             </div>
@@ -813,11 +749,11 @@ export default function TarifPage() {
                   answer: "Ya, tarif dapat berubah sesuai dengan kebijakan pemerintah daerah dan kondisi operasional. Setiap perubahan akan diinformasikan kepada pelanggan minimal 30 hari sebelum diberlakukan."
                 }
               ].map((faq, index) => (
-                <details key={index} className="bg-gray-50 rounded-lg">
-                  <summary className="p-4 cursor-pointer font-medium text-cyan-900 hover:bg-gray-100 rounded-lg">
+                <details key={index} className="bg-gray-50 dark:bg-muted/20 rounded-lg">
+                  <summary className="p-4 cursor-pointer font-medium text-cyan-900 dark:text-cyan-100 hover:bg-gray-100 dark:hover:bg-muted/30 rounded-lg">
                     {faq.question}
                   </summary>
-                  <div className="p-4 pt-0 text-gray-600">
+                  <div className="p-4 pt-0 text-muted-foreground">
                     {faq.answer}
                   </div>
                 </details>
