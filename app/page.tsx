@@ -268,17 +268,7 @@ export default function Home() {
                   height={400}
                   className="rounded-full shadow-lg object-cover z-10 relative w-full h-full"
                 />
-                {/* <motion.div
-                  className="absolute -bottom-25 -right-5 w-48 h-48 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg"
-                  animate={{ rotate: [0, 5, 0, -5, 0] }}
-                  transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-                >
-                  <div className="w-full h-full flex items-center justify-center text-white">
-                    {/* <Droplets size={40} /> */}
-                    {/* <Image src="/images/berakhlak.png" alt="Tanbu" width={140} height={140} />
-
-                  </div>
-                </motion.div> */} 
+               
                 <motion.div
                   className="absolute -bottom-5 -right-5 w-24 h-24 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg"
                   animate={{ rotate: [0, 5, 0, -5, 0] }}
