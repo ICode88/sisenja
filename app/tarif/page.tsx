@@ -1,84 +1,245 @@
-"use client";
-
+"use client"
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Home, CircleDollarSign, Building2, Building,HelpCircle, Factory, School, GraduationCap, Landmark, Calculator } from "lucide-react";
-import Image from "next/image";
+import { Home, CircleDollarSign, Building2, Building, HelpCircle, Factory, School, GraduationCap, Landmark, Calculator } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { WaveDivider } from "@/components/ui/wave-divider";
-import { SelectItem, SelectTrigger, SelectContent, SelectValue, Select } from "@/components/ui/select";
+
+interface TarifItem {
+  label: string;
+  tarif: number;
+  zona: string;
+  icon: typeof Building;
+}
+
+interface TarifData {
+  [key: string]: TarifItem;
+}
+
+interface ZonaGroups {
+  zona1: Array<{ key: string } & TarifItem>;
+  zona2: Array<{ key: string } & TarifItem>;
+  zona3: Array<{ key: string } & TarifItem>;
+  zona4: Array<{ key: string } & TarifItem>;
+  institusi: Array<{ key: string } & TarifItem>;
+}
 
 export default function TarifPage() {
-  const [zona, setZona] = useState("zona1");
-  const [volume, setVolume] = useState(10);
-  const [tarif, setTarif] = useState(0);
-  const [tabValue, setTabValue] = useState("zona");
+  const [zona, setZona] = useState<string>("zona1_perusahaan");
+  const [volume, setVolume] = useState<number>(10);
+  const [tarif, setTarif] = useState<number>(0);
+  const [tabValue, setTabValue] = useState<string>("zona");
 
-  const tarifData = {
-    zona1: {
-      label: "Zona I (0 km - 3 km)",
+  const tarifData: TarifData = {
+    // Zona I (0 km - 30 km)
+    zona1_perusahaan: {
+      label: "Zona I - Perusahaan/BUMN/Perbankan/Industri/Komersil",
       tarif: 350000,
-      icon: Home
-    },
-    zona2: {
-      label: "Zona II (>1 km sd 6 km)",
-      tarif: 400000,
-      icon: Building2
-    },
-    zona3: {
-      label: "Zona III (>1 km - 10 km)",
-      tarif: 450000,
+      zona: "Zona I (0 km - 30 km)",
       icon: Building
     },
-    zona4: {
-      label: "Zona IV (>10 km - 15 km)",
-      tarif: 500000,
-      icon: Factory
+    zona1_perdagangan: {
+      label: "Zona I - Perdagangan dan Perkotaan",
+      tarif: 400000,
+      zona: "Zona I (0 km - 30 km)",
+      icon: Building2
     },
+    zona1_perhotelan: {
+      label: "Zona I - Perhotelan",
+      tarif: 450000,
+      zona: "Zona I (0 km - 30 km)",
+      icon: Building
+    },
+    zona1_hiburan: {
+      label: "Zona I - Tempat Hiburan, Olahraga dan Seni",
+      tarif: 500000,
+      zona: "Zona I (0 km - 30 km)",
+      icon: GraduationCap
+    },
+    zona1_perkantoran: {
+      label: "Zona I - Perkantoran Milik Pemerintah/Instansi Vertikal (Kejaksaan/TN. I/Polri)",
+      tarif: 300000,
+      zona: "Zona I (0 km - 30 km)",
+      icon: Landmark
+    },
+    zona1_rumah: {
+      label: "Zona I - Rumah Tangga/Rusunawa",
+      tarif: 200000,
+      zona: "Zona I (0 km - 30 km)",
+      icon: Home
+    },
+    zona1_masyarakat: {
+      label: "Zona I - Masyarakat yang mendapatkan bantuan program pembangunan tangki septik individual",
+      tarif: 75000,
+      zona: "Zona I (0 km - 30 km)",
+      icon: Home
+    },
+
+    // Zona II (31 km - 60 km)
+    zona2_perusahaan: {
+      label: "Zona II - Perusahaan/BUMN/Perbankan/Industri/Komersil",
+      tarif: 400000,
+      zona: "Zona II (31 km - 60 km)",
+      icon: Building
+    },
+    zona2_perdagangan: {
+      label: "Zona II - Perdagangan dan Perkotaan",
+      tarif: 450000,
+      zona: "Zona II (31 km - 60 km)",
+      icon: Building2
+    },
+    zona2_perhotelan: {
+      label: "Zona II - Perhotelan",
+      tarif: 500000,
+      zona: "Zona II (31 km - 60 km)",
+      icon: Building
+    },
+    zona2_hiburan: {
+      label: "Zona II - Tempat Hiburan, Olahraga dan Seni",
+      tarif: 550000,
+      zona: "Zona II (31 km - 60 km)",
+      icon: GraduationCap
+    },
+    zona2_perkantoran: {
+      label: "Zona II - Perkantoran Milik Pemerintah/Instansi Vertikal (Kejaksaan/TN. I/Polri)",
+      tarif: 350000,
+      zona: "Zona II (31 km - 60 km)",
+      icon: Landmark
+    },
+    zona2_rumah: {
+      label: "Zona II - Rumah Tangga/Rusunawa",
+      tarif: 250000,
+      zona: "Zona II (31 km - 60 km)",
+      icon: Home
+    },
+    zona2_masyarakat: {
+      label: "Zona II - Masyarakat yang mendapatkan bantuan program pembangunan tangki septik individual",
+      tarif: 100000,
+      zona: "Zona II (31 km - 60 km)",
+      icon: Home
+    },
+
+    // Zona III (61 km - 100 km)
+    zona3_perusahaan: {
+      label: "Zona III - Perusahaan/BUMN/Perbankan/Industri/Komersil",
+      tarif: 450000,
+      zona: "Zona III (61 km - 100 km)",
+      icon: Building
+    },
+    zona3_perdagangan: {
+      label: "Zona III - Perdagangan dan Perkotaan",
+      tarif: 500000,
+      zona: "Zona III (61 km - 100 km)",
+      icon: Building2
+    },
+    zona3_perhotelan: {
+      label: "Zona III - Perhotelan",
+      tarif: 550000,
+      zona: "Zona III (61 km - 100 km)",
+      icon: Building
+    },
+    zona3_hiburan: {
+      label: "Zona III - Tempat Hiburan, Olahraga dan Seni",
+      tarif: 600000,
+      zona: "Zona III (61 km - 100 km)",
+      icon: GraduationCap
+    },
+
+    // Zona IV (101 km - 150 km)
+    zona4_perusahaan: {
+      label: "Zona IV - Perusahaan/BUMN/Perbankan/Industri/Komersil",
+      tarif: 500000,
+      zona: "Zona IV (101 km - 150 km)",
+      icon: Building
+    },
+    zona4_perdagangan: {
+      label: "Zona IV - Perdagangan dan Perkotaan",
+      tarif: 550000,
+      zona: "Zona IV (101 km - 150 km)",
+      icon: Building2
+    },
+    zona4_perhotelan: {
+      label: "Zona IV - Perhotelan",
+      tarif: 600000,
+      zona: "Zona IV (101 km - 150 km)",
+      icon: Building
+    },
+    zona4_hiburan: {
+      label: "Zona IV - Tempat Hiburan, Olahraga dan Seni",
+      tarif: 650000,
+      zona: "Zona IV (101 km - 150 km)",
+      icon: GraduationCap
+    },
+    zona4_perkantoran: {
+      label: "Zona IV - Perkantoran Milik Pemerintah/Instansi Vertikal (Kejaksaan/TN. I/Polri)",
+      tarif: 450000,
+      zona: "Zona IV (101 km - 150 km)",
+      icon: Landmark
+    },
+    zona4_rumah: {
+      label: "Zona IV - Rumah Tangga/Rusunawa",
+      tarif: 300000,
+      zona: "Zona IV (101 km - 150 km)",
+      icon: Home
+    },
+    zona4_masyarakat: {
+      label: "Zona IV - Masyarakat yang mendapatkan bantuan program pembangunan tangki septik individual",
+      tarif: 150000,
+      zona: "Zona IV (101 km - 150 km)",
+      icon: Home
+    },
+
+    // Instalasi Pengolahan Lumpur Tinja milik Pemerintah Daerah
     institusi: {
-      label: "Institusi Penyelenggara (Milik Pemerintah)",
-      tarif: 65000,
+      label: "Instalasi Pengolahan Lumpur Tinja milik Pemerintah Daerah",
+      tarif: 50000,
+      zona: "Institusi Pemerintah",
       icon: School
     }
   };
 
-  const handleCalculate = () => {
-    const baseTarif = tarifData[zona as keyof typeof tarifData].tarif;
+  const handleCalculate = (): void => {
+    const baseTarif = tarifData[zona].tarif;
     const calculatedTarif = baseTarif * volume;
     setTarif(calculatedTarif);
   };
 
+  const getZonaData = (): ZonaGroups => {
+    const zonaGroups: ZonaGroups = {
+      zona1: [],
+      zona2: [],
+      zona3: [],
+      zona4: [],
+      institusi: []
+    };
+
+    Object.entries(tarifData).forEach(([key, value]) => {
+      if (key.startsWith('zona1_')) zonaGroups.zona1.push({ key, ...value });
+      else if (key.startsWith('zona2_')) zonaGroups.zona2.push({ key, ...value });
+      else if (key.startsWith('zona3_')) zonaGroups.zona3.push({ key, ...value });
+      else if (key.startsWith('zona4_')) zonaGroups.zona4.push({ key, ...value });
+      else if (key === 'institusi') zonaGroups.institusi.push({ key, ...value });
+    });
+
+    return zonaGroups;
+  };
+
+  const zonaGroups = getZonaData();
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-24 bg-gradient-to-r from-cyan-600 to-blue-700 dark:from-cyan-800 dark:to-blue-900 overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-10">
-          <Image
-            src="https://images.pexels.com/photos/164527/pexels-photo-164527.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt="Water background"
-            fill
-            style={{ objectFit: "cover" }}
-          />
-        </div>
+      <section className="relative pt-32 pb-24 bg-gradient-to-r from-cyan-600 to-blue-700 overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-10 bg-[url('https://images.pexels.com/photos/164527/pexels-photo-164527.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-cover bg-center"></div>
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center text-white">
-            <motion.h1
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
-            >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6  animate-[fadeInUp_0.5s_ease-out_forwards]">
               Informasi Tarif Layanan
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto"
-            >
+            </h1>
+            <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto  animate-[fadeInUp_0.5s_ease-out_0.2s_forwards]">
               Informasi lengkap tentang tarif layanan pengelolaan air limbah domestik
               berdasarkan zona pelayanan dan jenis kegiatan.
-            </motion.p>
+            </p>
           </div>
         </div>
 
@@ -88,7 +249,7 @@ export default function TarifPage() {
       {/* Tarif Information */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <div className="mb-8 flex justify-between items-center flex-col md:flex-row gap-6">
               <h2 className="text-3xl font-bold text-cyan-900">
                 Struktur Tarif Pelayanan
@@ -129,91 +290,164 @@ export default function TarifPage() {
             </div>
 
             {tabValue === "zona" && (
-              <div className="bg-white rounded-xl shadow-lg border">
-                <div className="p-6 border-b">
-                  <h3 className="text-xl font-semibold">Tarif Berdasarkan Zona Pelayanan</h3>
-                  <p className="text-gray-600 mt-1">
-                    Penyesuaian tarif berdasarkan jarak zona pelayanan
-                  </p>
+              <div className="space-y-8">
+                {/* Zona I */}
+                <div className="bg-white rounded-xl shadow-lg border">
+                  <div className="p-6 border-b bg-gradient-to-r from-green-50 to-green-100">
+                    <h3 className="text-xl font-semibold text-green-800">Zona I (0 km - 30 km)</h3>
+                    <p className="text-green-600 mt-1">Tarif berdasarkan kategori layanan zona terdekat</p>
+                  </div>
+                  <div className="p-6">
+                    <div className="overflow-x-auto">
+                      <table className="w-full">
+                        <thead>
+                          <tr className="border-b">
+                            <th className="text-left py-3 px-4">No</th>
+                            <th className="text-left py-3 px-4">Kategori</th>
+                            <th className="text-left py-3 px-4">Satuan</th>
+                            <th className="text-right py-3 px-4">Tarif (Rp)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {zonaGroups.zona1.map((item, index) => (
+                            <tr key={item.key} className="border-b hover:bg-gray-50">
+                              <td className="py-4 px-4 font-medium">{index + 1}</td>
+                              <td className="py-4 px-4">{item.label.replace('Zona I - ', '')}</td>
+                              <td className="py-4 px-4">per m³</td>
+                              <td className="py-4 px-4 text-right font-semibold">Rp {item.tarif.toLocaleString()}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <div className="overflow-x-auto">
-                    <table className="w-full">
-                      <thead>
-                        <tr className="border-b">
-                          <th className="text-left py-3 px-4">No</th>
-                          <th className="text-left py-3 px-4">Zona</th>
-                          <th className="text-left py-3 px-4">Sarana</th>
-                          <th className="text-right py-3 px-4">Biaya Tarif (Rp)</th>
-                          <th className="text-left py-3 px-4">Subjek/Program</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr className="border-b hover:bg-gray-50">
-                          <td className="py-4 px-4 font-medium">1</td>
-                          <td className="py-4 px-4 font-medium">Zona I (0 km - 3 km)</td>
-                          <td className="py-4 px-4">per m³</td>
-                          <td className="py-4 px-4 text-right">Rp 350.000</td>
-                          <td className="py-4 px-4 text-sm">
-                            Perusuhaan/DUMN/Perbankan/Industri/Komersil<br />
-                            Perdagangan dan Perkotaan<br />
-                            Fungsi Hibaran, Olahraga dan Seni<br />
-                            Permukiman Milik Pemerintah/Institusi Vertikal<br />
-                            Kesehatan/Puskesmas/RS/Poliklinik
-                          </td>
-                        </tr>
-                        <tr className="border-b hover:bg-gray-50">
-                          <td className="py-4 px-4 font-medium">2</td>
-                          <td className="py-4 px-4 font-medium">Zona II (&gt;1 km sd 6 km)</td>
-                          <td className="py-4 px-4">per m³</td>
-                          <td className="py-4 px-4 text-right">Rp 400.000</td>
-                          <td className="py-4 px-4 text-sm">
-                            Perusuhaan/DUMN/Perbankan/Industri/Komersil<br />
-                            Perdagangan dan Perkotaan<br />
-                            Fungsi Hibaran, Olahraga dan Seni<br />
-                            Permukiman Milik Pemerintah/Institusi Vertikal<br />
-                            Kesehatan/Puskesmas/RS/Poliklinik
-                          </td>
-                        </tr>
-                        <tr className="border-b hover:bg-gray-50">
-                          <td className="py-4 px-4 font-medium">3</td>
-                          <td className="py-4 px-4 font-medium">Zona III (&gt;1 km - 10 km)</td>
-                          <td className="py-4 px-4">per m³</td>
-                          <td className="py-4 px-4 text-right">Rp 450.000</td>
-                          <td className="py-4 px-4 text-sm">
-                            Perusuhaan/DUMN/Perbankan/Industri/Komersil<br />
-                            Perdagangan dan Perkotaan<br />
-                            Fungsi Hibaran, Olahraga dan Seni<br />
-                            Permukiman Milik Pemerintah/Institusi Vertikal<br />
-                            Kesehatan/Puskesmas/RS/Poliklinik
-                          </td>
-                        </tr>
-                        <tr className="border-b hover:bg-gray-50">
-                          <td className="py-4 px-4 font-medium">4</td>
-                          <td className="py-4 px-4 font-medium">Zona IV (&gt;10 km - 15 km)</td>
-                          <td className="py-4 px-4">per m³</td>
-                          <td className="py-4 px-4 text-right">Rp 500.000</td>
-                          <td className="py-4 px-4 text-sm">
-                            Perusuhaan/DUMN/Perbankan/Industri/Komersil<br />
-                            Perdagangan dan Perkotaan<br />
-                            Fungsi Hibaran, Olahraga dan Seni<br />
-                            Permukiman Milik Pemerintah/Institusi Vertikal<br />
-                            Kesehatan/Puskesmas/RS/Poliklinik
-                          </td>
-                        </tr>
-                        <tr className="hover:bg-gray-50">
-                          <td className="py-4 px-4 font-medium">5</td>
-                          <td className="py-4 px-4 font-medium">Institusi Penyelenggara (Milik Pemerintah)</td>
-                          <td className="py-4 px-4">per m³</td>
-                          <td className="py-4 px-4 text-right">Rp 65.000</td>
-                          <td className="py-4 px-4 text-sm">
-                            Milik swasta penyelenggaraan jasa<br />
-                            pelayanan penyedotan air limbah dalam<br />
-                            daerah
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+
+                {/* Zona II */}
+                <div className="bg-white rounded-xl shadow-lg border">
+                  <div className="p-6 border-b bg-gradient-to-r from-yellow-50 to-yellow-100">
+                    <h3 className="text-xl font-semibold text-yellow-800">Zona II (31 km - 60 km)</h3>
+                    <p className="text-yellow-600 mt-1">Tarif berdasarkan kategori layanan zona menengah</p>
+                  </div>
+                  <div className="p-6">
+                    <div className="overflow-x-auto">
+                      <table className="w-full">
+                        <thead>
+                          <tr className="border-b">
+                            <th className="text-left py-3 px-4">No</th>
+                            <th className="text-left py-3 px-4">Kategori</th>
+                            <th className="text-left py-3 px-4">Satuan</th>
+                            <th className="text-right py-3 px-4">Tarif (Rp)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {zonaGroups.zona2.map((item, index) => (
+                            <tr key={item.key} className="border-b hover:bg-gray-50">
+                              <td className="py-4 px-4 font-medium">{index + 1}</td>
+                              <td className="py-4 px-4">{item.label.replace('Zona II - ', '')}</td>
+                              <td className="py-4 px-4">per m³</td>
+                              <td className="py-4 px-4 text-right font-semibold">Rp {item.tarif.toLocaleString()}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Zona III */}
+                <div className="bg-white rounded-xl shadow-lg border">
+                  <div className="p-6 border-b bg-gradient-to-r from-blue-50 to-blue-100">
+                    <h3 className="text-xl font-semibold text-blue-800">Zona III (61 km - 100 km)</h3>
+                    <p className="text-blue-600 mt-1">Tarif berdasarkan kategori layanan zona jauh</p>
+                  </div>
+                  <div className="p-6">
+                    <div className="overflow-x-auto">
+                      <table className="w-full">
+                        <thead>
+                          <tr className="border-b">
+                            <th className="text-left py-3 px-4">No</th>
+                            <th className="text-left py-3 px-4">Kategori</th>
+                            <th className="text-left py-3 px-4">Satuan</th>
+                            <th className="text-right py-3 px-4">Tarif (Rp)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {zonaGroups.zona3.map((item, index) => (
+                            <tr key={item.key} className="border-b hover:bg-gray-50">
+                              <td className="py-4 px-4 font-medium">{index + 1}</td>
+                              <td className="py-4 px-4">{item.label.replace('Zona III - ', '')}</td>
+                              <td className="py-4 px-4">per m³</td>
+                              <td className="py-4 px-4 text-right font-semibold">Rp {item.tarif.toLocaleString()}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Zona IV */}
+                <div className="bg-white rounded-xl shadow-lg border">
+                  <div className="p-6 border-b bg-gradient-to-r from-purple-50 to-purple-100">
+                    <h3 className="text-xl font-semibold text-purple-800">Zona IV (101 km - 150 km)</h3>
+                    <p className="text-purple-600 mt-1">Tarif berdasarkan kategori layanan zona terjauh</p>
+                  </div>
+                  <div className="p-6">
+                    <div className="overflow-x-auto">
+                      <table className="w-full">
+                        <thead>
+                          <tr className="border-b">
+                            <th className="text-left py-3 px-4">No</th>
+                            <th className="text-left py-3 px-4">Kategori</th>
+                            <th className="text-left py-3 px-4">Satuan</th>
+                            <th className="text-right py-3 px-4">Tarif (Rp)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {zonaGroups.zona4.map((item, index) => (
+                            <tr key={item.key} className="border-b hover:bg-gray-50">
+                              <td className="py-4 px-4 font-medium">{index + 1}</td>
+                              <td className="py-4 px-4">{item.label.replace('Zona IV - ', '')}</td>
+                              <td className="py-4 px-4">per m³</td>
+                              <td className="py-4 px-4 text-right font-semibold">Rp {item.tarif.toLocaleString()}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Institusi Pemerintah */}
+                <div className="bg-white rounded-xl shadow-lg border">
+                  <div className="p-6 border-b bg-gradient-to-r from-orange-50 to-orange-100">
+                    <h3 className="text-xl font-semibold text-orange-800">Instalasi Pengolahan Lumpur Tinja</h3>
+                    <p className="text-orange-600 mt-1">Tarif khusus untuk institusi pemerintah</p>
+                  </div>
+                  <div className="p-6">
+                    <div className="overflow-x-auto">
+                      <table className="w-full">
+                        <thead>
+                          <tr className="border-b">
+                            <th className="text-left py-3 px-4">No</th>
+                            <th className="text-left py-3 px-4">Kategori</th>
+                            <th className="text-left py-3 px-4">Satuan</th>
+                            <th className="text-right py-3 px-4">Tarif (Rp)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {zonaGroups.institusi.map((item, index) => (
+                            <tr key={item.key} className="border-b hover:bg-gray-50">
+                              <td className="py-4 px-4 font-medium">{index + 1}</td>
+                              <td className="py-4 px-4">{item.label}</td>
+                              <td className="py-4 px-4">per m³</td>
+                              <td className="py-4 px-4 text-right font-semibold">Rp {item.tarif.toLocaleString()}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -234,15 +468,15 @@ export default function TarifPage() {
                       <ul className="space-y-2 text-sm">
                         <li className="flex items-start">
                           <Building className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
-                          Perusahaan/DUMN/Perbankan/Industri/Komersil
+                          Perusahaan/BUMN/Perbankan/Industri/Komersil
                         </li>
                         <li className="flex items-start">
                           <Building2 className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
                           Perdagangan dan Perkotaan
                         </li>
                         <li className="flex items-start">
-                          <Factory className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
-                          Rumah Tangga/Permukiman
+                          <Building className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
+                          Perhotelan
                         </li>
                       </ul>
                     </div>
@@ -251,15 +485,15 @@ export default function TarifPage() {
                       <ul className="space-y-2 text-sm">
                         <li className="flex items-start">
                           <GraduationCap className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
-                          Fungsi Hiburan, Olahraga dan Seni
-                        </li>
-                        <li className="flex items-start">
-                          <Home className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
-                          Permukiman Milik Pemerintah/Institusi Vertikal
+                          Tempat Hiburan, Olahraga dan Seni
                         </li>
                         <li className="flex items-start">
                           <Landmark className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
-                          Kesehatan/Puskesmas/RS/Poliklinik
+                          Perkantoran Milik Pemerintah/Instansi Vertikal
+                        </li>
+                        <li className="flex items-start">
+                          <Home className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
+                          Rumah Tangga/Rusunawa
                         </li>
                       </ul>
                     </div>
@@ -271,9 +505,9 @@ export default function TarifPage() {
             {tabValue === "layanan" && (
               <div className="bg-white rounded-xl shadow-lg border">
                 <div className="p-6 border-b">
-                  <h3 className="text-xl font-semibold">Tarif Layanan Tambahan</h3>
+                  <h3 className="text-xl font-semibold">Tarif Layanan Berdasarkan Zona</h3>
                   <p className="text-gray-600 mt-1">
-                    Layanan khusus dan biaya tambahan
+                    Ringkasan tarif untuk setiap zona pelayanan
                   </p>
                 </div>
                 <div className="p-6">
@@ -281,31 +515,42 @@ export default function TarifPage() {
                     <table className="w-full">
                       <thead>
                         <tr className="border-b">
-                          <th className="text-left py-3 px-4">Jenis Layanan</th>
-                          <th className="text-left py-3 px-4">Tarif</th>
-                          <th className="text-left py-3 px-4">Keterangan</th>
+                          <th className="text-left py-3 px-4">Zona</th>
+                          <th className="text-left py-3 px-4">Jarak</th>
+                          <th className="text-left py-3 px-4">Tarif Terendah</th>
+                          <th className="text-left py-3 px-4">Tarif Tertinggi</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr className="border-b hover:bg-gray-50">
-                          <td className="py-4 px-4 font-medium">Penyedotan Terjadwal</td>
-                          <td className="py-4 px-4">Rp. 350.000 - 500.000</td>
-                          <td className="py-4 px-4">Berdasarkan zona</td>
+                          <td className="py-4 px-4 font-medium">Zona I</td>
+                          <td className="py-4 px-4">0 km - 30 km</td>
+                          <td className="py-4 px-4">Rp. 75.000</td>
+                          <td className="py-4 px-4">Rp. 500.000</td>
                         </tr>
                         <tr className="border-b hover:bg-gray-50">
-                          <td className="py-4 px-4 font-medium">Penyedotan Darurat</td>
-                          <td className="py-4 px-4">Rp. 500.000 - 650.000</td>
-                          <td className="py-4 px-4">Berdasarkan zona + biaya darurat</td>
+                          <td className="py-4 px-4 font-medium">Zona II</td>
+                          <td className="py-4 px-4">31 km - 60 km</td>
+                          <td className="py-4 px-4">Rp. 100.000</td>
+                          <td className="py-4 px-4">Rp. 550.000</td>
                         </tr>
                         <tr className="border-b hover:bg-gray-50">
-                          <td className="py-4 px-4 font-medium">Institusi Penyelenggara</td>
-                          <td className="py-4 px-4">Rp. 65.000</td>
-                          <td className="py-4 px-4">Per m³ untuk institusi pemerintah</td>
+                          <td className="py-4 px-4 font-medium">Zona III</td>
+                          <td className="py-4 px-4">61 km - 100 km</td>
+                          <td className="py-4 px-4">Rp. 450.000</td>
+                          <td className="py-4 px-4">Rp. 600.000</td>
+                        </tr>
+                        <tr className="border-b hover:bg-gray-50">
+                          <td className="py-4 px-4 font-medium">Zona IV</td>
+                          <td className="py-4 px-4">101 km - 150 km</td>
+                          <td className="py-4 px-4">Rp. 150.000</td>
+                          <td className="py-4 px-4">Rp. 650.000</td>
                         </tr>
                         <tr className="hover:bg-gray-50">
-                          <td className="py-4 px-4 font-medium">Konsultasi Teknis</td>
-                          <td className="py-4 px-4">Gratis</td>
-                          <td className="py-4 px-4">Untuk pelanggan terdaftar</td>
+                          <td className="py-4 px-4 font-medium">Institusi Pemerintah</td>
+                          <td className="py-4 px-4">-</td>
+                          <td className="py-4 px-4">Rp. 50.000</td>
+                          <td className="py-4 px-4">Rp. 50.000</td>
                         </tr>
                       </tbody>
                     </table>
@@ -322,12 +567,7 @@ export default function TarifPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
+              <div className=" animate-[fadeInUp_0.5s_ease-out_forwards]">
                 <h2 className="text-3xl font-bold mb-4 text-cyan-900">
                   Kalkulator Estimasi Tarif
                 </h2>
@@ -335,16 +575,10 @@ export default function TarifPage() {
                   Gunakan kalkulator ini untuk mengestimasi biaya layanan pengelolaan air limbah
                   berdasarkan zona pelayanan dan volume penggunaan
                 </p>
-              </motion.div>
+              </div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-8"
-            >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8  animate-[fadeInUp_0.5s_ease-out_0.2s_forwards]">
               <div className="bg-white rounded-xl shadow-lg border">
                 <div className="p-6 border-b">
                   <h3 className="text-xl font-semibold flex items-center gap-2">
@@ -363,34 +597,169 @@ export default function TarifPage() {
                         <SelectValue placeholder="Pilih zona pelayanan" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="zona1">
-                          <div className="flex items-center">
-                            <Home className="mr-2 h-4 w-4" />
-                            <span>Zona I (0 km - 3 km)</span>
-                          </div>
-                        </SelectItem>
-                        <SelectItem value="zona2">
-                          <div className="flex items-center">
-                            <Building2 className="mr-2 h-4 w-4" />
-                            <span>Zona II (&gt;1 km sd 6 km)</span>
-                          </div>
-                        </SelectItem>
-                        <SelectItem value="zona3">
+                        {/* Zona I Options */}
+                        <SelectItem value="zona1_perusahaan">
                           <div className="flex items-center">
                             <Building className="mr-2 h-4 w-4" />
-                            <span>Zona III (&gt;1 km - 10 km)</span>
+                            <span>Zona I - Perusahaan/BUMN/Industri</span>
                           </div>
                         </SelectItem>
-                        <SelectItem value="zona4">
+                        <SelectItem value="zona1_perdagangan">
                           <div className="flex items-center">
-                            <Factory className="mr-2 h-4 w-4" />
-                            <span>Zona IV (&gt;10 km - 15 km)</span>
+                            <Building2 className="mr-2 h-4 w-4" />
+                            <span>Zona I - Perdagangan dan Perkotaan</span>
                           </div>
                         </SelectItem>
+                        <SelectItem value="zona1_perhotelan">
+                          <div className="flex items-center">
+                            <Building className="mr-2 h-4 w-4" />
+                            <span>Zona I - Perhotelan</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona1_hiburan">
+                          <div className="flex items-center">
+                            <GraduationCap className="mr-2 h-4 w-4" />
+                            <span>Zona I - Tempat Hiburan, Olahraga dan Seni</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona1_perkantoran">
+                          <div className="flex items-center">
+                            <Landmark className="mr-2 h-4 w-4" />
+                            <span>Zona I - Perkantoran Pemerintah</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona1_rumah">
+                          <div className="flex items-center">
+                            <Home className="mr-2 h-4 w-4" />
+                            <span>Zona I - Rumah Tangga</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona1_masyarakat">
+                          <div className="flex items-center">
+                            <Home className="mr-2 h-4 w-4" />
+                            <span>Zona I - Bantuan Program Tangki Septik</span>
+                          </div>
+                        </SelectItem>
+
+                        {/* Zona II Options */}
+                        <SelectItem value="zona2_perusahaan">
+                          <div className="flex items-center">
+                            <Building className="mr-2 h-4 w-4" />
+                            <span>Zona II - Perusahaan/BUMN/Industri</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona2_perdagangan">
+                          <div className="flex items-center">
+                            <Building2 className="mr-2 h-4 w-4" />
+                            <span>Zona II - Perdagangan dan Perkotaan</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona2_perhotelan">
+                          <div className="flex items-center">
+                            <Building className="mr-2 h-4 w-4" />
+                            <span>Zona II - Perhotelan</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona2_hiburan">
+                          <div className="flex items-center">
+                            <GraduationCap className="mr-2 h-4 w-4" />
+                            <span>Zona II - Tempat Hiburan, Olahraga dan Seni</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona2_perkantoran">
+                          <div className="flex items-center">
+                            <Landmark className="mr-2 h-4 w-4" />
+                            <span>Zona II - Perkantoran Pemerintah</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona2_rumah">
+                          <div className="flex items-center">
+                            <Home className="mr-2 h-4 w-4" />
+                            <span>Zona II - Rumah Tangga</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona2_masyarakat">
+                          <div className="flex items-center">
+                            <Home className="mr-2 h-4 w-4" />
+                            <span>Zona II - Bantuan Program Tangki Septik</span>
+                          </div>
+                        </SelectItem>
+
+                        {/* Zona III Options */}
+                        <SelectItem value="zona3_perusahaan">
+                          <div className="flex items-center">
+                            <Building className="mr-2 h-4 w-4" />
+                            <span>Zona III - Perusahaan/BUMN/Industri</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona3_perdagangan">
+                          <div className="flex items-center">
+                            <Building2 className="mr-2 h-4 w-4" />
+                            <span>Zona III - Perdagangan dan Perkotaan</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona3_perhotelan">
+                          <div className="flex items-center">
+                            <Building className="mr-2 h-4 w-4" />
+                            <span>Zona III - Perhotelan</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona3_hiburan">
+                          <div className="flex items-center">
+                            <GraduationCap className="mr-2 h-4 w-4" />
+                            <span>Zona III - Tempat Hiburan, Olahraga dan Seni</span>
+                          </div>
+                        </SelectItem>
+
+                        {/* Zona IV Options */}
+                        <SelectItem value="zona4_perusahaan">
+                          <div className="flex items-center">
+                            <Building className="mr-2 h-4 w-4" />
+                            <span>Zona IV - Perusahaan/BUMN/Industri</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona4_perdagangan">
+                          <div className="flex items-center">
+                            <Building2 className="mr-2 h-4 w-4" />
+                            <span>Zona IV - Perdagangan dan Perkotaan</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona4_perhotelan">
+                          <div className="flex items-center">
+                            <Building className="mr-2 h-4 w-4" />
+                            <span>Zona IV - Perhotelan</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona4_hiburan">
+                          <div className="flex items-center">
+                            <GraduationCap className="mr-2 h-4 w-4" />
+                            <span>Zona IV - Tempat Hiburan, Olahraga dan Seni</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona4_perkantoran">
+                          <div className="flex items-center">
+                            <Landmark className="mr-2 h-4 w-4" />
+                            <span>Zona IV - Perkantoran Pemerintah</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona4_rumah">
+                          <div className="flex items-center">
+                            <Home className="mr-2 h-4 w-4" />
+                            <span>Zona IV - Rumah Tangga</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona4_masyarakat">
+                          <div className="flex items-center">
+                            <Home className="mr-2 h-4 w-4" />
+                            <span>Zona IV - Bantuan Program Tangki Septik</span>
+                          </div>
+                        </SelectItem>
+
+                        {/* Institusi */}
                         <SelectItem value="institusi">
                           <div className="flex items-center">
                             <School className="mr-2 h-4 w-4" />
-                            <span>Institusi Penyelenggara</span>
+                            <span>Institusi Pemerintah</span>
                           </div>
                         </SelectItem>
                       </SelectContent>
@@ -403,7 +772,7 @@ export default function TarifPage() {
                       min="1"
                       value={volume}
                       onChange={(e) => setVolume(parseInt(e.target.value) || 0)}
-                      className="w-full p-3 border border-gray-300 rounded-lg"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-colors"
                     />
                   </div>
                 </div>
@@ -438,7 +807,7 @@ export default function TarifPage() {
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span>Tarif Dasar</span>
-                      <span>Rp. {tarifData[zona as keyof typeof tarifData].tarif.toLocaleString()} / m³</span>
+                      <span>Rp. {tarifData[zona].tarif.toLocaleString()} / m³</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Volume</span>
@@ -454,7 +823,7 @@ export default function TarifPage() {
                   * Estimasi ini hanya perhitungan awal dan dapat berbeda dengan tarif aktual sesuai dengan kondisi sebenarnya.
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -463,13 +832,7 @@ export default function TarifPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-center mb-12"
-            >
+            <div className="text-center mb-12  animate-[fadeInUp_0.5s_ease-out_forwards]">
               <div className="inline-flex items-center justify-center p-2 bg-cyan-100 rounded-full mb-4">
                 <HelpCircle className="h-6 w-6 text-cyan-600" />
               </div>
@@ -479,44 +842,37 @@ export default function TarifPage() {
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 Jawaban untuk pertanyaan yang sering diajukan terkait tarif dan pelayanan
               </p>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <div className="space-y-4">
-                {[
-                  {
-                    question: "Bagaimana penentuan zona pelayanan?",
-                    answer: "Zona pelayanan ditentukan berdasarkan jarak dari lokasi pelayanan ke instalasi pengolahan. Semakin jauh jaraknya, semakin tinggi tarif yang dikenakan karena biaya transportasi dan operasional yang lebih besar."
-                  },
-                  {
-                    question: "Apakah ada perbedaan tarif untuk institusi pemerintah?",
-                    answer: "Ya, institusi penyelenggara milik pemerintah mendapat tarif khusus sebesar Rp. 65.000 per m³, yang lebih rendah dibandingkan tarif zona reguler."
-                  },
-                  {
-                    question: "Bagaimana cara pembayaran tarif layanan?",
-                    answer: "Pembayaran dapat dilakukan melalui transfer bank, pembayaran langsung di kantor UPTD, atau melalui sistem pembayaran digital yang telah bekerja sama dengan kami."
-                  },
-                  {
-                    question: "Apakah tarif dapat berubah?",
-                    answer: "Ya, tarif dapat berubah sesuai dengan kebijakan pemerintah daerah dan kondisi operasional. Setiap perubahan akan diinformasikan kepada pelanggan minimal 30 hari sebelum diberlakukan."
-                  }
-                ].map((faq, index) => (
-                  <details key={index} className="bg-gray-50 rounded-lg">
-                    <summary className="p-4 cursor-pointer font-medium text-cyan-900 hover:bg-gray-100 rounded-lg">
-                      {faq.question}
-                    </summary>
-                    <div className="p-4 pt-0 text-gray-600">
-                      {faq.answer}
-                    </div>
-                  </details>
-                ))}
-              </div>
-            </motion.div>
+            <div className="space-y-4  animate-[fadeInUp_0.5s_ease-out_0.2s_forwards]">
+              {[
+                {
+                  question: "Bagaimana penentuan zona pelayanan?",
+                  answer: "Zona pelayanan ditentukan berdasarkan jarak dari lokasi pelayanan ke instalasi pengolahan. Semakin jauh jaraknya, semakin tinggi tarif yang dikenakan karena biaya transportasi dan operasional yang lebih besar."
+                },
+                {
+                  question: "Apakah ada perbedaan tarif untuk institusi pemerintah?",
+                  answer: "Ya, institusi penyelenggara milik pemerintah mendapat tarif khusus sebesar Rp. 50.000 per m³, yang lebih rendah dibandingkan tarif zona reguler."
+                },
+                {
+                  question: "Bagaimana cara pembayaran tarif layanan?",
+                  answer: "Pembayaran dapat dilakukan melalui transfer bank, pembayaran langsung di kantor UPTD, atau melalui sistem pembayaran digital yang telah bekerja sama dengan kami."
+                },
+                {
+                  question: "Apakah tarif dapat berubah?",
+                  answer: "Ya, tarif dapat berubah sesuai dengan kebijakan pemerintah daerah dan kondisi operasional. Setiap perubahan akan diinformasikan kepada pelanggan minimal 30 hari sebelum diberlakukan."
+                }
+              ].map((faq, index) => (
+                <details key={index} className="bg-gray-50 rounded-lg">
+                  <summary className="p-4 cursor-pointer font-medium text-cyan-900 hover:bg-gray-100 rounded-lg">
+                    {faq.question}
+                  </summary>
+                  <div className="p-4 pt-0 text-gray-600">
+                    {faq.answer}
+                  </div>
+                </details>
+              ))}
+            </div>
           </div>
         </div>
       </section>
