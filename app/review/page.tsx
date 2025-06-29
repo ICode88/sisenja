@@ -13,6 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { WaveDivider } from "@/components/ui/wave-divider";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Img } from "@/components/ui/img";
 
 interface Review {
   id: number;
@@ -212,6 +213,7 @@ export default function ReviewPage() {
 
         <WaveDivider color="fill-white dark:fill-background" height={80} />
       </section>
+        <Img color="fill-white dark:fill-background" height={30} />
 
       {/* Rating Overview */}
       <section className="py-20 bg-white dark:bg-background">

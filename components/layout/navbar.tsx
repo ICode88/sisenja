@@ -53,7 +53,11 @@ export default function Navbar() {
               className="text-primary"
             >
               {/* <Droplets size={28} className="text-cyan-600 dark:text-cyan-400" /> */}
+              <div className="flex items-end">
+
+              <Image src="/images/tanbu.png" alt="Tanbu" width={30} height={30} />
               <Image src="/images/Logo.png" alt="Tanbu" width={80} height={80} />
+              </div>
             </motion.div>
             <motion.span
               className="font-bold text-xl text-cyan-700 dark:text-cyan-400"

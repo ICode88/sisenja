@@ -17,6 +17,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { WaveDivider } from "@/components/ui/wave-divider";
+import { Img } from "@/components/ui/img";
 
 const values = [
   {
@@ -140,6 +141,8 @@ export default function TentangPage() {
 
         <WaveDivider color="fill-white dark:fill-background" height={80} />
       </section>
+              <Img color="fill-white dark:fill-background" height={30} />
+      
 
       {/* Vision & Mission */}
       <section className="py-20 bg-white dark:bg-background">

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface WaveDividerProps {
   position?: "top" | "bottom";
@@ -16,6 +17,7 @@ export function WaveDivider({
   className,
 }: WaveDividerProps) {
   return (
+    <>
     <div
       className={`absolute ${position === "top" ? "top-0" : "bottom-0"} left-0 w-full overflow-hidden leading-none bg-transparent ${className}`}
       style={{ height: `${height}px` }}
@@ -50,6 +52,8 @@ export function WaveDivider({
           className={color}
         />
       </motion.svg>
-    </div>
+      </div>
+      
+    </>
   );
 }

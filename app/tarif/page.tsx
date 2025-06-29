@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Home, CircleDollarSign, Building2, Building, HelpCircle, Factory, School, GraduationCap, Landmark, Calculator, ChevronDown, ChevronUp } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { WaveDivider } from "@/components/ui/wave-divider";
+import { Img } from "@/components/ui/img";
 
 interface TarifItem {
   label: string;
@@ -39,7 +40,7 @@ export default function TarifPage() {
       icon: Building
     },
     zona1_perdagangan: {
-      label: "Zona I - Perdagangan dan Perkotaan",
+      label: "Zona I - Perdagangan dan Pertokoan",
       tarif: 400000,
       zona: "Zona I (0 km - 30 km)",
       icon: Building2
@@ -83,7 +84,7 @@ export default function TarifPage() {
       icon: Building
     },
     zona2_perdagangan: {
-      label: "Zona II - Perdagangan dan Perkotaan",
+      label: "Zona II - Perdagangan dan Pertokoan",
       tarif: 450000,
       zona: "Zona II (31 km - 60 km)",
       icon: Building2
@@ -127,7 +128,7 @@ export default function TarifPage() {
       icon: Building
     },
     zona3_perdagangan: {
-      label: "Zona III - Perdagangan dan Perkotaan",
+      label: "Zona III - Perdagangan dan Pertokoan",
       tarif: 500000,
       zona: "Zona III (61 km - 100 km)",
       icon: Building2
@@ -153,7 +154,7 @@ export default function TarifPage() {
       icon: Building
     },
     zona4_perdagangan: {
-      label: "Zona IV - Perdagangan dan Perkotaan",
+      label: "Zona IV - Perdagangan dan Pertokoan",
       tarif: 550000,
       zona: "Zona IV (101 km - 150 km)",
       icon: Building2
@@ -302,6 +303,7 @@ export default function TarifPage() {
                 <WaveDivider color="fill-white dark:fill-background" height={80} />
         
       </section>
+        <Img color="fill-white dark:fill-background" height={30} />
 
       {/* Tarif Information */}
       <section className="py-20 bg-white">
@@ -420,7 +422,7 @@ export default function TarifPage() {
                         </li>
                         <li className="flex items-start">
                           <Building2 className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
-                          Perdagangan dan Perkotaan
+                          Perdagangan dan Pertokoan
                         </li>
                         <li className="flex items-start">
                           <Building className="h-4 w-4 mt-0.5 mr-2 text-cyan-600 flex-shrink-0" />
@@ -555,7 +557,7 @@ export default function TarifPage() {
                         <SelectItem value="zona1_perdagangan">
                           <div className="flex items-center">
                             <Building2 className="mr-2 h-4 w-4" />
-                            <span>Zona I - Perdagangan dan Perkotaan</span>
+                            <span>Zona I - Perdagangan dan Pertokoan</span>
                           </div>
                         </SelectItem>
                         <SelectItem value="zona1_perhotelan">
@@ -599,7 +601,7 @@ export default function TarifPage() {
                         <SelectItem value="zona2_perdagangan">
                           <div className="flex items-center">
                             <Building2 className="mr-2 h-4 w-4" />
-                            <span>Zona II - Perdagangan dan Perkotaan</span>
+                            <span>Zona II - Perdagangan dan Pertokoan</span>
                           </div>
                         </SelectItem>
                         <SelectItem value="zona2_perhotelan">
@@ -643,7 +645,7 @@ export default function TarifPage() {
                         <SelectItem value="zona3_perdagangan">
                           <div className="flex items-center">
                             <Building2 className="mr-2 h-4 w-4" />
-                            <span>Zona III - Perdagangan dan Perkotaan</span>
+                            <span>Zona III - Perdagangan dan Pertokoan</span>
                           </div>
                         </SelectItem>
                         <SelectItem value="zona3_perhotelan">
@@ -669,7 +671,7 @@ export default function TarifPage() {
                         <SelectItem value="zona4_perdagangan">
                           <div className="flex items-center">
                             <Building2 className="mr-2 h-4 w-4" />
-                            <span>Zona IV - Perdagangan dan Perkotaan</span>
+                            <span>Zona IV - Perdagangan dan Pertokoan</span>
                           </div>
                         </SelectItem>
                         <SelectItem value="zona4_perhotelan">

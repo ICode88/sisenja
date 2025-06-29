@@ -14,6 +14,7 @@ import NewsCard from "@/components/home/news-card";
 import StatCard from "@/components/home/stat-card";
 import { cn } from "@/libs/utils";
 import ImageSlider from "@/components/home/image-slider";
+import { Img } from "@/components/ui/img";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("umum");
@@ -262,7 +263,7 @@ export default function Home() {
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-300/30 to-blue-500/30 animate-pulse" />
 
                 <Image
-                  src="/images/bupati.png"
+                  src="/images/ilustration.svg"
                   alt="Water treatment"
                   width={400}
                   height={400}
@@ -285,8 +286,8 @@ export default function Home() {
                   transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
                 >
                   <div className="w-full h-full flex items-center justify-center text-white">
-                    {/* <Droplets size={40} /> */}
-                                <Image src="/images/berakhlak.png" alt="Tanbu" width={60} height={60} />
+                    <Droplets size={40} />
+                                {/* <Image src="/images/berakhlak.png" alt="Tanbu" width={60} height={60} /> */}
                     
                   </div>
                 </motion.div>
@@ -297,7 +298,9 @@ export default function Home() {
         </div>
 
         <WaveDivider color="fill-white dark:fill-background" height={80} />
+
       </section>
+        <Img color="fill-white dark:fill-background" height={30} />
 
       {/* Services Section */}
       <section className="py-20 bg-white dark:bg-background">

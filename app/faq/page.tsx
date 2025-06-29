@@ -15,6 +15,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { WaveDivider } from "@/components/ui/wave-divider";
+import { Img } from "@/components/ui/img";
 
 const faqCategories = [
   {
@@ -151,6 +152,7 @@ export default function FAQPage() {
 
         <WaveDivider color="fill-white dark:fill-background" height={80} />
       </section>
+        <Img color="fill-white dark:fill-background" height={30} />
 
       {/* FAQ Section */}
       <section className="py-20 bg-white dark:bg-background">

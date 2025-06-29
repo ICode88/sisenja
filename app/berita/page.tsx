@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { WaveDivider } from "@/components/ui/wave-divider";
 import NewsCard from "@/components/home/news-card";
+import { Img } from "@/components/ui/img";
 
 // Sample news data - in a real app, this would come from an API
 const newsData = [
@@ -143,6 +144,8 @@ export default function BeritaPage() {
 
         <WaveDivider color="fill-white dark:fill-background" height={80} />
       </section>
+              <Img color="fill-white dark:fill-background" height={30} />
+      
 
       {/* News Grid */}
       <section className="py-20 bg-white dark:bg-background">

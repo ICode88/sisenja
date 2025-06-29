@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/select";
 import { WaveDivider } from "@/components/ui/wave-divider";
 import { useToast } from "@/hooks/use-toast";
+import { Img } from "@/components/ui/img";
 
 export default function KontakPage() {
   const [name, setName] = useState("");
@@ -88,6 +89,8 @@ export default function KontakPage() {
 
         <WaveDivider color="fill-white dark:fill-background" height={80} />
       </section>
+              <Img color="fill-white dark:fill-background" height={30} />
+      
 
       {/* Contact Section */}
       <section className="py-20 bg-white dark:bg-background">

@@ -25,6 +25,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { WaveDivider } from "@/components/ui/wave-divider";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Img } from "@/components/ui/img";
 
 const requirements = [
     {
@@ -160,6 +161,8 @@ export default function PersyaratanPage() {
 
                 <WaveDivider color="fill-white dark:fill-background" height={80} />
             </section>
+                    <Img color="fill-white dark:fill-background" height={30} />
+            
 
             {/* Main Content */}
             <section className="py-20 bg-white dark:bg-background">

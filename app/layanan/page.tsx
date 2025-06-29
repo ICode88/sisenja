@@ -23,6 +23,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { WaveDivider } from "@/components/ui/wave-divider";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Img } from "@/components/ui/img";
 
 export default function LayananPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -233,6 +234,8 @@ export default function LayananPage() {
 
         <WaveDivider color="fill-white dark:fill-background" height={80} />
       </section>
+              <Img color="fill-white dark:fill-background" height={30} />
+      
 
       {/* Main Services Section */}
       <section className="py-20 bg-white dark:bg-background">
