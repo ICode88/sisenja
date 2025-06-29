@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Search, Plus, Filter, Eye, Edit, Truck, MapPin, Calendar } from "lucide-react";
+import { Search, Plus, Filter, Eye, Edit, Truck, MapPin, Calendar, Clock, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -170,7 +170,8 @@ export default function ServiceOrdersPage() {
                                 </p>
                             </div>
                             <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                                <span className="text-yellow-600 font-semibold">⚙️</span>
+                                <Clock className="h-6 w-6 text-yellow-600" />
+
                             </div>
                         </div>
                     </CardContent>
@@ -185,7 +186,8 @@ export default function ServiceOrdersPage() {
                                 </p>
                             </div>
                             <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                                <span className="text-green-600 font-semibold">✅</span>
+                                <CheckCircle className="h-6 w-6 text-green-600" />
+
                             </div>
                         </div>
                     </CardContent>

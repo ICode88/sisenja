@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Search, Plus, Filter, Eye, Edit, CheckCircle, XCircle, Clock } from "lucide-react";
+import { Search, Plus, Filter, Eye, Edit, CheckCircle, XCircle, Clock, Settings, Check, Clipboard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -203,7 +203,7 @@ export default function ServiceRequestsPage() {
                                 <p className="text-2xl font-bold text-slate-900">{requestsData.length}</p>
                             </div>
                             <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                                <span className="text-blue-600 font-semibold">📋</span>
+                                <Clipboard className="h-6 w-6 text-blue-600" />
                             </div>
                         </div>
                     </CardContent>
@@ -243,12 +243,12 @@ export default function ServiceRequestsPage() {
                         <div className="flex items-center justify-between">
                             <div>
                                 <p className="text-sm text-slate-600">Sedang Proses</p>
-                                <p className="text-2xl font-bold text-blue-600">
+                                <p className="text-2xl font-bold text-yellow-600">
                                     {requestsData.filter(r => r.status === 'in_progress').length}
                                 </p>
                             </div>
-                            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                                <span className="text-blue-600 font-semibold">⚙️</span>
+                            <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                                <Settings className="h-6 w-6 text-yellow-600" />
                             </div>
                         </div>
                     </CardContent>
@@ -258,12 +258,12 @@ export default function ServiceRequestsPage() {
                         <div className="flex items-center justify-between">
                             <div>
                                 <p className="text-sm text-slate-600">Selesai</p>
-                                <p className="text-2xl font-bold text-gray-600">
+                                <p className="text-2xl font-bold text-green-600">
                                     {requestsData.filter(r => r.status === 'completed').length}
                                 </p>
                             </div>
-                            <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                                <span className="text-gray-600 font-semibold">✅</span>
+                            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                <Check className="h-6 w-6 text-green-600" />
                             </div>
                         </div>
                     </CardContent>
