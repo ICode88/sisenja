@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react";
-import { Home, CircleDollarSign, Building2, Building, HelpCircle, Factory, School, GraduationCap, Landmark, Calculator } from "lucide-react";
+import { Home, CircleDollarSign, Building2, Building, HelpCircle, Factory, School, GraduationCap, Landmark, Calculator, ChevronDown, ChevronUp } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { WaveDivider } from "@/components/ui/wave-divider";
 
@@ -28,6 +28,7 @@ export default function TarifPage() {
   const [volume, setVolume] = useState<number>(10);
   const [tarif, setTarif] = useState<number>(0);
   const [tabValue, setTabValue] = useState<string>("zona");
+  const [expandedZones, setExpandedZones] = useState<{ [key: string]: boolean }>({});
 
   const tarifData: TarifData = {
     // Zona I (0 km - 30 km)
@@ -223,7 +224,62 @@ export default function TarifPage() {
     return zonaGroups;
   };
 
+  const toggleZone = (zoneKey: string) => {
+    setExpandedZones(prev => ({
+      ...prev,
+      [zoneKey]: !prev[zoneKey]
+    }));
+  };
+
   const zonaGroups = getZonaData();
+
+  const zoneConfigs = [
+    {
+      key: 'zona1',
+      title: 'Zona I (0 km - 30 km)',
+      description: 'Tarif berdasarkan kategori layanan zona terdekat',
+      bgColor: 'from-green-50 to-green-100',
+      textColor: 'text-green-800',
+      descColor: 'text-green-600',
+      data: zonaGroups.zona1
+    },
+    {
+      key: 'zona2',
+      title: 'Zona II (31 km - 60 km)',
+      description: 'Tarif berdasarkan kategori layanan zona menengah',
+      bgColor: 'from-yellow-50 to-yellow-100',
+      textColor: 'text-yellow-800',
+      descColor: 'text-yellow-600',
+      data: zonaGroups.zona2
+    },
+    {
+      key: 'zona3',
+      title: 'Zona III (61 km - 100 km)',
+      description: 'Tarif berdasarkan kategori layanan zona jauh',
+      bgColor: 'from-blue-50 to-blue-100',
+      textColor: 'text-blue-800',
+      descColor: 'text-blue-600',
+      data: zonaGroups.zona3
+    },
+    {
+      key: 'zona4',
+      title: 'Zona IV (101 km - 150 km)',
+      description: 'Tarif berdasarkan kategori layanan zona terjauh',
+      bgColor: 'from-purple-50 to-purple-100',
+      textColor: 'text-purple-800',
+      descColor: 'text-purple-600',
+      data: zonaGroups.zona4
+    },
+    {
+      key: 'institusi',
+      title: 'Instalasi Pengolahan Lumpur Tinja',
+      description: 'Tarif khusus untuk institusi pemerintah',
+      bgColor: 'from-orange-50 to-orange-100',
+      textColor: 'text-orange-800',
+      descColor: 'text-orange-600',
+      data: zonaGroups.institusi
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -243,7 +299,8 @@ export default function TarifPage() {
           </div>
         </div>
 
-        <WaveDivider color="fill-white dark:fill-background" height={80} />
+                <WaveDivider color="fill-white dark:fill-background" height={80} />
+        
       </section>
 
       {/* Tarif Information */}
@@ -263,7 +320,7 @@ export default function TarifPage() {
                 >
                   <option value="zona">Berdasarkan Zona</option>
                   <option value="jenis">Jenis Kegiatan</option>
-                  <option value="layanan">Tarif Layanan</option>
+                  {/* <option value="layanan">Tarif Layanan</option> */}
                 </select>
               </div>
               {/* Desktop: Traditional Tabs */}
@@ -280,176 +337,67 @@ export default function TarifPage() {
                 >
                   Jenis Kegiatan
                 </button>
-                <button
+                {/* <button
                   onClick={() => setTabValue("layanan")}
                   className={`px-4 py-2 rounded-md transition-colors ${tabValue === "layanan" ? "bg-white shadow-sm text-cyan-900" : "text-cyan-700 hover:text-cyan-900"}`}
                 >
                   Tarif Layanan
-                </button>
+                </button> */}
               </div>
             </div>
 
             {tabValue === "zona" && (
-              <div className="space-y-8">
-                {/* Zona I */}
-                <div className="bg-white rounded-xl shadow-lg border">
-                  <div className="p-6 border-b bg-gradient-to-r from-green-50 to-green-100">
-                    <h3 className="text-xl font-semibold text-green-800">Zona I (0 km - 30 km)</h3>
-                    <p className="text-green-600 mt-1">Tarif berdasarkan kategori layanan zona terdekat</p>
-                  </div>
-                  <div className="p-6">
-                    <div className="overflow-x-auto">
-                      <table className="w-full">
-                        <thead>
-                          <tr className="border-b">
-                            <th className="text-left py-3 px-4">No</th>
-                            <th className="text-left py-3 px-4">Kategori</th>
-                            <th className="text-left py-3 px-4">Satuan</th>
-                            <th className="text-right py-3 px-4">Tarif (Rp)</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {zonaGroups.zona1.map((item, index) => (
-                            <tr key={item.key} className="border-b hover:bg-gray-50">
-                              <td className="py-4 px-4 font-medium">{index + 1}</td>
-                              <td className="py-4 px-4">{item.label.replace('Zona I - ', '')}</td>
-                              <td className="py-4 px-4">per m³</td>
-                              <td className="py-4 px-4 text-right font-semibold">Rp {item.tarif.toLocaleString()}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
+              <div className="space-y-4">
+                {zoneConfigs.map((zone) => (
+                  <div key={zone.key} className="bg-white rounded-xl shadow-lg border overflow-hidden">
+                    <div
+                      className={`p-6 bg-gradient-to-r ${zone.bgColor} cursor-pointer hover:opacity-90 transition-opacity`}
+                      onClick={() => toggleZone(zone.key)}
+                    >
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <h3 className={`text-xl font-semibold ${zone.textColor}`}>{zone.title}</h3>
+                          <p className={`${zone.descColor} mt-1`}>{zone.description}</p>
+                        </div>
+                        <div className={`${zone.textColor} transition-transform duration-200 ${expandedZones[zone.key] ? 'rotate-180' : ''}`}>
+                          <ChevronDown className="h-6 w-6" />
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                {/* Zona II */}
-                <div className="bg-white rounded-xl shadow-lg border">
-                  <div className="p-6 border-b bg-gradient-to-r from-yellow-50 to-yellow-100">
-                    <h3 className="text-xl font-semibold text-yellow-800">Zona II (31 km - 60 km)</h3>
-                    <p className="text-yellow-600 mt-1">Tarif berdasarkan kategori layanan zona menengah</p>
+                    {expandedZones[zone.key] && (
+                      <div className="p-6 animate-[fadeInUp_0.3s_ease-out_forwards]">
+                        <div className="overflow-x-auto">
+                          <table className="w-full">
+                            <thead>
+                              <tr className="border-b">
+                                <th className="text-left py-3 px-4">No</th>
+                                <th className="text-left py-3 px-4">Kategori</th>
+                                <th className="text-left py-3 px-4">Satuan</th>
+                                <th className="text-right py-3 px-4">Tarif (Rp)</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {zone.data.map((item, index) => (
+                                <tr key={item.key} className="border-b hover:bg-gray-50 transition-colors">
+                                  <td className="py-4 px-4 font-medium">{index + 1}</td>
+                                  <td className="py-4 px-4">
+                                    {zone.key === 'institusi'
+                                      ? item.label
+                                      : item.label.replace(new RegExp(`${zone.title.split(' ')[0]} ${zone.title.split(' ')[1]} - `), '')
+                                    }
+                                  </td>
+                                  <td className="py-4 px-4">per m³</td>
+                                  <td className="py-4 px-4 text-right font-semibold">Rp {item.tarif.toLocaleString()}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    )}
                   </div>
-                  <div className="p-6">
-                    <div className="overflow-x-auto">
-                      <table className="w-full">
-                        <thead>
-                          <tr className="border-b">
-                            <th className="text-left py-3 px-4">No</th>
-                            <th className="text-left py-3 px-4">Kategori</th>
-                            <th className="text-left py-3 px-4">Satuan</th>
-                            <th className="text-right py-3 px-4">Tarif (Rp)</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {zonaGroups.zona2.map((item, index) => (
-                            <tr key={item.key} className="border-b hover:bg-gray-50">
-                              <td className="py-4 px-4 font-medium">{index + 1}</td>
-                              <td className="py-4 px-4">{item.label.replace('Zona II - ', '')}</td>
-                              <td className="py-4 px-4">per m³</td>
-                              <td className="py-4 px-4 text-right font-semibold">Rp {item.tarif.toLocaleString()}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Zona III */}
-                <div className="bg-white rounded-xl shadow-lg border">
-                  <div className="p-6 border-b bg-gradient-to-r from-blue-50 to-blue-100">
-                    <h3 className="text-xl font-semibold text-blue-800">Zona III (61 km - 100 km)</h3>
-                    <p className="text-blue-600 mt-1">Tarif berdasarkan kategori layanan zona jauh</p>
-                  </div>
-                  <div className="p-6">
-                    <div className="overflow-x-auto">
-                      <table className="w-full">
-                        <thead>
-                          <tr className="border-b">
-                            <th className="text-left py-3 px-4">No</th>
-                            <th className="text-left py-3 px-4">Kategori</th>
-                            <th className="text-left py-3 px-4">Satuan</th>
-                            <th className="text-right py-3 px-4">Tarif (Rp)</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {zonaGroups.zona3.map((item, index) => (
-                            <tr key={item.key} className="border-b hover:bg-gray-50">
-                              <td className="py-4 px-4 font-medium">{index + 1}</td>
-                              <td className="py-4 px-4">{item.label.replace('Zona III - ', '')}</td>
-                              <td className="py-4 px-4">per m³</td>
-                              <td className="py-4 px-4 text-right font-semibold">Rp {item.tarif.toLocaleString()}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Zona IV */}
-                <div className="bg-white rounded-xl shadow-lg border">
-                  <div className="p-6 border-b bg-gradient-to-r from-purple-50 to-purple-100">
-                    <h3 className="text-xl font-semibold text-purple-800">Zona IV (101 km - 150 km)</h3>
-                    <p className="text-purple-600 mt-1">Tarif berdasarkan kategori layanan zona terjauh</p>
-                  </div>
-                  <div className="p-6">
-                    <div className="overflow-x-auto">
-                      <table className="w-full">
-                        <thead>
-                          <tr className="border-b">
-                            <th className="text-left py-3 px-4">No</th>
-                            <th className="text-left py-3 px-4">Kategori</th>
-                            <th className="text-left py-3 px-4">Satuan</th>
-                            <th className="text-right py-3 px-4">Tarif (Rp)</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {zonaGroups.zona4.map((item, index) => (
-                            <tr key={item.key} className="border-b hover:bg-gray-50">
-                              <td className="py-4 px-4 font-medium">{index + 1}</td>
-                              <td className="py-4 px-4">{item.label.replace('Zona IV - ', '')}</td>
-                              <td className="py-4 px-4">per m³</td>
-                              <td className="py-4 px-4 text-right font-semibold">Rp {item.tarif.toLocaleString()}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Institusi Pemerintah */}
-                <div className="bg-white rounded-xl shadow-lg border">
-                  <div className="p-6 border-b bg-gradient-to-r from-orange-50 to-orange-100">
-                    <h3 className="text-xl font-semibold text-orange-800">Instalasi Pengolahan Lumpur Tinja</h3>
-                    <p className="text-orange-600 mt-1">Tarif khusus untuk institusi pemerintah</p>
-                  </div>
-                  <div className="p-6">
-                    <div className="overflow-x-auto">
-                      <table className="w-full">
-                        <thead>
-                          <tr className="border-b">
-                            <th className="text-left py-3 px-4">No</th>
-                            <th className="text-left py-3 px-4">Kategori</th>
-                            <th className="text-left py-3 px-4">Satuan</th>
-                            <th className="text-right py-3 px-4">Tarif (Rp)</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {zonaGroups.institusi.map((item, index) => (
-                            <tr key={item.key} className="border-b hover:bg-gray-50">
-                              <td className="py-4 px-4 font-medium">{index + 1}</td>
-                              <td className="py-4 px-4">{item.label}</td>
-                              <td className="py-4 px-4">per m³</td>
-                              <td className="py-4 px-4 text-right font-semibold">Rp {item.tarif.toLocaleString()}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             )}
 
@@ -502,7 +450,7 @@ export default function TarifPage() {
               </div>
             )}
 
-            {tabValue === "layanan" && (
+            {/* {tabValue === "layanan" && (
               <div className="bg-white rounded-xl shadow-lg border">
                 <div className="p-6 border-b">
                   <h3 className="text-xl font-semibold">Tarif Layanan Berdasarkan Zona</h3>
@@ -557,7 +505,7 @@ export default function TarifPage() {
                   </div>
                 </div>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </section>
