@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Search, Filter, Star, ThumbsUp, MessageCircle, Calendar } from "lucide-react";
+import { Search, Filter, Star, ThumbsUp, MessageCircle, Calendar, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -153,10 +153,7 @@ export default function ReviewsPage() {
     const serviceTypes = [...new Set(reviewsData.map(review => review.serviceType))];
 
     return (
-        <DashboardLayout
-            title="Ulasan & Penilaian"
-            subtitle="Kelola ulasan dan penilaian dari pelanggan"
-        >
+       
             <div className="space-y-6">
                 {/* Header Actions */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
@@ -240,7 +237,8 @@ export default function ReviewsPage() {
                                     <p className="text-2xl font-bold text-yellow-600">{averageRating.toFixed(1)}</p>
                                 </div>
                                 <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                                    <span className="text-yellow-600 font-semibold">⭐</span>
+                                <Star className="h-6 w-6 text-yellow-600" />
+
                                 </div>
                             </div>
                         </CardContent>
@@ -270,7 +268,8 @@ export default function ReviewsPage() {
                                     </p>
                                 </div>
                                 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                                    <span className="text-green-600 font-semibold">✅</span>
+                                <CheckCircle className="h-6 w-6 text-green-600" />
+
                                 </div>
                             </div>
                         </CardContent>
@@ -365,6 +364,5 @@ export default function ReviewsPage() {
                     </div>
                 )}
             </div>
-        </DashboardLayout>
     );
 }

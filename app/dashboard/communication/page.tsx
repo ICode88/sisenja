@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Phone, MessageCircle, Mail, Search, Plus, Clock, User, CheckCircle } from "lucide-react";
+import { Phone, MessageCircle, Mail, Search, Plus, Clock, User, CheckCircle, Tickets, Ticket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -176,10 +176,7 @@ export default function CommunicationPage() {
     };
 
     return (
-        <DashboardLayout
-            title="Komunikasi & Customer Service"
-            subtitle="Kelola komunikasi dengan pelanggan melalui telepon, chat, dan email"
-        >
+       
             <div className="space-y-6">
                 {/* Header Actions */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
@@ -251,7 +248,7 @@ export default function CommunicationPage() {
                                     <p className="text-2xl font-bold text-slate-900">{communicationData.length}</p>
                                 </div>
                                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                                    <MessageCircle className="h-6 w-6 text-blue-600" />
+                                    <Tickets className="h-6 w-6 text-blue-600" />
                                 </div>
                             </div>
                         </CardContent>
@@ -266,7 +263,7 @@ export default function CommunicationPage() {
                                     </p>
                                 </div>
                                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                                    <Clock className="h-6 w-6 text-blue-600" />
+                                    <Ticket className="h-6 w-6 text-blue-600" />
                                 </div>
                             </div>
                         </CardContent>
@@ -281,7 +278,7 @@ export default function CommunicationPage() {
                                     </p>
                                 </div>
                                 <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                                    <User className="h-6 w-6 text-yellow-600" />
+                                    <Clock className="h-6 w-6 text-yellow-600" />
                                 </div>
                             </div>
                         </CardContent>
@@ -501,6 +498,5 @@ export default function CommunicationPage() {
                     </div>
                 )}
             </div>
-        </DashboardLayout>
     );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Search, Filter, Plus, Calendar, Clock, User, CheckCircle, AlertCircle } from "lucide-react";
+import { Search, Filter, Plus, Calendar, Clock, User, CheckCircle, AlertCircle, AlarmClock, Hourglass } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -256,12 +256,12 @@ export default function AssignmentsPage() {
                         <div className="flex items-center justify-between">
                             <div>
                                 <p className="text-sm text-slate-600">Sedang Proses</p>
-                                <p className="text-2xl font-bold text-orange-600">
+                                <p className="text-2xl font-bold text-yellow-600">
                                     {assignmentsData.filter(t => t.status === 'in_progress').length}
                                 </p>
                             </div>
-                            <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                                <AlertCircle className="h-6 w-6 text-orange-600" />
+                            <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                                <Hourglass className="h-6 w-6 text-yellow-600" />
                             </div>
                         </div>
                     </CardContent>
@@ -291,7 +291,8 @@ export default function AssignmentsPage() {
                                 </p>
                             </div>
                             <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                                <span className="text-red-600 font-semibold">🚨</span>
+                                <AlarmClock className="h-6 w-6 text-red-600" />
+
                             </div>
                         </div>
                     </CardContent>

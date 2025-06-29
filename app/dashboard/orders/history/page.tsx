@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Search, Filter, Calendar, Download, Eye, Star } from "lucide-react";
+import { Search, Filter, Calendar, Download, Eye, Star, ClipboardCheck, DollarSign, Clock3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -197,7 +197,7 @@ export default function HistoryPage() {
                                 <p className="text-2xl font-bold text-slate-900">{filteredHistory.length}</p>
                             </div>
                             <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                                <Calendar className="h-6 w-6 text-blue-600" />
+                                <ClipboardCheck className="h-6 w-6 text-blue-600" />
                             </div>
                         </div>
                     </CardContent>
@@ -212,7 +212,8 @@ export default function HistoryPage() {
                                 </p>
                             </div>
                             <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                                <span className="text-green-600 font-semibold">💰</span>
+                                                              <DollarSign className="h-6 w-6 text-green-600" />
+                              
                             </div>
                         </div>
                     </CardContent>
@@ -240,7 +241,8 @@ export default function HistoryPage() {
                                 <p className="text-2xl font-bold text-purple-600">2.5 jam</p>
                             </div>
                             <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                                <span className="text-purple-600 font-semibold">⏱️</span>
+                                                               <Clock3 className="h-6 w-6 text-purple-600" />
+                               
                             </div>
                         </div>
                     </CardContent>

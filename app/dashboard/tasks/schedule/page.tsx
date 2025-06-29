@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Calendar, Clock, MapPin, User, ChevronLeft, ChevronRight } from "lucide-react";
+import { Calendar, Clock, MapPin, User, ChevronLeft, ChevronRight, CalendarCheck, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -189,7 +189,7 @@ export default function SchedulePage() {
                                 <p className="text-2xl font-bold text-blue-600">{scheduledTasks}</p>
                             </div>
                             <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                                <Clock className="h-6 w-6 text-blue-600" />
+                                <CalendarCheck className="h-6 w-6 text-blue-600" />
                             </div>
                         </div>
                     </CardContent>
@@ -202,7 +202,8 @@ export default function SchedulePage() {
                                 <p className="text-2xl font-bold text-yellow-600">{inProgressTasks}</p>
                             </div>
                             <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                                <span className="text-yellow-600 font-semibold">⚙️</span>
+                                <Clock className="h-6 w-6 text-yellow-600" />
+
                             </div>
                         </div>
                     </CardContent>
@@ -215,7 +216,8 @@ export default function SchedulePage() {
                                 <p className="text-2xl font-bold text-green-600">{completedTasks}</p>
                             </div>
                             <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                                <span className="text-green-600 font-semibold">✅</span>
+                                <CheckCircle className="h-6 w-6 text-green-600" />
+
                             </div>
                         </div>
                     </CardContent>

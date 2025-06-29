@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Search, Filter, Plus, MapPin, Calendar, Camera, FileText, Download } from "lucide-react";
+import { Search, Filter, Plus, MapPin, Calendar, Camera, FileText, Download, CheckCircle, ClipboardEdit, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -152,10 +152,7 @@ export default function FieldReportsPage() {
     };
 
     return (
-        <DashboardLayout
-            title="Laporan Lapangan"
-            subtitle="Kelola laporan hasil kerja tim lapangan"
-        >
+       
             <div className="space-y-6">
                 {/* Header Actions */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
@@ -247,7 +244,7 @@ export default function FieldReportsPage() {
                                     </p>
                                 </div>
                                 <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                                    <Calendar className="h-6 w-6 text-yellow-600" />
+                                    <Clock className="h-6 w-6 text-yellow-600" />
                                 </div>
                             </div>
                         </CardContent>
@@ -262,7 +259,8 @@ export default function FieldReportsPage() {
                                     </p>
                                 </div>
                                 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                                    <span className="text-green-600 font-semibold">✅</span>
+                                <CheckCircle className="h-6 w-6 text-green-600" />
+
                                 </div>
                             </div>
                         </CardContent>
@@ -277,7 +275,8 @@ export default function FieldReportsPage() {
                                     </p>
                                 </div>
                                 <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                                    <span className="text-gray-600 font-semibold">📝</span>
+                                <ClipboardEdit className="h-6 w-6 text-gray-600" />
+
                                 </div>
                             </div>
                         </CardContent>
@@ -370,6 +369,5 @@ export default function FieldReportsPage() {
                     </div>
                 )}
             </div>
-        </DashboardLayout>
     );
 }

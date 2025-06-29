@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Calculator, TrendingUp, DollarSign, BarChart3 } from "lucide-react";
+import { Calculator, TrendingUp, DollarSign, BarChart3, TrendingDown, ClipboardList } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -85,7 +85,7 @@ export default function RatesPage() {
                                 <p className="text-2xl font-bold text-green-600">Rp {minTarif.toLocaleString()}</p>
                             </div>
                             <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                                <TrendingUp className="h-6 w-6 text-green-600" />
+                                <TrendingDown className="h-6 w-6 text-green-600" />
                             </div>
                         </div>
                     </CardContent>
@@ -98,7 +98,8 @@ export default function RatesPage() {
                                 <p className="text-2xl font-bold text-red-600">Rp {maxTarif.toLocaleString()}</p>
                             </div>
                             <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                                <BarChart3 className="h-6 w-6 text-red-600" />
+                                <TrendingUp className="h-6 w-6 text-red-600" />
+
                             </div>
                         </div>
                     </CardContent>
@@ -111,7 +112,7 @@ export default function RatesPage() {
                                 <p className="text-2xl font-bold text-blue-600">Rp {Math.round(avgTarif).toLocaleString()}</p>
                             </div>
                             <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                                <DollarSign className="h-6 w-6 text-blue-600" />
+                                <BarChart3 className="h-6 w-6 text-blue-600" />
                             </div>
                         </div>
                     </CardContent>
@@ -124,7 +125,7 @@ export default function RatesPage() {
                                 <p className="text-2xl font-bold text-purple-600">{Object.keys(tarifData).length}</p>
                             </div>
                             <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                                <Calculator className="h-6 w-6 text-purple-600" />
+                                <ClipboardList className="h-6 w-6 text-purple-600" />
                             </div>
                         </div>
                     </CardContent>
