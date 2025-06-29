@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Search, Plus, Filter, Eye, Edit, Trash2, ChevronDown } from "lucide-react";
+import { Search, Plus, Filter, Eye, Edit, Trash2, ChevronDown, Hourglass, UserCheck, Users, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -177,7 +177,8 @@ export default function UsersPage() {
                                     <p className="text-2xl font-bold text-slate-900">{usersData.length}</p>
                                 </div>
                                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                                    <span className="text-blue-600 font-semibold">👥</span>
+                                    <Users className="h-6 w-6 text-blue-600" />
+
                                 </div>
                             </div>
                         </CardContent>
@@ -192,7 +193,8 @@ export default function UsersPage() {
                                     </p>
                                 </div>
                                 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                                    <span className="text-green-600 font-semibold">✅</span>
+                                                                   <UserCheck className="h-6 w-6 text-green-600" />
+                                   
                                 </div>
                             </div>
                         </CardContent>
@@ -207,7 +209,8 @@ export default function UsersPage() {
                                     </p>
                                 </div>
                                 <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                                    <span className="text-yellow-600 font-semibold">⏳</span>
+                                    <Hourglass className="h-6 w-6 text-yellow-600" />
+
                                 </div>
                             </div>
                         </CardContent>
@@ -222,7 +225,8 @@ export default function UsersPage() {
                                     </p>
                                 </div>
                                 <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                                    <span className="text-red-600 font-semibold">❌</span>
+                                                                   <X className="h-6 w-6 text-red-600" />
+                                   
                                 </div>
                             </div>
                         </CardContent>
