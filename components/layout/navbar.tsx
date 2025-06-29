@@ -15,6 +15,7 @@ const navItems = [
   { name: "Layanan", href: "/layanan" },
   { name: "Tarif", href: "/tarif" },
   { name: "Persyaratan", href: "/persyaratan" },
+  { name: "Review & Rating", href: "/review" },
   { name: "Tentang Kami", href: "/tentang" },
   { name: "FAQ", href: "/faq" },
   { name: "Berita", href: "/berita" },
