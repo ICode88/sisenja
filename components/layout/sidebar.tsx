@@ -22,6 +22,8 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/libs/utils";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const menuItems = [
     {
@@ -97,6 +99,7 @@ interface SidebarProps {
 
 export default function Sidebar({ sidebarOpen, mobileMenuOpen, setMobileMenuOpen, currentPath }: SidebarProps) {
     const [expandedMenus, setExpandedMenus] = useState(new Set(["Layanan"]));
+    const pathname = usePathname();
 
     const toggleMenu = (title: string) => {
         const newExpanded = new Set(expandedMenus);
@@ -109,7 +112,7 @@ export default function Sidebar({ sidebarOpen, mobileMenuOpen, setMobileMenuOpen
     };
 
     const isActive = (href: string) => {
-        return currentPath === href;
+        return pathname === href;
     };
 
     const SidebarContent = () => (
@@ -169,7 +172,7 @@ export default function Sidebar({ sidebarOpen, mobileMenuOpen, setMobileMenuOpen
                                                 className="ml-6 mt-1 space-y-1"
                                             >
                                                 {item.children.map((child) => (
-                                                    <a
+                                                    <Link
                                                         key={child.title}
                                                         href={child.href}
                                                         className={cn(
@@ -185,7 +188,7 @@ export default function Sidebar({ sidebarOpen, mobileMenuOpen, setMobileMenuOpen
                                                                 {child.badge}
                                                             </Badge>
                                                         )}
-                                                    </a>
+                                                    </Link>
                                                 ))}
                                             </motion.div>
                                         )}
@@ -193,8 +196,8 @@ export default function Sidebar({ sidebarOpen, mobileMenuOpen, setMobileMenuOpen
                                 </div>
                             ) : (
                                 // Single menu item
-                                <a
-                                    href={item.href}
+                                <Link
+                                    href={item.href!}
                                     className={cn(
                                         "flex items-center justify-between px-3 py-2 text-sm font-medium rounded-lg transition-colors",
                                         isActive(item.href!)
@@ -211,7 +214,7 @@ export default function Sidebar({ sidebarOpen, mobileMenuOpen, setMobileMenuOpen
                                             {item.badge}
                                         </Badge>
                                     )}
-                                </a>
+                                </Link>
                             )}
                         </div>
                     ))}

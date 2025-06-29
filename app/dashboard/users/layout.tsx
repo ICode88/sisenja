@@ -3,15 +3,16 @@
 import { ReactNode } from "react";
 import DashboardLayout from "@/components/layout/dashboard-layout";
 
-interface DashboardLayoutWrapperProps {
+interface UsersLayoutProps {
     children: ReactNode;
 }
 
-export default function DashboardLayoutWrapper({ children }: DashboardLayoutWrapperProps) {
+export default function UsersLayout({ children }: UsersLayoutProps) {
     return (
         <DashboardLayout
-            title="Dashboard"
-            subtitle="Selamat datang kembali, Admin Master"
+            title="Manajemen User"
+            subtitle="Kelola data pengguna sistem SISENJA"
+            currentPath="/dashboard/users"
         >
             {children}
         </DashboardLayout>
