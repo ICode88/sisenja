@@ -325,7 +325,6 @@ export default function TarifPage() {
                   {/* <option value="layanan">Tarif Layanan</option> */}
                 </select>
               </div>
-              {/* Desktop: Traditional Tabs */}
               <div className="hidden md:flex bg-cyan-100 rounded-lg p-1">
                 <button
                   onClick={() => setTabValue("zona")}
