@@ -506,7 +506,7 @@ export default function PersyaratanPage() {
                                                     <Mail className="h-6 w-6" />
                                                 </div>
                                                 <h4 className="font-semibold mb-1">Email</h4>
-                                                <p className="text-muted-foreground">info@sipald-tanbu.go.id</p>
+                                                <p className="text-muted-foreground">info@sisenja-tanbu.go.id</p>
                                             </div>
                                             <div className="text-center">
                                                 <div className="p-3 rounded-lg bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 inline-flex mb-3">

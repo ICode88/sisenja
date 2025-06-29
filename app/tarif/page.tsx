@@ -47,19 +47,19 @@ export default function TarifPage() {
     },
     zona1_perdagangan: {
       label: "Zona I - Perdagangan dan Pertokoan",
-      tarif: 400000,
+      tarif: 350000,
       zona: "Zona I (0 km - 30 km)",
       icon: Building2
     },
     zona1_perhotelan: {
       label: "Zona I - Perhotelan",
-      tarif: 450000,
+      tarif: 350000,
       zona: "Zona I (0 km - 30 km)",
       icon: Building
     },
     zona1_hiburan: {
       label: "Zona I - Tempat Hiburan, Olahraga dan Seni",
-      tarif: 500000,
+      tarif: 350000,
       zona: "Zona I (0 km - 30 km)",
       icon: GraduationCap
     },
@@ -91,19 +91,19 @@ export default function TarifPage() {
     },
     zona2_perdagangan: {
       label: "Zona II - Perdagangan dan Pertokoan",
-      tarif: 450000,
+      tarif: 400000,
       zona: "Zona II (31 km - 60 km)",
       icon: Building2
     },
     zona2_perhotelan: {
       label: "Zona II - Perhotelan",
-      tarif: 500000,
+      tarif: 400000,
       zona: "Zona II (31 km - 60 km)",
       icon: Building
     },
     zona2_hiburan: {
       label: "Zona II - Tempat Hiburan, Olahraga dan Seni",
-      tarif: 550000,
+      tarif: 400000,
       zona: "Zona II (31 km - 60 km)",
       icon: GraduationCap
     },
@@ -135,21 +135,39 @@ export default function TarifPage() {
     },
     zona3_perdagangan: {
       label: "Zona III - Perdagangan dan Pertokoan",
-      tarif: 500000,
+      tarif: 450000,
       zona: "Zona III (61 km - 100 km)",
       icon: Building2
     },
     zona3_perhotelan: {
       label: "Zona III - Perhotelan",
-      tarif: 550000,
+      tarif: 450000,
       zona: "Zona III (61 km - 100 km)",
       icon: Building
     },
     zona3_hiburan: {
       label: "Zona III - Tempat Hiburan, Olahraga dan Seni",
-      tarif: 600000,
+      tarif: 450000,
       zona: "Zona III (61 km - 100 km)",
       icon: GraduationCap
+    },
+    zona3_perkantoran: {
+      label: "Zona III - Perkantoran Milik Pemerintah/Instansi Vertikal (Kejaksaan/TN. I/Polri)",
+      tarif: 400000,
+      zona: "Zona III (0 km - 30 km)",
+      icon: Landmark
+    },
+    zona3_rumah: {
+      label: "Zona III - Rumah Tangga/Rusunawa",
+      tarif: 300000,
+      zona: "Zona III (0 km - 30 km)",
+      icon: Home
+    },
+    zona3_masyarakat: {
+      label: "Zona III - Masyarakat yang mendapatkan bantuan program pembangunan tangki septik individual",
+      tarif: 125000,
+      zona: "Zona III (0 km - 30 km)",
+      icon: Home
     },
 
     // Zona IV (101 km - 150 km)
@@ -161,19 +179,19 @@ export default function TarifPage() {
     },
     zona4_perdagangan: {
       label: "Zona IV - Perdagangan dan Pertokoan",
-      tarif: 550000,
+      tarif: 500000,
       zona: "Zona IV (101 km - 150 km)",
       icon: Building2
     },
     zona4_perhotelan: {
       label: "Zona IV - Perhotelan",
-      tarif: 600000,
+      tarif: 500000,
       zona: "Zona IV (101 km - 150 km)",
       icon: Building
     },
     zona4_hiburan: {
       label: "Zona IV - Tempat Hiburan, Olahraga dan Seni",
-      tarif: 650000,
+      tarif: 500000,
       zona: "Zona IV (101 km - 150 km)",
       icon: GraduationCap
     },
@@ -185,7 +203,7 @@ export default function TarifPage() {
     },
     zona4_rumah: {
       label: "Zona IV - Rumah Tangga/Rusunawa",
-      tarif: 300000,
+      tarif: 350000,
       zona: "Zona IV (101 km - 150 km)",
       icon: Home
     },
@@ -636,6 +654,24 @@ export default function TarifPage() {
                           <div className="flex items-center">
                             <GraduationCap className="mr-2 h-4 w-4" />
                             <span>Zona III - Tempat Hiburan, Olahraga dan Seni</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona4_perkantoran">
+                          <div className="flex items-center">
+                            <Landmark className="mr-2 h-4 w-4" />
+                            <span>Zona III - Perkantoran Pemerintah</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona4_rumah">
+                          <div className="flex items-center">
+                            <Home className="mr-2 h-4 w-4" />
+                            <span>Zona III - Rumah Tangga</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="zona4_masyarakat">
+                          <div className="flex items-center">
+                            <Home className="mr-2 h-4 w-4" />
+                            <span>Zona III - Bantuan Program Tangki Septik</span>
                           </div>
                         </SelectItem>
 

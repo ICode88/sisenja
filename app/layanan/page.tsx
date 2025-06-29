@@ -79,13 +79,13 @@ export default function LayananPage() {
       category: "Penyedotan",
     },
     {
-      title: "Pemeliharaan & Perbaikan",
-      description: "Layanan pemeliharaan dan perbaikan untuk instalasi pengolahan air limbah",
+      title: "Konsultasi Teknis",
+      description: "Layanan konsultasi teknis terkait instalasi pengolahan air limbah",
       icon: WrenchIcon,
-      href: "/layanan/pemeliharaan",
+      href: "/layanan/konsultasi",
       color: "bg-gradient-to-br from-indigo-50 to-purple-100 dark:from-indigo-950 dark:to-purple-900",
       iconColor: "text-indigo-500 dark:text-indigo-400",
-      category: "Pemeliharaan",
+      category: "Konsultasi",
     },
   ];
 
@@ -258,7 +258,7 @@ export default function LayananPage() {
                         <SelectItem value="all">Semua</SelectItem>
                         <SelectItem value="pendaftaran">Pendaftaran</SelectItem>
                         <SelectItem value="pengaduan">Pengaduan</SelectItem>
-                        <SelectItem value="pemeliharaan">Pemeliharaan</SelectItem>
+                        <SelectItem value="konsultasi">Pemeliharaan</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -269,7 +269,7 @@ export default function LayananPage() {
                       <TabsTrigger value="all">Semua</TabsTrigger>
                       <TabsTrigger value="pendaftaran">Pendaftaran</TabsTrigger>
                       <TabsTrigger value="pengaduan">Pengaduan</TabsTrigger>
-                      <TabsTrigger value="pemeliharaan">Pemeliharaan</TabsTrigger>
+                      <TabsTrigger value="konsultasi">Konsultasi</TabsTrigger>
                     </TabsList>
                   </div>
                 </div>
@@ -324,7 +324,7 @@ export default function LayananPage() {
                 </motion.div>
               </TabsContent>
 
-              <TabsContent value="pemeliharaan">
+              <TabsContent value="konsultasi">
                 <motion.div
                   variants={containerVariants}
                   initial="hidden"
@@ -333,7 +333,7 @@ export default function LayananPage() {
                 >
                   {filteredMainServices
                     .filter((service) =>
-                      service.category === "Pemeliharaan" ||
+                      service.category === "Konsultasi" ||
                       service.category === "Penyedotan"
                     )
                     .map((service, index) => (
