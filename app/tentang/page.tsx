@@ -69,27 +69,16 @@ const team = [
   {
     name: "Ir. Ahmad Suryadi",
     position: "Kepala UPTD",
-    image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg",
+    image: "/images/image2.png",
     department: "Pimpinan"
   },
   {
     name: "Siti Nurhaliza, ST",
     position: "Kepala Seksi Teknis",
-    image: "https://images.pexels.com/photos/3796217/pexels-photo-3796217.jpeg",
+    image: "/images/image.png",
     department: "Teknis"
-  },
-  {
-    name: "Budi Santoso, SE",
-    position: "Kepala Seksi Administrasi",
-    image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg",
-    department: "Administrasi"
-  },
-  {
-    name: "Drg. Maya Indah",
-    position: "Kepala Seksi Pelayanan",
-    image: "https://images.pexels.com/photos/3796217/pexels-photo-3796217.jpeg",
-    department: "Pelayanan"
   }
+ 
 ];
 
 export default function TentangPage() {
@@ -296,7 +285,7 @@ export default function TentangPage() {
               <h2 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-10 text-cyan-900 dark:text-cyan-50">
                 Tim Kami
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6">
                 {team.map((member, index) => (
                   <motion.div
                     key={index}
