@@ -67,16 +67,16 @@ const timeline = [
 
 const team = [
   {
-    name: "Ir. Ahmad Suryadi",
-    position: "Kepala UPTD",
+    name: "Ihwan Rinjani",
+    position: "Operator",
     image: "/images/image2.png",
-    department: "Pimpinan"
+    department: "Operator"
   },
   {
-    name: "Siti Nurhaliza, ST",
-    position: "Kepala Seksi Teknis",
+    name: "Sarwani",
+    position: "Operator",
     image: "/images/image.png",
-    department: "Teknis"
+    department: "Operator"
   }
  
 ];
