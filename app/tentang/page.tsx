@@ -44,36 +44,27 @@ const values = [
 
 const timeline = [
   {
-    year: "2020",
-    title: "Pendirian UPTD",
-    description: "Pembentukan UPTD Pengelolaan Air Limbah Domestik Kabupaten Tanah Bumbu."
-  },
-  {
-    year: "2021",
+    year: "2016",
     title: "Pengembangan Infrastruktur",
-    description: "Pembangunan instalasi pengolahan layanan sedot tinja pertama."
+    description: "Pembangunan infrastruktur awal untuk mendukung sistem pengelolaan air limbah domestik di Kabupaten Tanah Bumbu."
   },
   {
-    year: "2022",
-    title: "Perluasan Layanan",
-    description: "Perluasan jaringan dan peningkatan kapasitas pengolahan."
+    year: "2018",
+    title: "Pendirian/Pembentukan UPTD",
+    description: "Resmi dibentuknya UPTD Pengelolaan Air Limbah Domestik sebagai lembaga operasional di bidang sanitasi."
   },
   {
-    year: "2023",
-    title: "Modernisasi Sistem",
-    description: "Implementasi teknologi modern dalam pengelolaan air limbah."
-  },
-  {
-    year: "2024",
-    title: "Sertifikasi ISO",
-    description: "Pencapaian sertifikasi ISO untuk standar pengelolaan."
+    year: "2018",
+    title: "Operasional",
+    description: "Mulai beroperasinya layanan sedot tinja dan pengelolaan air limbah secara aktif."
   },
   {
     year: "2025",
     title: "Digitalisasi Layanan",
-    description: "Peluncuran platform digital SISENJA untuk pelayanan masyarakat."
+    description: "Transformasi digital melalui penerapan teknologi modern untuk meningkatkan efisiensi dan akses layanan."
   }
 ];
+
 
 const team = [
   {
