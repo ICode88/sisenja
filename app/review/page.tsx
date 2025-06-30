@@ -161,7 +161,7 @@ export default function ReviewPage() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             >
               Review & Rating
             </motion.h1>
@@ -169,7 +169,7 @@ export default function ReviewPage() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl text-blue-100 mb-10"
+              className="text-lg sm:text-xl text-blue-100 mb-10 px-4"
             >
               Lihat pengalaman pelanggan kami dan berikan ulasan Anda tentang layanan SISENJA
             </motion.p>
@@ -178,22 +178,22 @@ export default function ReviewPage() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-col md:flex-row gap-4 max-w-2xl mx-auto"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-2xl mx-auto px-4"
             >
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-4 w-4 sm:h-5 sm:w-5" />
                 <Input
                   type="search"
                   placeholder="Cari review..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 py-6 text-lg bg-white/90 rounded-full text-gray-800 border-0 shadow-lg focus-visible:ring-2 focus-visible:ring-blue-400 w-full"
+                  className="pl-9 sm:pl-10 py-4 sm:py-6 text-base sm:text-lg bg-white/90 rounded-full text-gray-800 border-0 shadow-lg focus-visible:ring-2 focus-visible:ring-blue-400 w-full"
                 />
               </div>
               <Button
                 onClick={handleWriteReview}
                 size="lg"
-                className="bg-white text-cyan-700 hover:bg-blue-50 rounded-full px-8 flex items-center gap-2"
+                className="bg-white text-cyan-700 hover:bg-blue-50 rounded-full px-6 sm:px-8 py-4 sm:py-6 flex items-center justify-center gap-2 text-base sm:text-lg whitespace-nowrap"
               >
                 <span>Tulis Review</span>
                 <ExternalLink className="h-4 w-4" />
@@ -207,25 +207,25 @@ export default function ReviewPage() {
       <Img color="fill-white dark:fill-background" height={30} />
 
       {/* Rating Overview */}
-      <section className="py-20 bg-white dark:bg-background">
+      <section className="py-12 sm:py-20 bg-white dark:bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12"
+              className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-8 sm:mb-12"
             >
               {/* Overall Rating */}
               <Card className="lg:col-span-1">
-                <CardContent className="p-8 text-center">
-                  <div className="text-6xl font-bold text-cyan-600 mb-2">
+                <CardContent className="p-6 sm:p-8 text-center">
+                  <div className="text-4xl sm:text-6xl font-bold text-cyan-600 mb-2">
                     {averageRating.toFixed(1)}
                   </div>
                   <div className="flex justify-center mb-2">
                     {renderStars(Math.round(averageRating), "lg")}
                   </div>
-                  <p className="text-muted-foreground mb-4">
+                  <p className="text-muted-foreground mb-4 text-sm sm:text-base">
                     Berdasarkan {reviewsData.length} ulasan
                   </p>
                   <div className="flex items-center justify-center">
@@ -233,7 +233,7 @@ export default function ReviewPage() {
 
                   <Button
                     onClick={handleWriteReview}
-                    className="bg-cyan-600 hover:bg-cyan-700 flex items-center gap-2"
+                    className="bg-cyan-600 hover:bg-cyan-700 flex items-center gap-2 w-full sm:w-auto"
                   >
                     <span>Tulis Review</span>
                     <ExternalLink className="h-4 w-4" />
@@ -244,24 +244,24 @@ export default function ReviewPage() {
 
               {/* Rating Distribution */}
               <Card className="lg:col-span-2">
-                <CardHeader>
-                  <CardTitle>Distribusi Rating</CardTitle>
+                <CardHeader className="pb-4">
+                  <CardTitle className="text-lg sm:text-xl">Distribusi Rating</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="pt-0">
                   <div className="space-y-3">
                     {ratingDistribution.map(({ rating, count, percentage }) => (
-                      <div key={rating} className="flex items-center gap-4">
-                        <div className="flex items-center gap-1 w-16">
+                      <div key={rating} className="flex items-center gap-3 sm:gap-4">
+                        <div className="flex items-center gap-1 w-14 sm:w-16 flex-shrink-0">
                           <span className="text-sm font-medium">{rating}</span>
                           <Star className="h-3 w-3 text-yellow-400 fill-current" />
                         </div>
-                        <div className="flex-1 bg-gray-200 rounded-full h-2">
+                        <div className="flex-1 bg-gray-200 rounded-full h-2 min-w-0">
                           <div
                             className="bg-cyan-600 h-2 rounded-full transition-all duration-500"
                             style={{ width: `${percentage}%` }}
                           />
                         </div>
-                        <span className="text-sm text-muted-foreground w-12">
+                        <span className="text-sm text-muted-foreground w-8 sm:w-12 text-right flex-shrink-0">
                           {count}
                         </span>
                       </div>
@@ -276,10 +276,10 @@ export default function ReviewPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl p-8 text-white text-center mb-12"
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl p-6 sm:p-8 text-white text-center mb-8 sm:mb-12"
             >
-              <h3 className="text-2xl font-bold mb-4">Bagikan Pengalaman Anda!</h3>
-              <p className="text-cyan-100 mb-6 max-w-2xl mx-auto">
+              <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Bagikan Pengalaman Anda!</h3>
+              <p className="text-cyan-100 mb-4 sm:mb-6 max-w-2xl mx-auto text-sm sm:text-base">
                 Pendapat Anda sangat berharga bagi kami. Bantu pelanggan lain dengan membagikan pengalaman Anda menggunakan layanan SISENJA.
               </p>
               <div className="flex items-center justify-center">
@@ -287,12 +287,12 @@ export default function ReviewPage() {
               <Button
                 onClick={handleWriteReview}
                 size="lg"
-                className="bg-white text-cyan-700 hover:bg-blue-50 rounded-full px-8 flex items-center gap-2 mx-auto"
-                >
+                className="bg-white text-cyan-700 hover:bg-blue-50 rounded-full px-6 sm:px-8 flex items-center gap-2 mx-auto text-sm sm:text-base"
+              >
                 <span>Isi Survey & Review</span>
-                <ExternalLink className="h-5 w-5" />
+                <ExternalLink className="h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
-                </div>
+              </div>
             </motion.div>
 
             {/* Filters */}
@@ -300,11 +300,11 @@ export default function ReviewPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="flex flex-col md:flex-row gap-4 mb-8"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8"
             >
               <Select value={filterRating} onValueChange={setFilterRating}>
-                <SelectTrigger className="w-full md:w-48">
-                  <Filter className="h-4 w-4 mr-2" />
+                <SelectTrigger className="w-full sm:w-48">
+                  <Filter className="h-4 w-4 mr-2 flex-shrink-0" />
                   <SelectValue placeholder="Semua Rating" />
                 </SelectTrigger>
                 <SelectContent>
@@ -318,7 +318,7 @@ export default function ReviewPage() {
               </Select>
 
               <Select value={filterService} onValueChange={setFilterService}>
-                <SelectTrigger className="w-full md:w-48">
+                <SelectTrigger className="w-full sm:w-48">
                   <SelectValue placeholder="Semua Layanan" />
                 </SelectTrigger>
                 <SelectContent>
@@ -346,7 +346,7 @@ export default function ReviewPage() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="space-y-6"
+              className="space-y-4 sm:space-y-6"
             >
               {filteredReviews.map((review) => (
                 <motion.div
@@ -356,55 +356,66 @@ export default function ReviewPage() {
                     show: { opacity: 1, y: 0 }
                   }}
                 >
-                  <Card className="hover-card-lift">
-                    <CardContent className="p-6">
-                      <div className="flex items-start gap-4">
-                        <Avatar className="w-12 h-12">
-                          {review.avatar ? (
-                            <AvatarImage src={review.avatar} />
-                          ) : null}
-                          <AvatarFallback className="bg-cyan-600 text-white">
-                            {review.customerName.split(' ').map(n => n[0]).join('')}
-                          </AvatarFallback>
-                        </Avatar>
+                  <Card className="hover-card-lift overflow-hidden">
+                    <CardContent className="p-4 sm:p-6">
+                      <div className="flex flex-col sm:flex-row gap-4">
+                        {/* Avatar and Basic Info */}
+                        <div className="flex items-start gap-3 sm:gap-4">
+                          <Avatar className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0">
+                            {review.avatar ? (
+                              <AvatarImage src={review.avatar} />
+                            ) : null}
+                            <AvatarFallback className="bg-cyan-600 text-white text-sm">
+                              {review.customerName.split(' ').map(n => n[0]).join('')}
+                            </AvatarFallback>
+                          </Avatar>
 
-                        <div className="flex-1">
-                          <div className="flex items-start justify-between mb-2">
-                            <div>
-                              <div className="flex items-center gap-2 mb-1">
-                                <h3 className="font-semibold">{review.customerName}</h3>
-                                {review.verified && (
-                                  <Badge variant="secondary" className="text-xs">
-                                    Terverifikasi
-                                  </Badge>
-                                )}
+                          <div className="flex-1 min-w-0">
+                            {/* Header Info */}
+                            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-2 gap-2">
+                              <div className="min-w-0">
+                                <div className="flex items-center gap-2 mb-1 flex-wrap">
+                                  <h3 className="font-semibold text-sm sm:text-base truncate">{review.customerName}</h3>
+                                  {review.verified && (
+                                    <Badge variant="secondary" className="text-xs flex-shrink-0">
+                                      Terverifikasi
+                                    </Badge>
+                                  )}
+                                </div>
+                                <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-muted-foreground flex-wrap">
+                                  <span className="truncate">{review.location}</span>
+                                  <span className="hidden sm:inline">•</span>
+                                  <span className="truncate">{new Date(review.date).toLocaleDateString('id-ID')}</span>
+                                </div>
                               </div>
-                              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                <span>{review.location}</span>
-                                <span>•</span>
-                                <span>{new Date(review.date).toLocaleDateString('id-ID')}</span>
-                              </div>
+                              <Badge variant="outline" className="text-xs flex-shrink-0 sm:ml-2">
+                                {review.serviceType}
+                              </Badge>
                             </div>
-                            <Badge variant="outline">{review.serviceType}</Badge>
-                          </div>
 
-                          <div className="flex items-center gap-2 mb-3">
-                            {renderStars(review.rating)}
-                            <span className="font-medium">{review.rating}/5</span>
-                          </div>
+                            {/* Rating */}
+                            <div className="flex items-center gap-2 mb-3">
+                              {renderStars(review.rating)}
+                              <span className="font-medium text-sm">{review.rating}/5</span>
+                            </div>
 
-                          <h4 className="font-semibold mb-2">{review.title}</h4>
-                          <p className="text-muted-foreground mb-4">{review.comment}</p>
+                            {/* Review Content */}
+                            <h4 className="font-semibold mb-2 text-sm sm:text-base break-words">{review.title}</h4>
+                            <p className="text-muted-foreground mb-4 text-sm sm:text-base break-words leading-relaxed">
+                              {review.comment}
+                            </p>
 
-                          <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                            <button className="flex items-center gap-1 hover:text-cyan-600 transition-colors">
-                              <ThumbsUp className="h-4 w-4" />
-                              <span>Membantu ({review.helpful})</span>
-                            </button>
-                            <button className="flex items-center gap-1 hover:text-cyan-600 transition-colors">
-                              <MessageCircle className="h-4 w-4" />
-                              <span>Balas</span>
-                            </button>
+                            {/* Actions */}
+                            <div className="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
+                              <button className="flex items-center gap-1 hover:text-cyan-600 transition-colors">
+                                <ThumbsUp className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+                                <span className="whitespace-nowrap">Membantu ({review.helpful})</span>
+                              </button>
+                              <button className="flex items-center gap-1 hover:text-cyan-600 transition-colors">
+                                <MessageCircle className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+                                <span>Balas</span>
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -418,9 +429,9 @@ export default function ReviewPage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-center py-20"
+                className="text-center py-12 sm:py-20"
               >
-                <p className="text-xl text-muted-foreground">
+                <p className="text-lg sm:text-xl text-muted-foreground">
                   Tidak ada review yang sesuai dengan filter Anda.
                 </p>
               </motion.div>
@@ -431,10 +442,10 @@ export default function ReviewPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mt-16 p-8 bg-gray-50 dark:bg-gray-900 rounded-2xl"
+              className="text-center mt-12 sm:mt-16 p-6 sm:p-8 bg-gray-50 dark:bg-gray-900 rounded-2xl"
             >
-              <h3 className="text-xl font-semibold mb-4">Sudah menggunakan layanan SISENJA?</h3>
-              <p className="text-muted-foreground mb-6">
+              <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Sudah menggunakan layanan SISENJA?</h3>
+              <p className="text-muted-foreground mb-4 sm:mb-6 text-sm sm:text-base">
                 Ceritakan pengalaman Anda dan bantu pelanggan lain membuat keputusan yang tepat.
               </p>
               <div className="flex items-center justify-center">
@@ -443,12 +454,12 @@ export default function ReviewPage() {
               <Button
                 onClick={handleWriteReview}
                 size="lg"
-                className="bg-cyan-600 hover:bg-cyan-700 flex items-center gap-2"
-                >
+                className="bg-cyan-600 hover:bg-cyan-700 flex items-center gap-2 mx-auto text-sm sm:text-base"
+              >
                 <span>Tulis Review Sekarang</span>
-                <ExternalLink className="h-5 w-5" />
+                <ExternalLink className="h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
-                </div>
+              </div>
             </motion.div>
           </div>
         </div>
