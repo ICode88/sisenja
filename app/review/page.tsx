@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Star, Search, Filter, ThumbsUp, MessageCircle, Calendar, User } from "lucide-react";
+import { Star, Search, Filter, ThumbsUp, MessageCircle, Calendar, User, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -99,18 +99,13 @@ const ratingDistribution = [5, 4, 3, 2, 1].map(rating => ({
   percentage: (reviewsData.filter(review => review.rating === rating).length / reviewsData.length) * 100
 }));
 
+// Google Form URL
+const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScL2vU0ayz6eTtFvcKQ7TBtZutiVkEfPOdlP9y8Rpli9DV1Mg/viewform?usp=header";
+
 export default function ReviewPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [filterRating, setFilterRating] = useState("all");
   const [filterService, setFilterService] = useState("all");
-  const [showReviewForm, setShowReviewForm] = useState(false);
-  const [newReview, setNewReview] = useState({
-    name: "",
-    serviceType: "",
-    rating: 0,
-    title: "",
-    comment: ""
-  });
 
   const filteredReviews = reviewsData.filter(review => {
     const matchesSearch = review.customerName.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -135,21 +130,16 @@ export default function ReviewPage() {
         {[1, 2, 3, 4, 5].map((star) => (
           <Star
             key={star}
-            className={`${sizeClasses[size]} ${
-              star <= rating ? "text-yellow-400 fill-current" : "text-gray-300"
-            }`}
+            className={`${sizeClasses[size]} ${star <= rating ? "text-yellow-400 fill-current" : "text-gray-300"
+              }`}
           />
         ))}
       </div>
     );
   };
 
-  const handleSubmitReview = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle review submission here
-    console.log("New review:", newReview);
-    setShowReviewForm(false);
-    setNewReview({ name: "", serviceType: "", rating: 0, title: "", comment: "" });
+  const handleWriteReview = () => {
+    window.open(GOOGLE_FORM_URL, '_blank');
   };
 
   return (
@@ -201,11 +191,12 @@ export default function ReviewPage() {
                 />
               </div>
               <Button
-                onClick={() => setShowReviewForm(true)}
+                onClick={handleWriteReview}
                 size="lg"
-                className="bg-white text-cyan-700 hover:bg-blue-50 rounded-full px-8"
+                className="bg-white text-cyan-700 hover:bg-blue-50 rounded-full px-8 flex items-center gap-2"
               >
-                Tulis Review
+                <span>Tulis Review</span>
+                <ExternalLink className="h-4 w-4" />
               </Button>
             </motion.div>
           </div>
@@ -213,7 +204,7 @@ export default function ReviewPage() {
 
         <WaveDivider color="fill-white dark:fill-background" height={80} />
       </section>
-        <Img color="fill-white dark:fill-background" height={30} />
+      <Img color="fill-white dark:fill-background" height={30} />
 
       {/* Rating Overview */}
       <section className="py-20 bg-white dark:bg-background">
@@ -237,12 +228,17 @@ export default function ReviewPage() {
                   <p className="text-muted-foreground mb-4">
                     Berdasarkan {reviewsData.length} ulasan
                   </p>
+                  <div className="flex items-center justify-center">
+
+
                   <Button
-                    onClick={() => setShowReviewForm(true)}
-                    className="bg-cyan-600 hover:bg-cyan-700"
+                    onClick={handleWriteReview}
+                    className="bg-cyan-600 hover:bg-cyan-700 flex items-center gap-2"
                   >
-                    Tulis Review
+                    <span>Tulis Review</span>
+                    <ExternalLink className="h-4 w-4" />
                   </Button>
+                  </div>
                 </CardContent>
               </Card>
 
@@ -273,6 +269,30 @@ export default function ReviewPage() {
                   </div>
                 </CardContent>
               </Card>
+            </motion.div>
+
+            {/* Call-to-Action untuk Review */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl p-8 text-white text-center mb-12"
+            >
+              <h3 className="text-2xl font-bold mb-4">Bagikan Pengalaman Anda!</h3>
+              <p className="text-cyan-100 mb-6 max-w-2xl mx-auto">
+                Pendapat Anda sangat berharga bagi kami. Bantu pelanggan lain dengan membagikan pengalaman Anda menggunakan layanan SISENJA.
+              </p>
+              <div className="flex items-center justify-center">
+
+              <Button
+                onClick={handleWriteReview}
+                size="lg"
+                className="bg-white text-cyan-700 hover:bg-blue-50 rounded-full px-8 flex items-center gap-2 mx-auto"
+                >
+                <span>Isi Survey & Review</span>
+                <ExternalLink className="h-5 w-5" />
+              </Button>
+                </div>
             </motion.div>
 
             {/* Filters */}
@@ -405,128 +425,34 @@ export default function ReviewPage() {
                 </p>
               </motion.div>
             )}
+
+            {/* Bottom CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mt-16 p-8 bg-gray-50 dark:bg-gray-900 rounded-2xl"
+            >
+              <h3 className="text-xl font-semibold mb-4">Sudah menggunakan layanan SISENJA?</h3>
+              <p className="text-muted-foreground mb-6">
+                Ceritakan pengalaman Anda dan bantu pelanggan lain membuat keputusan yang tepat.
+              </p>
+              <div className="flex items-center justify-center">
+
+
+              <Button
+                onClick={handleWriteReview}
+                size="lg"
+                className="bg-cyan-600 hover:bg-cyan-700 flex items-center gap-2"
+                >
+                <span>Tulis Review Sekarang</span>
+                <ExternalLink className="h-5 w-5" />
+              </Button>
+                </div>
+            </motion.div>
           </div>
         </div>
       </section>
-
-      {/* Review Form Modal */}
-      {showReviewForm && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="bg-white dark:bg-card rounded-xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto"
-          >
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold">Tulis Review</h2>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setShowReviewForm(false)}
-              >
-                ✕
-              </Button>
-            </div>
-
-            <form onSubmit={handleSubmitReview} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="name">Nama Lengkap</Label>
-                  <Input
-                    id="name"
-                    value={newReview.name}
-                    onChange={(e) => setNewReview({ ...newReview, name: e.target.value })}
-                    required
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="serviceType">Jenis Layanan</Label>
-                  <Select
-                    value={newReview.serviceType}
-                    onValueChange={(value) => setNewReview({ ...newReview, serviceType: value })}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Pilih layanan" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {serviceTypes.map((service) => (
-                        <SelectItem key={service} value={service}>
-                          {service}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-
-              <div>
-                <Label>Rating</Label>
-                <div className="flex items-center gap-2 mt-2">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <button
-                      key={star}
-                      type="button"
-                      onClick={() => setNewReview({ ...newReview, rating: star })}
-                      className="p-1"
-                    >
-                      <Star
-                        className={`h-6 w-6 ${
-                          star <= newReview.rating
-                            ? "text-yellow-400 fill-current"
-                            : "text-gray-300"
-                        }`}
-                      />
-                    </button>
-                  ))}
-                  <span className="ml-2 text-sm text-muted-foreground">
-                    {newReview.rating > 0 && `${newReview.rating}/5`}
-                  </span>
-                </div>
-              </div>
-
-              <div>
-                <Label htmlFor="title">Judul Review</Label>
-                <Input
-                  id="title"
-                  value={newReview.title}
-                  onChange={(e) => setNewReview({ ...newReview, title: e.target.value })}
-                  placeholder="Ringkasan pengalaman Anda"
-                  required
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="comment">Komentar</Label>
-                <Textarea
-                  id="comment"
-                  value={newReview.comment}
-                  onChange={(e) => setNewReview({ ...newReview, comment: e.target.value })}
-                  placeholder="Ceritakan pengalaman Anda dengan layanan SISENJA..."
-                  className="min-h-[120px]"
-                  required
-                />
-              </div>
-
-              <div className="flex gap-4">
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => setShowReviewForm(false)}
-                  className="flex-1"
-                >
-                  Batal
-                </Button>
-                <Button
-                  type="submit"
-                  className="flex-1 bg-cyan-600 hover:bg-cyan-700"
-                >
-                  Kirim Review
-                </Button>
-              </div>
-            </form>
-          </motion.div>
-        </div>
-      )}
     </>
   );
 }
